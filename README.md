@@ -1,4 +1,4 @@
-# NG-Circos.js
+# NG-Circos
 NG-Circos - interactive circos for biological data
 
 Circos plots are widely used to display multi-dimensional next-generation genomic data, but existing implementations of Circos are not interactive or can incorporate only limited types of data. Here, we developed Next-Generation Circos (NG-Circos), a flexible JavaScript-based circular genome visualization tool for designing highly interactive Circos plots using 21 functional modules with various data types. To our knowledge, NG-Circos is the most powerful software to construct interactive Circos plots. By supporting diverse data types in a dynamic browser interface, NG-Circos will accelerate the next-generation data visualization and interpretation, thus promoting the reproducible research in biomedical sciences and beyond.
