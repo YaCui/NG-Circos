@@ -7,12 +7,11 @@ Circos plots are widely used to display multi-dimensional next-generation genomi
 **(1) Input data of 21 modules can be found here:**
 https://wlcb.oit.uci.edu/modules/
 
-**(2) Getting started:**
+**(2) Getting started demo can be found here:**
 https://wlcb.oit.uci.edu/NG-Circos
 
-**(2) Full documentation:**
-Documentation:
-https://wlcb.oit.uci.edu/NG-Circos/static/doc.html
+**(2) Full documentation can be found here:**
+https://wlcb.oit.uci.edu/NG-Circos/static/html/NGCircos.html#getting-started
 
 
 
