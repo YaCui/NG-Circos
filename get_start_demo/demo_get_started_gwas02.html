@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NGCircos.js</title>
+    </head>
+    <body>
+        <!-- NGCircos.js, Jquery.js and D3.js import -->
+        <script src="./lib/jquery.js"></script>
+        <script src="./lib/d3.js"></script>
+        <script src="./lib/NGCircos.js"></script>
+        <!-- Prepare a <div> tag with "NGCircos" id to set the picture position your will draw in html -->
+        <div id="NGCircos"></div>
+<!-- Data configuration -->
+<script src="./data/get_started_gwas/SNP04_gwascatalog.js"></script>
+<!-- Genome configuration -->
+<script>
+  var NGCircosGenome = [
+    [
+     ["1" , 249250621],
+     ["2" , 243199373],
+     ["3" , 198022430],
+     ["4" , 191154276],
+     ["5" , 180915260],
+     ["6" , 171115067],
+     ["7" , 159138663],
+     ["8" , 146364022],
+     ["9" , 141213431],
+     ["10" , 135534747],
+     ["11" , 135006516],
+     ["12" , 133851895],
+     ["13" , 115169878],
+     ["14" , 107349540],
+     ["15" , 102531392],
+     ["16" , 90354753],
+     ["17" , 81195210],
+     ["18" , 78077248],
+     ["19" , 59128983],
+     ["20" , 63025520],
+     ["21" , 48129895],
+     ["22" , 51304566],
+     ["X" , 155270560],
+     ["Y" , 59373566]
+    ]
+  ];
+  NGCircos01 = new NGCircos(SNP04_gwascatalog,NGCircosGenome,{  // Initialize NGCircos.js with "NGCircosGenome" and Main configuration
+  //Main configuration
+     target : "NGCircos",                       // Main configuration "target"
+     svgWidth : 900,                             // Main configuration "svgWidth"
+     svgHeight : 600,                            // Main configuration "svgHeight"
+     svgClassName: "NGCircos",                  // Main configuration "svgClassName"
+     chrPad : 0.04,                              // Main configuration "chrPad"
+     innerRadius: 246,                           // Main configuration "innerRadius"
+     outerRadius: 270,                           // Main configuration "outerRadius"
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength); // NGCircos.js callback
+  NGCircos01.draw_genome(NGCircos01.genomeLength2); // NGCircos2.js callback second time
+</script>
+    </body>
+</html>

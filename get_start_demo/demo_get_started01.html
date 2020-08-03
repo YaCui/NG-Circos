@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NGCircos.js</title>
+    </head>
+    <body>
+        <!-- NGCircos.js, Jquery.js and D3.js import -->
+        <script src="./lib/jquery.js"></script>
+        <script src="./lib/d3.js"></script>
+        <script src="./lib/NGCircos.js"></script>
+        <!-- Prepare a <div> tag with "example" id to set the picture position your will draw in html -->
+        <div id="example"></div>
+<!-- Genome configuration -->
+<script>
+  var NGCircosGenome = [      // Configure your own genome here.
+    [
+     ["1" , 247249719],
+     ["2" , 242951149],
+     ["3" , 199501827],
+     ["X" , 154913754],
+     ["Y" , 57772954]
+    ]
+  ];
+  NGCircos01 = new NGCircos(NGCircosGenome,{       // Initialize NGCircos.js with "NGCircosGenome" and Main configuration
+     target : "example",                              // Main configuration "target"
+     svgWidth : 900,                                  // Main configuration "svgWidth"
+     svgHeight : 600                                  // Main configuration "svgHeight"
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);  // NGCircos.js callback
+  NGCircos01.draw_genome(NGCircos01.genomeLength2);
+</script>
+    </body>
+</html>
