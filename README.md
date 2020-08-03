@@ -13,8 +13,11 @@ https://wlcb.oit.uci.edu/NG-Circos/static/html/NGCircos.html#getting-started
 **(3) Full documentation can be found here:**
 https://wlcb.oit.uci.edu/NG-Circos/static/doc.html
 
+**(4) NG-Circos website can be found here:**
+https://wlcb.oit.uci.edu/NG-Circos
 
-
+## REFERENCES
+Ya Cui, Zhe Cui, ..., WeiLi. NG-Circos: Next-generation Circos for data visualization and interpretation. (2020)
 
 
 
