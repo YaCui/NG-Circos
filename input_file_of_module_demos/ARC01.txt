@@ -1,0 +1,5 @@
+EGFR	57	167	#CD8500	Recep_L domain
+EGFR	185	338	blue	Furin-like domain
+EGFR	361	480	#CD8500	Recep_L domain
+EGFR	505	636	yellow	GF_recep_IV domain
+EGFR	713	965	red	Pkinase Tyr domain
