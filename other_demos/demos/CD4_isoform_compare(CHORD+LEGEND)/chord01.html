@@ -1,0 +1,372 @@
+<html>
+<head>  
+        <meta charset="utf-8">  
+        <title>Chord</title>  
+  </head> 
+
+<style>
+
+a {color: #000000;TEXT-DECORATION: none}
+a:active {background: #AFC1DC}
+.DownButtonNormal{
+	height: 18px;
+	line-height: 18px;
+	padding: 0 11px;
+	background: #FFFFFF;
+	border: 1px #D9D9D9 solid;
+	border-radius: 3px;
+	display: inline-block;
+	font-size: 12px;
+	outline: none;
+}
+</style>
+    <body>  
+		<script src="../lib/jquery.js"></script>
+		<script src="../lib/d3.js"></script>
+<!-- 		<script src="label.js"></script> -->
+		<script src="../lib/NGCircos.js"></script>
+		
+<!-- 	Download button for png -->
+		<div class="svg-box img-container">
+			<button class="svg-action-btn download-img">Download png ↓</button>
+			<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './../lib/svg-crowbar.js'); } else { e.setAttribute('src', './../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a>
+		</div>  
+		
+		<div id="NGCircos"></div>
+		<script>
+
+		var NGCircosGenome = [
+		[
+			["1",100],
+			["2",1980],
+			["3",200],
+			["4",340],
+			["5",200],
+			["6",2240],
+			["7",100],
+		]
+		];
+		
+		var CHORD1 = [ "CHORD1" , {
+			CHORDinnerRadius: 237,
+			CHORDouterRadius: 243,
+			CHORDFillOpacity:0.67,
+			CHORDStrokeColor: "black",
+			CHORDStrokeWidth: "1px",
+			CHORDPadding:0,
+			CHORDAutoFillColor: false,
+			CHORDFillColor:["white","#58B2DC","#FF7F0F","white","white","#FF7F0F","#CA4949","#FF7F0F","white","#CA4949","#FF7F0F","white","white","white","#FF7F0F","#FF7F0F","#FF7F0F","#FF7F0F","white","white","#58B2DC","white"],
+			CHORDFillStrokeColor:["white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+			CHORDouterARC:true,
+			CHORDouterARCAutoColor:false,
+			CHORDouterARCColor:["white","#58B2DC","#58B2DC","#58B2DC","#EF6746","#EF6746","#EF6746","#EF6746","white","#EF6746","#EF6746","#EF6746","#EF6746","white","#EF6746","#EF6746","#EF6746","#EF6746","#EF6746","#58B2DC","#58B2DC","white"],
+			CHORDouterARCStrokeColor:["white","#58B2DC","#58B2DC","#58B2DC","#EF6746","#EF6746","#EF6746","#EF6746","white","#EF6746","#EF6746","#EF6746","#EF6746","white","#EF6746","#EF6746","#EF6746","#EF6746","#EF6746","#58B2DC","#58B2DC","white"],
+			CHORDouterARCText:true,
+			} , [
+			[ " " , " " , " " , " " , " "  , " " , " " , " " , " "  , " " , " " , " " , " "  , " " , " " , " " , " "  , " " , " " , " " , " "  , " " ],
+			[
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 100 ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 200 ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  40 ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  , 800 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  , 400 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 400 ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  50 ,  0  ,  0  ,  0  ,  0  ,  50 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  40 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 200 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 40  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  50 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  50 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 100 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 100 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 200 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 100 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  50 ,  0  ,  0  ,  0  ,  50 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  , 400 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  40 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 800 ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 600 ,  0  ,  0  ],
+			  [  0  , 200 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [ 100 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ]
+			]
+		]];
+		
+		var LEGEND1 = [ "LEGEND1" , {
+			x: 230,
+			y: -230,
+			title: " ",
+			titleSize: 16,
+			titleWeight: "bold",
+			GapBetweenGraphicText:-5,
+			GapBetweenLines:20
+			} , [
+				{type: "line", color:"#FF7F0F",opacity:"1.0",lineWidth:"30",lineHeight:"10",text: "IL-6 induced", textSize: "14",textWeight:"normal"},
+				{type: "line", color:"#58B2DC",opacity:"1.0",lineWidth:"30",lineHeight:"10",text: "IL-6 repressed", textSize: "14",textWeight:"normal"},
+			]];
+
+		var TEXT1 = [ "TEXT1" , {
+					x: 310,
+					y: -40,
+					textSize: 20,
+					textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "CD4"
+				}];
+
+		var TEXT2 = [ "TEXT2" , {
+					x: 350,
+					y: -50,
+					textSize: 16,
+					textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "+"
+				}];
+
+
+		var TEXT3 = [ "TEXT3" , {
+					x: 270,
+					y: -15,
+					textSize: 20,
+					textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "T"
+				}];
+
+
+        var TEXT4 = [ "TEXT4" , {
+			x: 283,
+			y: -11,
+			textSize: 13,
+			textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "black",
+			textOpacity: 1.0,
+			text: "EM"
+		}];
+
+        var TEXT5 = [ "TEXT5" , {
+			x: 310,
+			y: -15,
+			textSize: 20,
+			textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "black",
+			textOpacity: 1.0,
+			text: "cells (180)"
+		}];
+
+        var TEXT6 = [ "TEXT6" , {
+			x: 20,
+			y: 270,
+			textSize: 20,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "black",
+			textOpacity: 1.0,
+			text: "CD4"
+		}];
+		
+		var TEXT7 = [ "TEXT7" , {
+					x: 60,
+					y: 260,
+					textSize: 15,
+					textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "+"
+				}];
+				
+	    var TEXT8 = [ "TEXT8" , {
+				x: -15,
+				y: 290,
+				textSize: 20,
+				textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+				textColor: "black",
+				textOpacity: 1.0,
+				text: "T"
+			}];
+	
+		var TEXT9 = [ "TEXT9" , {
+					x: -3,
+					y: 293,
+					textSize: 13,
+					textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "EM"
+				}];
+		
+		var TEXT10 = [ "TEXT10" , {
+					x: 23,
+					y: 290,
+					textSize: 20,
+					textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "cells (31)"
+				}];
+				
+		var TEXT11 = [ "TEXT11" , {
+					x: -360,
+					y: -40,
+					textSize: 20,
+					textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "CD4"
+				}];
+				
+		var TEXT12 = [ "TEXT12" , {
+					x: -400,
+					y: -15,
+					textSize: 20,
+					textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "T"
+				}];
+				
+		var TEXT13 = [ "TEXT13" , {
+					x: -388,
+					y: -11,
+					textSize: 13,
+					textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "EM"
+				}];
+				
+		var TEXT14 = [ "TEXT14" , {
+					x: -320,
+					y: -50,
+					textSize: 15,
+					textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "+"
+				}];
+				
+		var TEXT15 = [ "TEXT15" , {
+					x: -360,
+					y: -15,
+					textSize: 20,
+					textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "cells (225)"
+				}];
+
+	
+		NGCircos1 = new NGCircos(CHORD1,LEGEND1,TEXT1,TEXT2,TEXT3,TEXT4,TEXT5,TEXT6,TEXT7,TEXT8,TEXT9,TEXT10,TEXT11,TEXT12,TEXT13,TEXT14,TEXT15,NGCircosGenome,{
+			target:"NGCircos",
+			svgWidth:900,
+			svgHeight:600,
+			svgClassName:"chord",
+			chrPad:0,
+			innerRadius:246,
+			outerRadius:248,
+			zoom:true,
+			compareEvent:false,
+			combinationEvent:false,
+			genomeFillColor:["white","#686C6B","white","black","white","#ADB1B2","white"],
+			ticks:{
+			display:false,
+			len:5,
+			color:"#000",
+			textSize:10,
+			textColor:"#000",
+			scale:3e+07,
+			realLength:true,
+			},
+			genomeLabel:{
+			display:false,
+			textSize:15,
+			textColor:"#000",
+			dx:0.028,
+			dy:"-0.55em",
+			},
+			genomeBorder:{
+			display:false,
+			borderColor:"white",
+			borderSize:0.5,
+			},
+			TEXTModuleDragEvent:false,
+			CHORDMouseEvent : true,
+			CHORDMouseFillColorExcluded:"white",
+			CHORDMouseClickDisplay : false,
+			CHORDMouseClickOpacity : 1.0,
+			CHORDMouseClickStrokeColor : "green",
+			CHORDMouseClickStrokeWidth : 4,
+			CHORDMouseDownDisplay : false,
+			CHORDMouseDownOpacity : 1.0,
+			CHORDMouseDownStrokeColor : "#F26223",
+			CHORDMouseDownStrokeWidth : 4,
+			CHORDMouseEnterDisplay : false,
+			CHORDMouseEnterOpacity : 1.0,
+			CHORDMouseEnterStrokeColor : "#F26223",
+			CHORDMouseEnterStrokeWidth : 4,
+			CHORDMouseLeaveDisplay : false,
+			CHORDMouseLeaveOpacity : 1.0,
+			CHORDMouseLeaveStrokeColor : "#F26223",
+			CHORDMouseLeaveStrokeWidth : 4,
+			CHORDMouseMoveDisplay : false,
+			CHORDMouseMoveOpacity : 1.0,
+			CHORDMouseMoveStrokeColor : "#F26223",
+			CHORDMouseMoveStrokeWidth : 4,
+			CHORDMouseOutDisplay : true,
+			CHORDMouseOutAnimationTime : 500,
+			CHORDMouseOutOpacity : 0.67,
+			CHORDMouseOutStrokeColor : "none",
+			CHORDMouseOutStrokeWidth : 0,
+			CHORDMouseUpDisplay : false,
+			CHORDMouseUpOpacity : 1.0,
+			CHORDMouseUpStrokeColor : "#F26223",
+			CHORDMouseUpStrokeWidth : 4,
+			CHORDMouseOverDisplay : true,
+			CHORDMouseOverOpacity : 0.8,
+			CHORDMouseOverStrokeColor : "#F26223",
+			CHORDMouseOverStrokeWidth : 3,
+			CHORDMouseOverTooltipsHtml01 : "CHORD : ",
+			CHORDMouseOverTooltipsHtml02 : "",
+			CHORDMouseOverTooltipsPosition : "absolute",
+			CHORDMouseOverTooltipsBackgroundColor : "white",
+			CHORDMouseOverTooltipsBorderStyle : "solid",
+			CHORDMouseOverTooltipsBorderWidth : 0,
+			CHORDMouseOverTooltipsPadding : "3px",
+			CHORDMouseOverTooltipsBorderRadius : "3px",
+			CHORDMouseOverTooltipsOpacity : 0.8,
+			
+			});
+
+	
+		NGCircos1.draw_genome(NGCircos1.genomeLength);
+		NGCircos1.draw_genome(NGCircos1.genomeLength2);
+		
+
+		</script>
+		<script src=../lib/saveSvgAsPng.js></script>
+		<script>
+						
+			(function(){
+				var downloadImg = getEle(".download-img"),
+					imgName = getEle("."+NGCircos1.svgClassName);
+				
+				//					imgScale = getEle(".img-scale");
+
+				downloadImg.addEventListener("click",function(){
+					var mySvg = getEle("."+NGCircos1.svgClassName),
+						//iImgScale = parseInt(imgScale.value) || 1,
+						oImgName = imgName.value || NGCircos1.svgClassName;
+						
+//					saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+					saveSvgAsPng(mySvg, oImgName+".png");
+
+				})
+
+				function getEle(obj){
+					var d = document;
+					return d.querySelector(obj);
+				}
+			})()
+		</script>
+    </body>  
+</html>  

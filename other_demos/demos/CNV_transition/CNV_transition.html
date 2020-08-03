@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NGCircos.js</title>
+    </head>
+    <body>
+        <!-- NGCircos.js, Jquery.js and D3.js import -->
+        <script src="../lib/jquery.js"></script>
+        <script src="../lib/d3.js"></script>
+        <script src="../lib/NGCircos.js"></script>
+        <!-- Prepare a <div> tag with "NGCircos" id to set the picture position your will draw in html -->
+        <div class="svg-box img-container">
+          <button class="svg-action-btn download-img">Download png ↓</button>
+          <button> <a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', '../lib/svg-crowbar.js'); } else { e.setAttribute('src', '../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a> </button>
+        </div>
+        <div id="NGCircos"></div>
+<!-- Data configuration -->
+<script src="./CNV01.js"></script>
+<!-- Genome configuration -->
+<script>
+  var NGCircosGenome = [      // Configure your own genome here.
+    [
+     ["1" , 249250621],
+     ["2" , 243199373],
+     ["3" , 198022430],
+     ["4" , 191154276],
+     ["5" , 180915260],
+     ["6" , 171115067],
+     ["7" , 159138663],
+     ["8" , 146364022],
+     ["9" , 141213431],
+     ["10" , 135534747],
+     ["11" , 135006516],
+     ["12" , 133851895],
+     ["13" , 115169878],
+     ["14" , 107349540],
+     ["15" , 102531392],
+     ["16" , 90354753],
+     ["17" , 81195210],
+     ["18" , 78077248],
+     ["19" , 59128983],
+     ["20" , 63025520],
+     ["21" , 48129895],
+     ["22" , 51304566],
+     ["X" , 155270560],
+     ["Y" , 59373566]
+    ]
+  ];
+  NGCircos01 = new NGCircos(BACKGROUND01,CNV01,NGCircosGenome,{       // Initialize NGCircos.js with "NGCircosGenome" and Main configuration
+     zoom : true,
+     target : "NGCircos",                              // Main configuration "target"
+     svgWidth : 900,                                  // Main configuration "svgWidth"
+     svgHeight : 600,                                 // Main configuration "svgHeight"
+     CNVMouseEvent: true,
+     CNVMouseClickDisplay: true,
+     CNVMouseClickColor: "red",
+     CNVMouseClickArcOpacity: 1,
+     CNVMouseClickArcStrokeColor: "#F26223",
+     CNVMouseClickArcStrokeWidth: 0,
+     CNVMouseClickTextFromData: "fourth",
+     CNVMouseClickTextOpacity: 1,
+     CNVMouseClickTextColor: "red",
+     CNVMouseClickTextSize: 8,
+     CNVMouseClickTextPostionX: 0,
+     CNVMouseClickTextPostionY: 0,
+     CNVMouseClickTextDrag: true,
+     CNVMouseDownDisplay: true,
+     CNVMouseDownColor: "green",
+     CNVMouseDownArcOpacity: 1,
+     CNVMouseDownArcStrokeColor: "#F26223",
+     CNVMouseDownArcStrokeWidth: 0,
+     CNVMouseEnterDisplay: true,
+     CNVMouseEnterColor: "yellow",
+     CNVMouseEnterArcOpacity: 1,
+     CNVMouseEnterArcStrokeColor: "#F26223",
+     CNVMouseEnterArcStrokeWidth: 0,
+     CNVMouseLeaveDisplay: true,
+     CNVMouseLeaveColor: "pink",
+     CNVMouseLeaveArcOpacity: 1,
+     CNVMouseLeaveArcStrokeColor: "#F26223",
+     CNVMouseLeaveArcStrokeWidth: 0,
+     CNVMouseMoveDisplay: true,
+     CNVMouseMoveColor: "red",
+     CNVMouseMoveArcOpacity: 1,
+     CNVMouseMoveArcStrokeColor: "#F26223",
+     CNVMouseMoveArcStrokeWidth: 0,
+     CNVMouseOutDisplay: true,
+     CNVMouseOutAnimationTime: 500,
+     CNVMouseOutColor: "red",
+     CNVMouseOutArcOpacity: 1,
+     CNVMouseOutArcStrokeColor: "red",
+     CNVMouseOutArcStrokeWidth: 0,
+     CNVMouseUpDisplay: true,
+     CNVMouseUpColor: "grey",
+     CNVMouseUpArcOpacity: 1,
+     CNVMouseUpArcStrokeColor: "#F26223",
+     CNVMouseUpArcStrokeWidth: 0,
+     CNVMouseOverDisplay: true,
+     CNVMouseOverColor: "red",
+     CNVMouseOverArcOpacity: 1,
+     CNVMouseOverArcStrokeColor: "#F26223",
+     CNVMouseOverArcStrokeWidth: 3,
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);  // NGCircos.js callback
+  NGCircos01.draw_genome(NGCircos01.genomeLength2);
+</script>
+<script src=../lib/saveSvgAsPng.js></script>
+<script>
+
+   (function(){
+      var downloadImg = getEle(".download-img"),
+         imgName = getEle("."+NGCircos01.svgClassName);
+
+      //                                  imgScale = getEle(".img-scale");
+
+      downloadImg.addEventListener("click",function(){
+         var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+      //                                  saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+         saveSvgAsPng(mySvg, oImgName+".png");
+
+      })
+
+      function getEle(obj){
+         var d = document;
+         return d.querySelector(obj);
+      }
+   })()
+
+</script>
+    </body>
+</html>

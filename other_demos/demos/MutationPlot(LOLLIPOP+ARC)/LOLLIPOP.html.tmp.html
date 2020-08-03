@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html xmlns:xlink="http://www.w3.org/1999/xlink">
+<head>
+<meta charset="utf-8">
+<title>Lollipop</title>
+</head>
+<style>
+a {color: #000000;TEXT-DECORATION: none}
+a:active {background: #AFC1DC}
+.DownButtonNormal{
+	height: 18px;
+	line-height: 18px;
+	padding: 0 11px;
+	background: #FFFFFF;
+	border: 1px #D9D9D9 solid;
+	border-radius: 3px;
+	display: inline-block;
+	font-size: 12px;
+	outline: none;
+}
+
+</style>
+<body>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/d3.js"></script>
+<script src="../lib/biocircos-2.0.0.js"></script>
+<!-- 	Download button for png -->
+		<div class="svg-box img-container">
+			<button class="svg-action-btn download-img">Download png ↓</button>
+			<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', '../lib/svg-crowbar.js'); } else { e.setAttribute('src', '../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a>
+		</div>  
+<div id="biocircos"></div>
+<script>
+var BioCircosGenome = [[
+["EGFR",1211],
+]];
+var LOLLIPOP01 = [ "LOLLIPOP01" , {
+LOLLIPOPFillColor:"#9400D3",
+LOLLIPOPSecondColor: "#FFFFFF",
+PointType: "circle",
+circleSize: 6,
+diamondWidth:20,
+diamondHeight:10,
+rectWidth:10,
+rectHeight: 10,
+stroke:true,
+strokeColor: "#999999",
+strokeWidth: "1px",
+lineAutoHeight: true,
+lineHeightRate: 0.75,
+LOLLIPOPAnimationDisplay: true,
+LOLLIPOPAnimationTime: 2000,
+LOLLIPOPAnimationDelay: 20,
+LOLLIPOPAnimationType: "bounce",
+LOLLIPOPLineWidth: 1,
+LOLLIPOPLineColor: "#000000",
+realStart: 101219350,
+} , [
+{protein:"EGFR",chr:"7",pos:"101219410",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero",link:"https://www.intogen.org/search?gene=EGFR"},
+{protein:"EGFR",chr:"7",pos:"101219417",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo",link:"https://www.intogen.org/search?gene=EGFR"},
+{protein:"EGFR",chr:"7",pos:"101219425",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219431",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219440",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219445",strand:"+",CancerTypeNumber:"4",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219450",strand:"+",CancerTypeNumber:"10",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219456",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219461",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219468",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219473",strand:"+",CancerTypeNumber:"9",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219481",strand:"+",CancerTypeNumber:"4",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219484",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219488",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219494",strand:"+",CancerTypeNumber:"21",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219500",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219540",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219547",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219550",strand:"+",CancerTypeNumber:"7",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219555",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219559",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219563",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219565",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219570",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219576",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219580",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219586",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219593",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219600",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219606",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219612",strand:"+",CancerTypeNumber:"5",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219615",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219619",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219623",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219628",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219631",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219650",strand:"+",CancerTypeNumber:"6",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219725",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219729",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219733",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219736",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219739",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219743",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219750",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219783",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219787",strand:"+",CancerTypeNumber:"11",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219790",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219795",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219800",strand:"+",CancerTypeNumber:"5",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219803",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219806",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219870",strand:"+",CancerTypeNumber:"9",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219873",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219877",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219886",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219890",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219893",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219897",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219903",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101219920",strand:"+",CancerTypeNumber:"7",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219930",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219941",strand:"+",CancerTypeNumber:"27",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101219950",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220070",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220072",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220075",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220077",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220080",strand:"+",CancerTypeNumber:"4",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220084",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220090",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220095",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220099",strand:"+",CancerTypeNumber:"5",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220103",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220108",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220114",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220116",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220118",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220122",strand:"+",CancerTypeNumber:"8",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220126",strand:"+",CancerTypeNumber:"7",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220130",strand:"+",CancerTypeNumber:"5",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220136",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220140",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220144",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220148",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220153",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220160",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220161",strand:"+",CancerTypeNumber:"22",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220162",strand:"+",CancerTypeNumber:"5",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220163",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220165",strand:"+",CancerTypeNumber:"7",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220167",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220170",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220171",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220172",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220174",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220176",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220177",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220180",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220185",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220186",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220190",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220193",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220195",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220196",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220199",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220202",strand:"+",CancerTypeNumber:"8",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220205",strand:"+",CancerTypeNumber:"4",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220206",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220210",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220215",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220216",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220220",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220223",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220263",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220266",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220270",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220278",strand:"+",CancerTypeNumber:"3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+{protein:"EGFR",chr:"7",pos:"101220281",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220288",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo"},
+{protein:"EGFR",chr:"7",pos:"101220295",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero"},
+]];
+var ARC01 = [ "ARC01" , {
+innerRadius:-8,
+outerRadius:8,
+} , [
+{chr:"EGFR",start:"57",end:"167",color:"#FFBB77",des:"Recep_L_domain"},
+{chr:"EGFR",start:"185",end:"338",color:"#FF7F0E",des:"Furin-like_domain",link:"https://www.intogen.org/search?gene=EGFR"},
+{chr:"EGFR",start:"361",end:"480",color:"#FFBB77",des:"Recep_L_domain",link:"https://www.intogen.org/search?gene=EGFR"},
+{chr:"EGFR",start:"505",end:"636",color:"#1F77B4",des:"GF_recep_IV_domain"},
+{chr:"EGFR",start:"713",end:"965",color:"#AEC6E7",des:"Pkinase_Tyr_domain"},
+]];
+
+BioCircos1 = new BioCircos(LOLLIPOP01,ARC01, BioCircosGenome,{
+target:"biocircos",
+svgWidth:900,
+svgHeight:600,
+svgClassName:"lollipop",
+chrPad:0.04,
+innerRadius:246,
+outerRadius:250,
+zoom:true,
+genomeFillColor:["#999999"],
+ticks:{
+display:false,
+len:5,
+color:"#000",
+textSize:10,
+textColor:"#000",
+scale:30000000,
+realLength:false,
+},
+genomeLabel:{
+display:true,
+textSize:15,
+textColor:"#000",
+dx:0.028,
+dy:"-0.55em",
+},
+genomeBorder:{
+display:true,
+borderColor:"#000",
+borderSize:0.5,
+},
+TEXTModuleDragEvent:false,
+LOLLIPOPxlink:true,
+LOLLIPOPMouseEvent:true,
+LOLLIPOPMouseClickDisplay:false,
+LOLLIPOPMouseClickColor:"none",
+LOLLIPOPMouseClickCircleSize: "none",
+LOLLIPOPMouseClickCircleOpacity: "none",
+LOLLIPOPMouseClickCircleStrokeColor: "none",
+LOLLIPOPMouseClickCircleStrokeWidth:"none",
+LOLLIPOPMouseClickTextFromData: "first",
+LOLLIPOPMouseClickTextOpacity:0,
+LOLLIPOPMouseClickTextColor: "none",
+LOLLIPOPMouseClickTextSize: 0,
+LOLLIPOPMouseClickTextPostionX: 0,
+LOLLIPOPMouseClickTextPostionY: 0,
+LOLLIPOPMouseClickTextDrag: true,
+LOLLIPOPMouseDownDisplay:false,
+LOLLIPOPMouseDownColor:"none",
+LOLLIPOPMouseDownCircleSize: "none",
+LOLLIPOPMouseDownCircleOpacity: "none",
+LOLLIPOPMouseDownCircleStrokeColor: "none",
+LOLLIPOPMouseDownCircleStrokeWidth:"none",
+LOLLIPOPMouseEnterDisplay:false,
+LOLLIPOPMouseEnterColor:"none",
+LOLLIPOPMouseEnterCircleSize: "none",
+LOLLIPOPMouseEnterCircleOpacity: "none",
+LOLLIPOPMouseEnterCircleStrokeColor: "none",
+LOLLIPOPMouseEnterCircleStrokeWidth:"none",
+LOLLIPOPMouseLeaveDisplay:false,
+LOLLIPOPMouseLeaveColor:"none",
+LOLLIPOPMouseLeaveCircleSize: "none",
+LOLLIPOPMouseLeaveCircleOpacity: "none",
+LOLLIPOPMouseLeaveCircleStrokeColor: "none",
+LOLLIPOPMouseLeaveCircleStrokeWidth:"none",
+LOLLIPOPMouseMoveDisplay:false,
+LOLLIPOPMouseMoveColor:"none",
+LOLLIPOPMouseMoveCircleSize: "none",
+LOLLIPOPMouseMoveCircleOpacity: "none",
+LOLLIPOPMouseMoveCircleStrokeColor: "none",
+LOLLIPOPMouseMoveCircleStrokeWidth:"none",
+LOLLIPOPMouseOutDisplay:true,
+LOLLIPOPMouseOutAnimationTime:700,
+LOLLIPOPMouseOutColor:"none",
+LOLLIPOPMouseOutCircleSize: "none",
+LOLLIPOPMouseOutCircleOpacity: 1,
+LOLLIPOPMouseOutCircleStrokeColor: "#999999",
+LOLLIPOPMouseOutCircleStrokeWidth:1,
+LOLLIPOPMouseUpDisplay:false,
+LOLLIPOPMouseUpColor:"none",
+LOLLIPOPMouseUpCircleSize: "none",
+LOLLIPOPMouseUpCircleOpacity: "none",
+LOLLIPOPMouseUpCircleStrokeColor: "none",
+LOLLIPOPMouseUpCircleStrokeWidth:"none",
+LOLLIPOPMouseOverDisplay:true,
+LOLLIPOPMouseOverColor:"red",
+LOLLIPOPMouseOverCircleSize: 5,
+LOLLIPOPMouseOverCircleOpacity: 1,
+LOLLIPOPMouseOverCircleStrokeColor: "#F26223",
+LOLLIPOPMouseOverCircleStrokeWidth:3,
+LOLLIPOPMouseOverTooltipsHtml01:"protein : ",
+LOLLIPOPMouseOverTooltipsHtml02:"<br>chr : ",
+LOLLIPOPMouseOverTooltipsHtml03:"<br>pos : ",
+LOLLIPOPMouseOverTooltipsHtml04:"<br>strand : ",
+LOLLIPOPMouseOverTooltipsHtml05:"<br>CancerTypeNumber : ",
+LOLLIPOPMouseOverTooltipsHtml06:"<br>AA_pos : ",
+LOLLIPOPMouseOverTooltipsHtml07:"<br>AA_change : ",
+LOLLIPOPMouseOverTooltipsHtml08:"<br>Consequence : ",
+LOLLIPOPMouseOverTooltipsHtml09:"",
+LOLLIPOPMouseOverTooltipsPosition:"absolute",
+LOLLIPOPMouseOverTooltipsBackgroundColor:"white",
+LOLLIPOPMouseOverTooltipsBorderStyle:"solid",
+LOLLIPOPMouseOverTooltipsBorderWidth:1,
+LOLLIPOPMouseOverTooltipsPadding:"3px",
+LOLLIPOPMouseOverTooltipsBorderRadius:"3px",
+LOLLIPOPMouseOverTooltipsOpacity:0.8,
+ARCMouseEvent:true,
+ARCMouseClickDisplay:false,
+ARCMouseClickColor:"none",
+ARCMouseClickArcOpacity: "none",
+ARCMouseClickArcStrokeColor: "none",
+ARCMouseClickArcStrokeWidth:"none",
+ARCMouseClickTextFromData: "first",
+ARCMouseClickTextOpacity:0,
+ARCMouseClickTextColor: "none",
+ARCMouseClickTextSize: 0,
+ARCMouseClickTextPostionX: 0,
+ARCMouseClickTextPostionY: 0,
+ARCMouseClickTextDrag: true,
+ARCMouseDownDisplay:false,
+ARCMouseDownColor:"none",
+ARCMouseDownArcOpacity: "none",
+ARCMouseDownArcStrokeColor: "none",
+ARCMouseDownArcStrokeWidth:"none",
+ARCMouseEnterDisplay:false,
+ARCMouseEnterColor:"none",
+ARCMouseEnterArcOpacity: "none",
+ARCMouseEnterArcStrokeColor: "none",
+ARCMouseEnterArcStrokeWidth:"none",
+ARCMouseLeaveDisplay:false,
+ARCMouseLeaveColor:"none",
+ARCMouseLeaveArcOpacity: "none",
+ARCMouseLeaveArcStrokeColor: "none",
+ARCMouseLeaveArcStrokeWidth:"none",
+ARCMouseMoveDisplay:false,
+ARCMouseMoveColor:"none",
+ARCMouseMoveArcOpacity: "none",
+ARCMouseMoveArcStrokeColor: "none",
+ARCMouseMoveArcStrokeWidth:"none",
+ARCMouseOutDisplay:true,
+ARCMouseOutAnimationTime:700,
+ARCMouseOutColor:"none",
+ARCMouseOutArcOpacity: 1,
+ARCMouseOutArcStrokeColor: "#9400D3",
+ARCMouseOutArcStrokeWidth:0,
+ARCMouseUpDisplay:false,
+ARCMouseUpColor:"none",
+ARCMouseUpArcOpacity: "none",
+ARCMouseUpArcStrokeColor: "none",
+ARCMouseUpArcStrokeWidth:"none",
+ARCMouseOverDisplay:true,
+ARCMouseOverColor:"red",
+ARCMouseOverArcOpacity: 1,
+ARCMouseOverArcStrokeColor: "#F26223",
+ARCMouseOverArcStrokeWidth:3,
+ARCMouseOverTooltipsHtml01:"item : ",
+ARCMouseOverTooltipsHtml02:"<br>start : ",
+ARCMouseOverTooltipsHtml03:"<br>end : ",
+ARCMouseOverTooltipsHtml04:"<br>des : ",
+ARCMouseOverTooltipsHtml05:" ",
+ARCMouseOverTooltipsPosition:"absolute",
+ARCMouseOverTooltipsBackgroundColor:"white",
+ARCMouseOverTooltipsBorderStyle:"solid",
+ARCMouseOverTooltipsBorderWidth:1,
+ARCMouseOverTooltipsPadding:"3px",
+ARCMouseOverTooltipsBorderRadius:"3px",
+ARCMouseOverTooltipsOpacity:0.8,
+});
+BioCircos1.draw_genome(BioCircos1.genomeLength);
+BioCircos1.draw_genome(BioCircos1.genomeLength2);
+</script>
+		<script src=../lib/saveSvgAsPng.js></script>
+		<script>
+						
+			(function(){
+				var downloadImg = getEle(".download-img"),
+					imgName = getEle("."+BioCircos1.svgClassName);
+				
+				//					imgScale = getEle(".img-scale");
+
+				downloadImg.addEventListener("click",function(){
+					var mySvg = getEle("."+BioCircos1.svgClassName),
+						//iImgScale = parseInt(imgScale.value) || 1,
+						oImgName = imgName.value || BioCircos1.svgClassName;
+						
+//					saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+					saveSvgAsPng(mySvg, oImgName+".png");
+
+				})
+
+				function getEle(obj){
+					var d = document;
+					return d.querySelector(obj);
+				}
+			})()
+
+		</script>
+<!-- 	<script type="text/javascript" src="http://ra.revolvermaps.com/0/0/8.js?i=07q3ne39401&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script> -->
+<!-- 	<script type="text/javascript" src="http://ra.revolvermaps.com/0/0/6.js?i=0ye9gq9f4wf&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script> -->
+</body>
+</html>

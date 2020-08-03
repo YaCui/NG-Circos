@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>NGCircos.js</title>
+    </head>
+
+    <body>
+        <!-- NGCircos.js, Jquery.js and D3.js import -->
+        <script src="../lib/jquery.js"></script>
+        <script src="../lib/d3.js"></script>
+        <script src="../lib/NGCircos.js"></script>
+        <!-- Prepare a <div> tag with "NGCircos" id to set the picture position your will draw in html -->
+        <div class="svg-box img-container">
+          <button class="svg-action-btn download-img">Download png ↓</button>
+          <button> <a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', '../lib/svg-crowbar.js'); } else { e.setAttribute('src', '../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a> </button>
+        </div>
+        <div id="NGCircos"></div>
+<!-- Data configuration -->
+<script src="./LINE01.js"></script>
+<!-- Genome configuration -->
+<script>
+  var NGCircosGenome = [
+    [
+     ["1" , 249250621],
+     ["2" , 243199373],
+     ["3" , 198022430],
+     ["4" , 191154276],
+     ["5" , 180915260],
+     ["6" , 171115067],
+     ["7" , 159138663],
+     ["8" , 146364022],
+     ["9" , 141213431],
+     ["10" , 135534747],
+     ["11" , 135006516],
+     ["12" , 133851895],
+     ["13" , 115169878],
+     ["14" , 107349540],
+     ["15" , 102531392],
+     ["16" , 90354753],
+     ["17" , 81195210],
+     ["18" , 78077248],
+     ["19" , 59128983],
+     ["20" , 63025520],
+     ["21" , 48129895],
+     ["22" , 51304566],
+     ["X" , 155270560],
+     ["Y" , 59373566]
+    ]
+  ];
+  NGCircos01 = new NGCircos(ARC_hg19,BACKGROUND01,BACKGROUND02,LINE01,LINE02,NGCircosGenome,{
+     target : "NGCircos",
+     svgWidth : 900,
+     svgHeight : 600,
+     chrPad : 0.04,
+     innerRadius: 246,
+     outerRadius: 270,
+     zoom : true,
+     LINEMouseEvent : true,
+     LINEMouseClickDisplay : false,
+     LINEMouseClickLineOpacity : 1,           //"none"
+     LINEMouseClickLineStrokeColor : "red",   //"none"
+     LINEMouseClickLineStrokeWidth : "none",  //"none"
+     LINEMouseDownDisplay : false,
+     LINEMouseDownLineOpacity : 1,           //"none"
+     LINEMouseDownLineStrokeColor : "red",   //"none"
+     LINEMouseDownLineStrokeWidth : "none",  //"none"
+     LINEMouseEnterDisplay : false,
+     LINEMouseEnterLineOpacity : 1,           //"none"
+     LINEMouseEnterLineStrokeColor : "red",   //"none"
+     LINEMouseEnterLineStrokeWidth : "none",  //"none"
+     LINEMouseLeaveDisplay : false,
+     LINEMouseLeaveLineOpacity : 1,           //"none"
+     LINEMouseLeaveLineStrokeColor : "red",   //"none"
+     LINEMouseLeaveLineStrokeWidth : "none",  //"none"
+     LINEMouseMoveDisplay : false,
+     LINEMouseMoveLineOpacity : 1,           //"none"
+     LINEMouseMoveLineStrokeColor : "red",   //"none"
+     LINEMouseMoveLineStrokeWidth : "none",  //"none"
+     LINEMouseOutDisplay : true,
+     LINEMouseOutAnimationTime : 500,
+     LINEMouseOutLineOpacity : 1.0,   //"none"
+     LINEMouseOutLineStrokeColor : "red",    //"none"
+     LINEMouseOutLineStrokeWidth : "none",    //"none"
+     LINEMouseUpDisplay : false,
+     LINEMouseUpLineOpacity : 1,           //"none"
+     LINEMouseUpLineStrokeColor : "red",   //"none"
+     LINEMouseUpLineStrokeWidth : "none",  //"none"
+     LINEMouseOverDisplay : false,
+     LINEMouseOverLineOpacity : 1,           //"none"
+     LINEMouseOverLineStrokeColor : "red",   //"none"
+     LINEMouseOverLineStrokeWidth : "none",  //"none"
+     LINEMouseOverTooltipsHtml01 : "Line",
+     LINEMouseOverTooltipsPosition : "absolute",
+     LINEMouseOverTooltipsBackgroundColor : "white",
+     LINEMouseOverTooltipsBorderStyle : "solid",
+     LINEMouseOverTooltipsBorderWidth : 0,
+     LINEMouseOverTooltipsPadding : "3px",
+     LINEMouseOverTooltipsBorderRadius : "3px",
+     LINEMouseOverTooltipsOpacity : 0.8,
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);
+  NGCircos01.draw_genome(NGCircos01.genomeLength2); // NGCircos2.js callback second time
+</script>
+<script src=../lib/saveSvgAsPng.js></script>
+<script>
+
+   (function(){
+      var downloadImg = getEle(".download-img"),
+         imgName = getEle("."+NGCircos01.svgClassName);
+
+      //                                  imgScale = getEle(".img-scale");
+
+      downloadImg.addEventListener("click",function(){
+         var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+      //                                  saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+         saveSvgAsPng(mySvg, oImgName+".png");
+
+      })
+
+      function getEle(obj){
+         var d = document;
+         return d.querySelector(obj);
+      }
+   })()
+
+</script>
+    </body>
+
+
+</html>

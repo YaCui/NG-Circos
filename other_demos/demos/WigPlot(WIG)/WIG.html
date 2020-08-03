@@ -1,0 +1,121 @@
+<html>
+<head>
+        <meta charset="utf-8">
+        <title>wig</title>
+</head>
+
+<style>
+.SNPCombinationAxis path,
+.SNPCombinationAxis line{
+	fill: none;
+	stroke: black;
+	shape-rendering: crispEdges;
+}
+a {color: #000000;TEXT-DECORATION: none}
+a:active {background: #AFC1DC}
+.DownButtonNormal{
+	height: 18px;
+	line-height: 18px;
+	padding: 0 11px;
+	background: #FFFFFF;
+	border: 1px #D9D9D9 solid;
+	border-radius: 3px;
+	display: inline-block;
+	font-size: 12px;
+	outline: none;
+}
+
+</style>
+   <body>
+		<script src="../lib/jquery.js"></script>
+		<script src="../lib/d3.js"></script>
+
+    <!-- Data configuration -->
+    <script src="./WIG1.js"></script>
+    <script src="./WIG4.js"></script>
+
+<!-- 		<script src="label.js"></script> -->
+		<script src=../lib/NGCircos.js></script>
+		<!-- 	Download button for png -->
+				<div class="svg-box img-container">
+					<button class="svg-action-btn download-img">Download png ↓</button>
+					<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', '../lib/svg-crowbar.js'); } else { e.setAttribute('src', '../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a>
+				</div>  
+		
+		<div id="NGCircos"></div>
+		<script>
+
+		var NGCircosGenome = [
+		[
+			["chr8",1000],
+		],[
+			["chr8",1000],
+		]
+		];
+	
+		NGCircos1 = new NGCircos(WIG1,WIG4,NGCircosGenome,{
+			target:"NGCircos",
+			svgWidth:900,
+			svgHeight:600,
+			svgClassName:"wig",
+			chrPad:0,
+			innerRadius:246,
+			outerRadius:250,
+			zoom:true,
+			compareEvent:true,
+			compareEventGroupGapRate:0.2,
+			compareEventGroupDistance:100,
+			genomeFillColor:["white","#666600","white","white","#666600","white"],
+			ticks:{
+			display:false,
+			len:5,
+			color:"black",
+			textSize:10,
+			textColor:"black",
+			scale:500,
+			realLength:true, 
+			},
+			genomeLabel:{
+			display:false,
+			textSize:15,
+			textColor:"#000",
+			dx:0.028,
+			dy:"-0.55em",
+			},
+			genomeBorder:{
+			display:true,
+			borderColor:"black",
+			borderSize:0.5,
+			},
+			
+		});
+		NGCircos1.draw_genome(NGCircos1.genomeLength);
+		NGCircos1.draw_genome(NGCircos1.genomeLength2);
+		</script>
+		<script src=../lib/saveSvgAsPng.js></script>
+		<script>
+						
+			(function(){
+				var downloadImg = getEle(".download-img"),
+					imgName = getEle("."+NGCircos1.svgClassName);
+				
+				//					imgScale = getEle(".img-scale");
+
+				downloadImg.addEventListener("click",function(){
+					var mySvg = getEle("."+NGCircos1.svgClassName),
+						//iImgScale = parseInt(imgScale.value) || 1,
+						oImgName = imgName.value || NGCircos1.svgClassName;
+						
+//					saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+					saveSvgAsPng(mySvg, oImgName+".png");
+
+				})
+
+				function getEle(obj){
+					var d = document;
+					return d.querySelector(obj);
+				}
+			})()
+		</script>
+    </body>
+</html>

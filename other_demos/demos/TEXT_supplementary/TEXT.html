@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NGCircos.js</title>
+    </head>
+    <body>
+        <!-- NGCircos.js, Jquery.js and D3.js import -->
+        <script src="../lib/jquery.js"></script>
+        <script src="../lib/d3.js"></script>
+        <script src="../lib/NGCircos.js"></script>
+        <!-- Prepare a <div> tag with "NGCircos" id to set the picture position your will draw in html -->
+        <div class="svg-box img-container">
+          <button class="svg-action-btn download-img">Download png ↓</button>
+          <button> <a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', '../lib/svg-crowbar.js'); } else { e.setAttribute('src', '../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a> </button>
+        </div>
+        <div id="NGCircos"></div>
+<!-- Data configuration -->
+<script>
+  var TEXT01 = [ "TEXT01" , {
+     x: -170,
+     y: 0,
+     textSize: 20,
+     textWeight: "bold",
+     textColor: "red",
+     textOpacity: 1.0,
+     text: "You can add TEXT module at any place!"
+  }];
+</script>
+<!-- Genome configuration -->
+<script>
+  var NGCircosGenome = [      // Configure your own genome here.
+    [
+     ["EGFR" , 1211],
+    ]
+  ];
+  NGCircos01 = new NGCircos(TEXT01,NGCircosGenome,{       // Initialize NGCircos.js with "NGCircosGenome" and Main configuration
+     target : "NGCircos",
+     svgWidth : 900,
+     svgHeight : 600,
+     innerRadius: 246,
+     outerRadius: 250,
+     zoom : false,
+     genomeFillColor: ["#999999"],
+     ticks : {
+        display : true,
+        len : 5,
+        color : "#000",
+        textSize : 8,
+        textColor : "#000",
+        scale : 20
+     },
+     genomeLabel : {
+        display : false,
+        textSize : 16,
+        textColor : "red",
+        dx : 3.14,
+        dy : "-0.95em"
+     },
+     ARCMouseEvent: true,
+     ARCMouseClickDisplay: true,
+     ARCMouseClickColor: "red",
+     ARCMouseClickArcOpacity: 1,
+     ARCMouseClickArcStrokeColor: "#F26223",
+     ARCMouseClickArcStrokeWidth: 0,
+     ARCMouseClickTextFromData: "fifth",
+     ARCMouseClickTextOpacity: 1,
+     ARCMouseClickTextColor: "red",
+     ARCMouseClickTextSize: 8,
+     ARCMouseClickTextPostionX: 0,
+     ARCMouseClickTextPostionY: 0,
+     ARCMouseClickTextDrag: true,
+     ARCMouseMoveDisplay: true,
+     ARCMouseMoveColor: "none",
+     ARCMouseMoveArcOpacity: 1,
+     ARCMouseMoveArcStrokeColor: "#F26223",
+     ARCMouseMoveArcStrokeWidth: 3,
+     ARCMouseOutDisplay: true,
+     ARCMouseOutAnimationTime: 500,
+     ARCMouseOutColor: "none",
+     ARCMouseOutArcOpacity: 1,
+     ARCMouseOutArcStrokeColor: "red",
+     ARCMouseOutArcStrokeWidth: 0,
+     ARCMouseOverDisplay: true,
+     ARCMouseOverColor: "none",
+     ARCMouseOverArcOpacity: 1,
+     ARCMouseOverArcStrokeColor: "#F26223",
+     ARCMouseOverArcStrokeWidth: 3,
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);  // NGCircos.js callback
+  NGCircos01.draw_genome(NGCircos01.genomeLength2); // NGCircos2.js callback second time
+</script>
+<script src=../lib/saveSvgAsPng.js></script>
+<script>
+
+   (function(){
+      var downloadImg = getEle(".download-img"),
+         imgName = getEle("."+NGCircos01.svgClassName);
+
+      //                                  imgScale = getEle(".img-scale");
+
+      downloadImg.addEventListener("click",function(){
+         var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+      //                                  saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+         saveSvgAsPng(mySvg, oImgName+".png");
+
+      })
+
+      function getEle(obj){
+         var d = document;
+         return d.querySelector(obj);
+      }
+   })()
+
+</script>
+    </body>
+</html>

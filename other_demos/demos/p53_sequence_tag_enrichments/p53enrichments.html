@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NGCircos.js</title>
+    </head>
+    <body>
+        <!-- NGCircos.js, Jquery.js and D3.js import -->
+        <script src="../lib/jquery.js"></script>
+        <script src="../lib/d3.js"></script>
+        <script src="../lib/NGCircos.js"></script>
+        <div class="svg-box img-container">
+      <button class="svg-action-btn download-img">Download png ↓</button>
+      <a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './../lib/svg-crowbar.js'); } else { e.setAttribute('src', './../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a>
+    </div>  
+        <!-- 	Download button for png -->
+        <!-- Prepare a <div> tag with "NGCircos" id to set the picture position your will draw in html -->
+        <div id="NGCircos"></div>
+<!-- Data configuration -->
+<script src="./p53enrichments.js"></script>
+
+<script>
+
+</script>
+<!-- Genome configuration -->
+<script>
+  var NGCircosGenome = [[
+  ["HOXA1",1000],
+  ["PTCH1",1000],
+  ["TBX5",1000],
+  ]];
+//  NGCircos1 = new NGCircos(SNP01,SNP02,TEXT6,TEXT5,TEXT4,TEXT3,TEXT2,TEXT1, NGCircosGenome,{
+NGCircos1 = new NGCircos(GENE01,GENE02,GENE03,WIG01,WIG02,WIG03,SNP01,SNP02,TEXT9,TEXT8,TEXT7,TEXT6,TEXT5,TEXT4,TEXT3,TEXT2,TEXT1, NGCircosGenome,{
+  target:"NGCircos",
+  svgWidth:900,
+  svgHeight:600,
+  svgClassName:"gene",
+  chrPad:0.3,
+  innerRadius:180,
+  outerRadius:186,
+  zoom:true,
+  genomeFillColor:["#999999"],
+  ticks:{
+  display:false,
+  len:5,
+  color:"#000",
+  textSize:10,
+  textColor:"#000",
+  scale:30000000,
+  realLength:false,
+  },
+  genomeLabel:{
+  display:true,
+  textSize:15,
+  textColor:"#000",
+  dx:0.028,
+  dy:"-0.55em",
+  },
+  genomeBorder:{
+  display:true,
+  borderColor:"#000",
+  borderSize:0.5,
+  },
+  GENEMouseEvent : true,
+   GENEMouseClickDisplay : true,
+   GENEMouseClickColor : "none",
+   GENEMouseClickArcOpacity : 1.0,
+   GENEMouseClickArcStrokeColor : "#F26223",
+   GENEMouseClickArcStrokeWidth : 1,
+   GENEMouseClickTextFromData : "fifth",   //first,second,third,fifth column
+   GENEMouseClickTextOpacity : 1,
+   GENEMouseClickTextColor : "#000",
+   GENEMouseClickTextSize : 8,
+   GENEMouseClickTextPostionX : 0,
+   GENEMouseClickTextPostionY : 0,
+   GENEMouseClickTextDrag : false,
+   GENEMouseDownDisplay : false,
+   GENEMouseDownColor : "none",
+   GENEMouseDownArcOpacity : 1.0,
+   GENEMouseDownArcStrokeColor : "#F26223",
+   GENEMouseDownArcStrokeWidth : 1,
+   GENEMouseEnterDisplay : false,
+   GENEMouseEnterColor : "none",
+   GENEMouseEnterArcOpacity : 1.0,
+   GENEMouseEnterArcStrokeColor : "#F26223",
+   GENEMouseEnterArcStrokeWidth : 1,
+   GENEMouseLeaveDisplay : false,
+   GENEMouseLeaveColor : "none",
+   GENEMouseLeaveArcOpacity : 1.0,
+   GENEMouseLeaveArcStrokeColor : "#F26223",
+   GENEMouseLeaveArcStrokeWidth : 0,
+   GENEMouseMoveDisplay : false,
+   GENEMouseMoveColor : "none",
+   GENEMouseMoveArcOpacity : 1.0,
+   GENEMouseMoveArcStrokeColor : "#F26223",
+   GENEMouseMoveArcStrokeWidth : 0,
+   GENEMouseOutDisplay : true,
+   GENEMouseOutAnimationTime : 500,
+   GENEMouseOutColor : "none",
+   GENEMouseOutArcOpacity : 1.0,
+   GENEMouseOutArcStrokeColor : "red",
+   GENEMouseOutArcStrokeWidth : 0,
+   GENEMouseUpDisplay : false,
+   GENEMouseUpColor : "grey",
+   GENEMouseUpArcOpacity : 1.0,
+   GENEMouseUpArcStrokeColor : "#F26223",
+   GENEMouseUpArcStrokeWidth : 0,
+   GENEMouseOverDisplay : true,
+   GENEMouseOverColor : "red",
+   GENEMouseOverArcOpacity : 1.0,
+   GENEMouseOverArcStrokeColor : "red", //"none","#F26223"
+   GENEMouseOverArcStrokeWidth : "none", //"none",3
+   GENEMouseOverTooltipsHtml01 : "Gene: ",
+   GENEMouseOverTooltipsHtml02 : "<br>Start: ",
+   GENEMouseOverTooltipsHtml03 : "<br>End: ",
+   GENEMouseOverTooltipsHtml04 : "<br>Name: ",
+   GENEMouseOverTooltipsHtml05 : "<br>Strand: ",
+   GENEMouseOverTooltipsHtml06 : "<br>Type: ",
+   GENEMouseOverTooltipsHtml07 : "",
+   GENEMouseOverTooltipsPosition : "absolute",
+   GENEMouseOverTooltipsBackgroundColor : "white",
+   GENEMouseOverTooltipsBorderStyle : "solid",
+   GENEMouseOverTooltipsBorderWidth : 1,
+   GENEMouseOverTooltipsPadding : "3px",
+   GENEMouseOverTooltipsBorderRadius : "3px",
+   GENEMouseOverTooltipsOpacity : 0.8,
+   WIGMouseOverDisplay : true,
+   WIGMouseOverColor : "red",
+   WIGMouseOverDisplay:true,
+   WIGMouseOverTooltipsHtml:"p53 signal",
+   WIGMouseOutDisplay : true,
+   WIGMouseOutAnimationTime : 500,
+   WIGMouseOutLineOpacity : 1.0,
+   WIGMouseOutLineStrokeColor : "black",
+   WIGMouseOutLineStrokeWidth : "4px",
+   SNPMouseOverDisplay : true,
+   SNPMouseOverColor : "green",
+   SNPMouseOverCircleSize:8,
+   SNPMouseOutDisplay : true,
+   SNPMouseOutAnimationTime : 500,
+   SNPMouseOutColor : "orange",
+   SNPMouseOutCircleSize : 8,
+   SNPMouseOutCircleOpacity : 1.0,
+   SNPMouseOutCircleStrokeColor : "orange",
+   SNPMouseOutCircleStrokeWidth : 0,
+//   SNPMouseOverCircleStrokeColor : "red",
+//   SNPMouseOverCircleStrokeWidth : 3,
+  });
+  NGCircos1.draw_genome(NGCircos1.genomeLength);
+  NGCircos1.draw_genome(NGCircos1.genomeLength2);
+
+</script>
+<script src=../lib/saveSvgAsPng.js></script>
+    <script>
+            
+      (function(){
+        var downloadImg = getEle(".download-img"),
+          imgName = getEle("."+NGCircos1.svgClassName);
+        
+        //          imgScale = getEle(".img-scale");
+
+        downloadImg.addEventListener("click",function(){
+          var mySvg = getEle("."+NGCircos1.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos1.svgClassName;
+            
+//          saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+          saveSvgAsPng(mySvg, oImgName+".png");
+
+        })
+
+        function getEle(obj){
+          var d = document;
+          return d.querySelector(obj);
+        }
+      })()
+    </script>
+    </body>
+</html>

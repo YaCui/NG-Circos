@@ -1,0 +1,329 @@
+<html>
+<head>
+        <meta charset="utf-8">
+        <title>tp53</title>
+</head>
+
+<style>
+a {color: #000000;TEXT-DECORATION: none}
+a:active {background: #AFC1DC}
+.DownButtonNormal{
+	height: 18px;
+	line-height: 18px;
+	padding: 0 11px;
+	background: #FFFFFF;
+	border: 1px #D9D9D9 solid;
+	border-radius: 3px;
+	display: inline-block;
+	font-size: 12px;
+	outline: none;
+}
+
+</style>
+   <body>
+		<script src="../lib/jquery.js"></script>
+		<script src="../lib/d3.js"></script>
+
+<!-- 		<script src="label.js"></script> -->
+		<script src=../lib/NGCircos.js></script>
+		<!-- 	Download button for png -->
+		<div class="svg-box img-container">
+			<button class="svg-action-btn download-img">Download png ↓</button>
+			<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './../lib/svg-crowbar.js'); } else { e.setAttribute('src', './../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a>
+		</div>  
+		<div id="NGCircos"></div>
+		<script>
+
+		var NGCircosGenome = [
+		[
+			["TP53",393],
+		],[
+			["TP53",393],
+		]
+		];
+
+		var ARC1 = [ "ARC1" , {
+	      compareGroup:1,
+	      innerRadius: 10,
+	      outerRadius: -10,
+	       ARCAnimationDisplay: true,
+		ARCAnimationTime: 1000,
+		ARCAnimationDelay: 500,
+		ARCAnimationType: "linear",
+	    } , [
+	      {chr: "TP53", start: "5" , end: "30", color: "#50b44a", des: "TAD"},
+	    ]];
+
+	    var ARC2 = [ "ARC2" , {
+	      compareGroup:1,
+	      innerRadius: 10,
+	      outerRadius: -10,
+	       ARCAnimationDisplay: true,
+		ARCAnimationTime: 1000,
+		ARCAnimationDelay: 500,
+		ARCAnimationType: "linear",
+	    } , [
+	      {chr: "TP53", start: "95" , end: "285", color: "#ed5654", des: "p53 DNA-binding domain"},
+	    ]];
+
+		var ARC3 = [ "ARC3" , {
+			compareGroup:1,
+			innerRadius: 10,
+			outerRadius: -10,
+			 ARCAnimationDisplay: true,
+		ARCAnimationTime: 1000,
+		ARCAnimationDelay: 500,
+		ARCAnimationType: "linear",
+		} , [
+			{chr: "TP53", start: "325" , end: "365", color: "#5b62b3", des: "Tetramerization"},
+		]];
+		
+		var ARC4 = [ "ARC4" , {
+	      compareGroup:2,
+	      innerRadius: 10,
+	      outerRadius: -10,
+	       ARCAnimationDisplay: true,
+		ARCAnimationTime: 1000,
+		ARCAnimationDelay: 500,
+		ARCAnimationType: "linear",
+	    } , [
+	      {chr: "TP53", start: "5" , end: "30", color: "#50b44a", des: "TAD"},
+	    ]];
+
+	    var ARC5 = [ "ARC5" , {
+	      compareGroup:2,
+	      innerRadius: 10,
+	      outerRadius: -10,
+	       ARCAnimationDisplay: true,
+		ARCAnimationTime: 1000,
+		ARCAnimationDelay: 500,
+		ARCAnimationType: "linear",
+	    } , [
+	      {chr: "TP53", start: "95" , end: "285", color: "#ed5654", des: "p53 DNA-binding domain"},
+	    ]];
+
+		var ARC6 = [ "ARC6" , {
+			compareGroup:2,
+			innerRadius: 10,
+			outerRadius: -10,
+			 ARCAnimationDisplay: true,
+		ARCAnimationTime: 1000,
+		ARCAnimationDelay: 500,
+		ARCAnimationType: "linear",
+		} , [
+			{chr: "TP53", start: "325" , end: "365", color: "#5b62b3", des: "Tetramerization"},
+		]];
+
+		var LOLLIPOP1 = [ "LOLLIPOP1" , {
+			compareGroup:1,
+			PointType: "circle",
+			circleSize: 6,
+			stroke:true,
+			strokeColor: "black",
+			strokeWidth: "0.3px",
+			lineAutoHeight: true,
+			lineHeightRate: 0.75,
+			LOLLIPOPAnimationDisplay: true,
+			LOLLIPOPAnimationTime: 2000,
+			LOLLIPOPAnimationDelay: 20,
+			LOLLIPOPAnimationType: "bounce",
+			LOLLIPOPLineWidth: 1,
+			LOLLIPOPLineColor: "#000000",
+			realStart: 0,
+			} , [
+			{protein:"TP53",chr:"chr17",pos:"45",CancerTypeNumber:"1",color:"#ed5654",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"70",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"145",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"153",CancerTypeNumber:"2",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"163",CancerTypeNumber:"1",color:"#ed5654",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"175",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"193",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"205",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"210",CancerTypeNumber:"3",color:"#ed5654",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"220",CancerTypeNumber:"3",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"230",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"240",CancerTypeNumber:"2",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"241",CancerTypeNumber:"2",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"242",CancerTypeNumber:"2",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"245",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"247",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"249",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"255",CancerTypeNumber:"1",color:"#ed5654",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"260",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"275",CancerTypeNumber:"2",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"280",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"305",CancerTypeNumber:"1",color:"#ed5654",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"342",CancerTypeNumber:"1",color:"#ed5654",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			
+		]];
+		
+		var LOLLIPOP2 = [ "LOLLIPOP2" , {
+			compareGroup:2,
+			PointType: "circle",
+			circleSize: 6,
+			stroke:true,
+			strokeColor: "black",
+			strokeWidth: "0.3px",
+			lineAutoHeight: true,
+			lineAutoMaximumHeightZoomRate:8/3,
+			lineHeightRate: 0.75,
+			LOLLIPOPAnimationDisplay: true,
+			LOLLIPOPAnimationTime: 2000,
+			LOLLIPOPAnimationDelay: 20,
+			LOLLIPOPAnimationType: "bounce",
+			LOLLIPOPLineWidth: 1,
+			LOLLIPOPLineColor: "#000000",
+			realStart: 0,
+			} , [
+			{protein:"TP53",chr:"chr17",pos:"130",CancerTypeNumber:"1",color:"black",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"145",CancerTypeNumber:"1",color:"#ed5654",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"147",CancerTypeNumber:"1",color:"#ed5654",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"170",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"173",CancerTypeNumber:"2",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"180",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"193",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"204",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"235",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"242",CancerTypeNumber:"3",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"245",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"247",CancerTypeNumber:"8",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"250",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"265",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"273",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"275",CancerTypeNumber:"6",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"280",CancerTypeNumber:"1",color:"black",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"281",CancerTypeNumber:"2",color:"purple",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"283",CancerTypeNumber:"1",color:"#50b44a",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"330",CancerTypeNumber:"1",color:"#ed5654",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			{protein:"TP53",chr:"chr17",pos:"332",CancerTypeNumber:"1",color:"#ed5654",type:"Homo",link:"https://www.intogen.org/search?gene=TP53"},
+			
+		]];
+		
+		var TEXT1 = [ "TEXT1" , {
+			x: -280,
+			y: 290,
+			textSize: 20,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "black",
+			textOpacity: 1.0,
+			text: "serous endometrial cancer"
+		}];
+
+		var TEXT2 = [ "TEXT2" , {
+			x: 60,
+			y: 290,
+			textSize: 20,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "black",
+			textOpacity: 1.0,
+			text: "endometrioid endometrial cancer"
+		}];
+		
+		var LEGEND1 = [ "LEGEND1" , {
+			x: -160,
+			y: -170,
+			title: " ",
+			titleSize: 16,
+			titleWeight: "bold",
+			GapBetweenGraphicText:5,
+			GapBetweenLines:25,
+			} , [
+				{type: "circle", color:"#50b44a",opacity:"1.0",circleSize:"10",text: "Missense mutation", textSize: "14",textWeight:"normal"},
+				{type: "circle", color:"#ed5654",opacity:"1.0",circleSize:"10",text: "Truncation mutation", textSize: "14",textWeight:"normal"},
+				{type: "circle", color:"black",opacity:"1.0",circleSize:"10",text: "In-frame insertion and deletion", textSize: "14",textWeight:"normal"},
+				{type: "circle", color:"purple",opacity:"1.0",circleSize:"10",text: "Residues affected by different types of mutation", textSize: "14",textWeight:"normal"},
+		]];
+
+		NGCircos1 = new NGCircos(ARC1,ARC2,ARC3,ARC4,ARC5,ARC6,LOLLIPOP1,LOLLIPOP2,TEXT1,TEXT2,LEGEND1,NGCircosGenome,{
+			target:"NGCircos",
+			svgWidth:900,
+			svgHeight:600,
+			svgClassName:"tp53_compare",
+			chrPad:0,
+			innerRadius:246,
+			outerRadius:250,
+			zoom:true,
+			compareEvent:true,
+			compareEventGroupGapRate:0.2,
+			compareEventGroupDistance:100,
+			genomeFillColor:["white","#666600","white","white","#666600","white"],
+			ticks:{
+			display:false,
+			len:5,
+			color:"black",
+			textSize:10,
+			textColor:"black",
+			scale:500,
+			realLength:true,
+			},
+			genomeLabel:{
+			display:true,
+			textSize:15,
+			textColor:"#000",
+			dx:0.028,
+			dy:"-0.55em",
+			},
+			genomeBorder:{
+			display:true,
+			borderColor:"black",
+			borderSize:0.5,
+			},
+			LOLLIPOPMouseEvent:true,
+			LOLLIPOPMouseOutDisplay : true,
+          	LOLLIPOPMouseOutAnimationTime : 500,
+          	LOLLIPOPMouseOutColor : "orange",
+          	LOLLIPOPMouseOutCircleSize : 6,
+          	LOLLIPOPMouseOutCircleOpacity : 1.0,
+          	LOLLIPOPMouseOutCircleStrokeColor : "orange",
+          	LOLLIPOPMouseOutCircleStrokeWidth : 0,
+          	LOLLIPOPMouseOverDisplay : true,
+          	LOLLIPOPMouseOverColor : "red",
+          	LOLLIPOPMouseOverCircleSize : 6,
+          	LOLLIPOPMouseOverCircleOpacity : 1.0,
+          	LOLLIPOPMouseOverCircleStrokeColor : "#F26223",
+          	LOLLIPOPMouseOverCircleStrokeWidth : 3,
+          	LOLLIPOPMouseOverTooltipsSetting : "style1", //custom, style1
+          	LOLLIPOPMouseOverTooltipsHtml : " ",
+          	ARCMouseEvent:true,
+          	ARCMouseOutDisplay : true,
+          	ARCMouseOutAnimationTime : 500,
+          	ARCMouseOutColor : "orange",
+          	ARCMouseOutArcOpacity : 1.0,
+          	ARCMouseOutArcStrokeColor : "orange",
+          	ARCMouseOutArcStrokeWidth : 0,
+          	ARCMouseOverDisplay : true,
+          	ARCMouseOverColor : "red",
+          	ARCMouseOverArcOpacity : 1.0,
+          	ARCMouseOverArcStrokeColor : "#F26223",
+          	ARCMouseOverArcStrokeWidth : 3,
+		});
+		NGCircos1.draw_genome(NGCircos1.genomeLength);
+		NGCircos1.draw_genome(NGCircos1.genomeLength2);
+		</script>
+		<script src=../lib/saveSvgAsPng.js></script>
+		<script>
+						
+			(function(){
+				var downloadImg = getEle(".download-img"),
+					imgName = getEle("."+NGCircos1.svgClassName);
+				
+				//					imgScale = getEle(".img-scale");
+
+				downloadImg.addEventListener("click",function(){
+					var mySvg = getEle("."+NGCircos1.svgClassName),
+						//iImgScale = parseInt(imgScale.value) || 1,
+						oImgName = imgName.value || NGCircos1.svgClassName;
+						
+//					saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+					saveSvgAsPng(mySvg, oImgName+".png");
+
+				})
+
+				function getEle(obj){
+					var d = document;
+					return d.querySelector(obj);
+				}
+			})()
+		</script>
+    </body>
+</html>

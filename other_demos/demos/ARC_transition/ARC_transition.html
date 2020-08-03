@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>NGCircos.js</title>
+    </head>
+
+    <body>
+        <!-- NGCircos.js, Jquery.js and D3.js import -->
+        <script src="../lib/jquery.js"></script>
+        <script src="../lib/d3.js"></script>
+        <script src="../lib/NGCircos.js"></script>
+        <!-- Prepare a <div> tag with "NGCircos" id to set the picture position your will draw in html -->
+        <div class="svg-box img-container">
+          <button class="svg-action-btn download-img">Download png ↓</button>
+          <button> <a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', '../lib/svg-crowbar.js'); } else { e.setAttribute('src', '../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a> </button>
+        </div>
+        <div id="NGCircos"></div>
+<!-- Data configuration -->
+<script src="./ARC01.js"></script>
+<!-- Genome configuration -->
+<script>
+var TEXT01 = [ "TEXT01" , {
+   x: -10,
+   y: 0,
+   textSize: 10,
+   textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+   textColor: "red",
+   textOpacity: 1.0,
+   text: "EGFR"
+}];
+
+  var NGCircosGenome = [
+    [
+     ["EGFR" , 1211],
+    ]
+  ];
+
+  NGCircos01 = new NGCircos(TEXT01,ARC01,NGCircosGenome,{
+     target : "NGCircos",
+     svgWidth : 900,
+     svgHeight : 600,
+     innerRadius: 246,
+     outerRadius: 250,
+     zoom : false,
+     ARCMouseOnDisplay: true,
+     SNPMouseEvent : true,
+     SNPMouseClickDisplay : true,
+     SNPMouseClickColor : "red",
+     SNPMouseClickCircleSize : 4,
+     SNPMouseClickCircleOpacity : 1.0,
+     SNPMouseClickCircleStrokeColor : "#F26223",
+     SNPMouseClickCircleStrokeWidth : 0,
+     SNPMouseClickTextFromData : "second",   //first,second,third,fourth column
+     SNPMouseClickTextOpacity : 1,
+     SNPMouseClickTextColor : "red",
+     SNPMouseClickTextSize : 8,
+     SNPMouseClickTextPostionX : 1.0,
+     SNPMouseClickTextPostionY : 10,
+     SNPMouseClickTextDrag : true,
+     SNPMouseDownDisplay : false,
+     SNPMouseDownColor : "green",
+     SNPMouseDownCircleSize : 4,
+     SNPMouseDownCircleOpacity : 1.0,
+     SNPMouseDownCircleStrokeColor : "#F26223",
+     SNPMouseDownCircleStrokeWidth : 1,
+     SNPMouseEnterDisplay : false,
+     SNPMouseEnterColor : "yellow",
+     SNPMouseEnterCircleSize : 4,
+     SNPMouseEnterCircleOpacity : 1.0,
+     SNPMouseEnterCircleStrokeColor : "#F26223",
+     SNPMouseEnterCircleStrokeWidth : 0,
+     SNPMouseLeaveDisplay : false,
+     SNPMouseLeaveColor : "pink",
+     SNPMouseLeaveCircleSize : 4,
+     SNPMouseLeaveCircleOpacity : 1.0,
+     SNPMouseLeaveCircleStrokeColor : "#F26223",
+     SNPMouseLeaveCircleStrokeWidth : 0,
+     SNPMouseMoveDisplay : false,
+     SNPMouseMoveColor : "red",
+     SNPMouseMoveCircleSize : 2,
+     SNPMouseMoveCircleOpacity : 1.0,
+     SNPMouseMoveCircleStrokeColor : "#F26223",
+     SNPMouseMoveCircleStrokeWidth : 0,
+     SNPMouseOutDisplay : false,
+     SNPMouseOutAnimationTime : 500,
+     SNPMouseOutColor : "none",
+     SNPMouseOutCircleSize : 3,
+     SNPMouseOutCircleOpacity : 1.0,
+     SNPMouseOutCircleStrokeColor : "red",
+     SNPMouseOutCircleStrokeWidth : 0,
+     SNPMouseUpDisplay : false,
+     SNPMouseUpColor : "grey",
+     SNPMouseUpCircleSize : 4,
+     SNPMouseUpCircleOpacity : 1.0,
+     SNPMouseUpCircleStrokeColor : "#F26223",
+     SNPMouseUpCircleStrokeWidth : 0,
+     SNPMouseOverDisplay : false,
+     SNPMouseOverColor : "red",
+     SNPMouseOverCircleSize : 2,
+     SNPMouseOverCircleOpacity : 1.0,
+     SNPMouseOverCircleStrokeColor : "#F26223",
+     SNPMouseOverCircleStrokeWidth : "none", //"none",3
+     SNPMouseOverTooltipsHtml01 : "Gene: ",
+     SNPMouseOverTooltipsHtml02 : "<br>Position: ",
+     SNPMouseOverTooltipsHtml03 : "AA<br>Value: ",
+     SNPMouseOverTooltipsHtml04 : "<br>Des: ",
+     SNPMouseOverTooltipsHtml05 : "",
+     SNPMouseOverTooltipsPosition : "absolute",
+     SNPMouseOverTooltipsBackgroundColor : "white",
+     SNPMouseOverTooltipsBorderStyle : "solid",
+     SNPMouseOverTooltipsBorderWidth : 0,
+     SNPMouseOverTooltipsPadding : "3px",
+     SNPMouseOverTooltipsBorderRadius : "3px",
+     SNPMouseOverTooltipsOpacity : 0.8,
+     ARCMouseEvent : true,
+     ARCMouseClickDisplay : true,
+     ARCMouseClickColor : "none",
+     ARCMouseClickArcOpacity : 1.0,
+     ARCMouseClickArcStrokeColor : "#F26223",
+     ARCMouseClickArcStrokeWidth : 1,
+     ARCMouseClickTextFromData : "fifth",   //first,second,third,fifth column
+     ARCMouseClickTextOpacity : 1,
+     ARCMouseClickTextColor : "#000",
+     ARCMouseClickTextSize : 8,
+     ARCMouseClickTextPostionX : 0,
+     ARCMouseClickTextPostionY : 0,
+     ARCMouseClickTextDrag : false,
+     ARCMouseDownDisplay : false,
+     ARCMouseDownColor : "none",
+     ARCMouseDownArcOpacity : 1.0,
+     ARCMouseDownArcStrokeColor : "#F26223",
+     ARCMouseDownArcStrokeWidth : 1,
+     ARCMouseEnterDisplay : false,
+     ARCMouseEnterColor : "none",
+     ARCMouseEnterArcOpacity : 1.0,
+     ARCMouseEnterArcStrokeColor : "#F26223",
+     ARCMouseEnterArcStrokeWidth : 1,
+     ARCMouseLeaveDisplay : false,
+     ARCMouseLeaveColor : "none",
+     ARCMouseLeaveArcOpacity : 1.0,
+     ARCMouseLeaveArcStrokeColor : "#F26223",
+     ARCMouseLeaveArcStrokeWidth : 0,
+     ARCMouseMoveDisplay : false,
+     ARCMouseMoveColor : "none",
+     ARCMouseMoveArcOpacity : 1.0,
+     ARCMouseMoveArcStrokeColor : "#F26223",
+     ARCMouseMoveArcStrokeWidth : 0,
+     ARCMouseOutDisplay : false,
+     ARCMouseOutAnimationTime : 500,
+     ARCMouseOutColor : "none",
+     ARCMouseOutArcOpacity : 1.0,
+     ARCMouseOutArcStrokeColor : "red",
+     ARCMouseOutArcStrokeWidth : 0,
+     ARCMouseUpDisplay : false,
+     ARCMouseUpColor : "grey",
+     ARCMouseUpArcOpacity : 1.0,
+     ARCMouseUpArcStrokeColor : "#F26223",
+     ARCMouseUpArcStrokeWidth : 0,
+     ARCMouseOverDisplay : true,
+     ARCMouseOverColor : "none",
+     ARCMouseOverArcOpacity : 1.0,
+     ARCMouseOverArcStrokeColor : "red", //"none","#F26223"
+     ARCMouseOverArcStrokeWidth : "none", //"none",3
+     ARCMouseOverTooltipsHtml01 : "",
+     ARCMouseOverTooltipsHtml02 : "<br>Position: ",
+     ARCMouseOverTooltipsHtml03 : "AA - ",
+     ARCMouseOverTooltipsHtml04 : "AA<br>Name: ",
+     ARCMouseOverTooltipsHtml05 : "",
+     ARCMouseOverTooltipsPosition : "absolute",
+     ARCMouseOverTooltipsBackgroundColor : "white",
+     ARCMouseOverTooltipsBorderStyle : "solid",
+     ARCMouseOverTooltipsBorderWidth : 0,
+     ARCMouseOverTooltipsPadding : "3px",
+     ARCMouseOverTooltipsBorderRadius : "3px",
+     ARCMouseOverTooltipsOpacity : 0.8,
+     SCATTERMouseEvent : true,
+     SCATTERMouseClickDisplay : true,
+     SCATTERMouseClickColor : "none", //"none","red"
+     SCATTERMouseClickCircleSize : "none", //"none",4
+     SCATTERMouseClickCircleOpacity : 1.0,
+     SCATTERMouseClickCircleStrokeColor : "#F26223",
+     SCATTERMouseClickCircleStrokeWidth : 0,
+     SCATTERMouseClickTextFromData : "fourth",   //first,second,third,fourth/fifth column
+     SCATTERMouseClickTextOpacity : 1,
+     SCATTERMouseClickTextColor : "red",
+     SCATTERMouseClickTextSize : 8,
+     SCATTERMouseClickTextPostionX : 10.0,
+     SCATTERMouseClickTextPostionY : 10.0,
+     SCATTERMouseClickTextDrag : true,
+     SCATTERMouseDownDisplay : false,
+     SCATTERMouseDownColor : "green",
+     SCATTERMouseDownCircleSize : 4,
+     SCATTERMouseDownCircleOpacity : 1.0,
+     SCATTERMouseDownCircleStrokeColor : "#F26223",
+     SCATTERMouseDownCircleStrokeWidth : 0,
+     SCATTERMouseEnterDisplay : false,
+     SCATTERMouseEnterColor : "yellow",
+     SCATTERMouseEnterCircleSize : 4,
+     SCATTERMouseEnterCircleOpacity : 1.0,
+     SCATTERMouseEnterCircleStrokeColor : "#F26223",
+     SCATTERMouseEnterCircleStrokeWidth : 0,
+     SCATTERMouseLeaveDisplay : false,
+     SCATTERMouseLeaveColor : "pink",
+     SCATTERMouseLeaveCircleSize : 4,
+     SCATTERMouseLeaveCircleOpacity : 1.0,
+     SCATTERMouseLeaveCircleStrokeColor : "#F26223",
+     SCATTERMouseLeaveCircleStrokeWidth : 0,
+     SCATTERMouseMoveDisplay : false,
+     SCATTERMouseMoveColor : "red",
+     SCATTERMouseMoveCircleSize : 2,
+     SCATTERMouseMoveCircleOpacity : 1.0,
+     SCATTERMouseMoveCircleStrokeColor : "#F26223",
+     SCATTERMouseMoveCircleStrokeWidth : 0,
+     SCATTERMouseOutDisplay : false,
+     SCATTERMouseOutAnimationTime : 500,
+     SCATTERMouseOutColor : "red",
+     SCATTERMouseOutCircleSize : 2,
+     SCATTERMouseOutCircleOpacity : 1.0,
+     SCATTERMouseOutCircleStrokeColor : "red",
+     SCATTERMouseOutCircleStrokeWidth : 0,
+     SCATTERMouseUpDisplay : false,
+     SCATTERMouseUpColor : "grey",
+     SCATTERMouseUpCircleSize : 4,
+     SCATTERMouseUpCircleOpacity : 1.0,
+     SCATTERMouseUpCircleStrokeColor : "#F26223",
+     SCATTERMouseUpCircleStrokeWidth : 0,
+     SCATTERMouseOverDisplay : false,
+     SCATTERMouseOverColor : "yellow",
+     SCATTERMouseOverCircleSize : 8,
+     SCATTERMouseOverCircleOpacity : 1.0,
+     SCATTERMouseOverCircleStrokeColor : "#F26223",
+     SCATTERMouseOverCircleStrokeWidth : 3,
+     SCATTERMouseOverTooltipsHtml01 : "item : ",
+     SCATTERMouseOverTooltipsHtml02 : "<br>start:",
+     SCATTERMouseOverTooltipsHtml03 : "<br>end:",
+     SCATTERMouseOverTooltipsHtml04 : "<br>name:",
+     SCATTERMouseOverTooltipsHtml05 : "<br>des:",
+     SCATTERMouseOverTooltipsHtml06 : "",
+     SCATTERMouseOverTooltipsPosition : "absolute",
+     SCATTERMouseOverTooltipsBackgroundColor : "white",
+     SCATTERMouseOverTooltipsBorderStyle : "solid",
+     SCATTERMouseOverTooltipsBorderWidth : 0,
+     SCATTERMouseOverTooltipsPadding : "3px",
+     SCATTERMouseOverTooltipsBorderRadius : "3px",
+     SCATTERMouseOverTooltipsOpacity : 0.8,
+     genomeFillColor: ["#999999"],
+     ticks : {
+        display : true,
+        len : 5,
+        color : "#000",
+        textSize : 8,
+        textColor : "#000",
+        scale : 20
+     },
+     genomeLabel : {
+        display : false,
+        textSize : 16,
+        textColor : "red",
+        dx : 3.14,
+        dy : "-0.95em"
+     }
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);
+  NGCircos01.draw_genome(NGCircos01.genomeLength2);
+</script>
+<script src=../lib/saveSvgAsPng.js></script>
+<script>
+
+   (function(){
+      var downloadImg = getEle(".download-img"),
+         imgName = getEle("."+NGCircos01.svgClassName);
+
+      //                                  imgScale = getEle(".img-scale");
+
+      downloadImg.addEventListener("click",function(){
+         var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+      //                                  saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+         saveSvgAsPng(mySvg, oImgName+".png");
+
+      })
+
+      function getEle(obj){
+         var d = document;
+         return d.querySelector(obj);
+      }
+   })()
+
+</script>
+    </body>
+
+
+</html>

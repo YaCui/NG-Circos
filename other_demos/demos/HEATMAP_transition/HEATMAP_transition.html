@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>NGCircos.js</title>
+    </head>
+
+    <body>
+        <!-- NGCircos.js, Jquery.js and D3.js import -->
+        <script src="../lib/jquery.js"></script>
+        <script src="../lib/d3.js"></script>
+        <script src="../lib/NGCircos.js"></script>
+        <!-- Prepare a <div> tag with "NGCircos" id to set the picture position your will draw in html -->
+        <div class="svg-box img-container">
+          <button class="svg-action-btn download-img">Download png ↓</button>
+          <button> <a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', '../lib/svg-crowbar.js'); } else { e.setAttribute('src', '../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a> </button>
+        </div>
+        <div id="NGCircos"></div>
+<!-- Data configuration -->
+<script src="./HEATMAP01.js"></script>
+<script src="./HEATMAP02.js"></script>
+<!-- Genome configuration -->
+<script>
+  var NGCircosGenome = [
+    [
+     ["2L" , 23011544],
+     ["2R" , 21146708],
+     ["3L" , 24543557],
+     ["3R" , 27905053],
+     ["X" , 22422827],
+     ["4" , 1351857]
+    ]
+  ];
+  NGCircos01 = new NGCircos(HEATMAP01,HEATMAP02,HEATMAP03,NGCircosGenome,{
+     target : "NGCircos",
+     svgWidth : 960,
+     svgHeight : 600,
+     chrPad : 0.04,
+     innerRadius: 246,
+     outerRadius: 252,
+     zoom : true,
+     genomeFillColor: ["#999999"],
+     HEATMAPMouseEvent : true,
+     HEATMAPMouseClickDisplay : false,
+     HEATMAPMouseClickColor : "green",            //"none","red"
+     HEATMAPMouseClickOpacity : 1.0,            //"none",1.0
+     HEATMAPMouseClickStrokeColor : "none",  //"none","#F26223"
+     HEATMAPMouseClickStrokeWidth : "none",          //"none",3
+     HEATMAPMouseDownDisplay : false,
+     HEATMAPMouseDownColor : "green",            //"none","red"
+     HEATMAPMouseDownOpacity : 1.0,            //"none",1.0
+     HEATMAPMouseDownStrokeColor : "none",  //"none","#F26223"
+     HEATMAPMouseDownStrokeWidth : "none",          //"none",3
+     HEATMAPMouseEnterDisplay : false,
+     HEATMAPMouseEnterColor : "green",            //"none","red"
+     HEATMAPMouseEnterOpacity : 1.0,            //"none",1.0
+     HEATMAPMouseEnterStrokeColor : "none",  //"none","#F26223"
+     HEATMAPMouseEnterStrokeWidth : "none",          //"none",3
+     HEATMAPMouseLeaveDisplay : false,
+     HEATMAPMouseLeaveColor : "green",            //"none","red"
+     HEATMAPMouseLeaveOpacity : 1.0,            //"none",1.0
+     HEATMAPMouseLeaveStrokeColor : "none",  //"none","#F26223"
+     HEATMAPMouseLeaveStrokeWidth : "none",          //"none",3
+     HEATMAPMouseMoveDisplay : false,
+     HEATMAPMouseMoveColor : "green",            //"none","red"
+     HEATMAPMouseMoveOpacity : 1.0,            //"none",1.0
+     HEATMAPMouseMoveStrokeColor : "none",  //"none","#F26223"
+     HEATMAPMouseMoveStrokeWidth : "none",          //"none",3
+     HEATMAPMouseOutDisplay : false,
+     HEATMAPMouseOutAnimationTime : 500,
+     HEATMAPMouseOutColor : "green",            //"none","red"
+     HEATMAPMouseOutOpacity : 1.0,            //"none",1.0
+     HEATMAPMouseOutStrokeColor : "none",  //"none","#F26223"
+     HEATMAPMouseOutStrokeWidth : "none",          //"none",3
+     HEATMAPMouseUpDisplay : false,
+     HEATMAPMouseUpColor : "green",            //"none","red"
+     HEATMAPMouseUpOpacity : 1.0,            //"none",1.0
+     HEATMAPMouseUpStrokeColor : "none",  //"none","#F26223"
+     HEATMAPMouseUpStrokeWidth : "none",          //"none",3
+     HEATMAPMouseOverDisplay : true,
+     HEATMAPMouseOverColor : "none",            //"none","red"
+     HEATMAPMouseOverOpacity : 1.0,            //"none",1.0
+     HEATMAPMouseOverStrokeColor : "none",  //"none","#F26223"
+     HEATMAPMouseOverStrokeWidth : "none",          //"none",3
+     HEATMAPMouseOverTooltipsHtml01 : "chr : ",
+     HEATMAPMouseOverTooltipsHtml02 : "<br>position: ",
+     HEATMAPMouseOverTooltipsHtml03 : "-",
+     HEATMAPMouseOverTooltipsHtml04 : "<br>name : ",
+     HEATMAPMouseOverTooltipsHtml05 : "<br>value : ",
+     HEATMAPMouseOverTooltipsHtml06 : "",
+     HEATMAPMouseOverTooltipsPosition : "absolute",
+     HEATMAPMouseOverTooltipsBackgroundColor : "white",
+     HEATMAPMouseOverTooltipsBorderStyle : "solid",
+     HEATMAPMouseOverTooltipsBorderWidth : 0,
+     HEATMAPMouseOverTooltipsPadding : "3px",
+     HEATMAPMouseOverTooltipsBorderRadius : "3px",
+     HEATMAPMouseOverTooltipsOpacity : 0.8,
+     genomeBorder : {
+        display : true,
+        borderColor : "#000",
+        borderSize : 0.5
+     },
+     ticks : {
+        display : true,
+        len : 5,
+        color : "#000",
+        textSize : 10,
+        textColor : "#000",
+        scale : 2000000
+     },
+     genomeLabel : {
+        display : true,
+        textSize : 15,
+        textColor : "#000",
+        dx : 0.028,
+        dy : "-0.55em"
+     }
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);
+  NGCircos01.draw_genome(NGCircos01.genomeLength2); // NGCircos2.js callback second time
+</script>
+<script src=../lib/saveSvgAsPng.js></script>
+<script>
+
+   (function(){
+      var downloadImg = getEle(".download-img"),
+         imgName = getEle("."+NGCircos01.svgClassName);
+
+      //                                  imgScale = getEle(".img-scale");
+
+      downloadImg.addEventListener("click",function(){
+         var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+      //                                  saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+         saveSvgAsPng(mySvg, oImgName+".png");
+
+      })
+
+      function getEle(obj){
+         var d = document;
+         return d.querySelector(obj);
+      }
+   })()
+
+</script>
+    </body>
+
+
+</html>

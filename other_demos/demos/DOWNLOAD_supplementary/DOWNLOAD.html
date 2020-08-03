@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NGCircos.js</title>
+    </head>
+    <style>
+    a {color: #000000;TEXT-DECORATION: none}
+    a:active {background: #AFC1DC}
+    .DownButtonNormal{
+      height: 18px;
+      line-height: 18px;
+      padding: 0 11px;
+      background: #FFFFFF;
+      border: 1px #D9D9D9 solid;
+      border-radius: 3px;
+      display: inline-block;
+      font-size: 12px;
+      outline: none;
+    }
+
+    </style>
+    <body>
+        <!-- NGCircos.js, Jquery.js and D3.js import -->
+        <script src="../lib/jquery.js"></script>
+        <script src="../lib/d3.js"></script>
+        <script src="../lib/NGCircos.js"></script>
+        <div class="svg-box img-container">
+          <button class="svg-action-btn download-img">Download png ↓</button>
+          <a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', '../lib/svg-crowbar.js'); } else { e.setAttribute('src', '../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a>
+        </div>  
+        <!-- Prepare a <div> tag with "NGCircos" id to set the picture position your will draw in html -->
+        <div id="NGCircos"></div>
+<!-- Data configuration -->
+<script src="./LOLLIPOP01.js"></script>
+<script>
+var ARC01 = [ "ARC01" , {
+innerRadius:-4,
+outerRadius:4,
+} , [
+{chr:"EGFR",start:"57",end:"167",color:"#FFBB77",des:"Recep_L_domain"},
+{chr:"EGFR",start:"185",end:"338",color:"#FF7F0E",des:"Furin-like_domain"},
+{chr:"EGFR",start:"361",end:"480",color:"#FFBB77",des:"Recep_L_domain"},
+{chr:"EGFR",start:"505",end:"636",color:"#1F77B4",des:"GF_recep_IV_domain"},
+{chr:"EGFR",start:"713",end:"965",color:"#AEC6E7",des:"Pkinase_Tyr_domain"},
+]];
+</script>
+<!-- Genome configuration -->
+<script>
+  var NGCircosGenome = [[
+  ["EGFR",1211],
+  ]];
+  NGCircos1 = new NGCircos(LOLLIPOP01,ARC01, NGCircosGenome,{
+  target:"NGCircos",
+  svgWidth:900,
+  svgHeight:600,
+  svgClassName:"download_lollipop",
+  chrPad:0.04,
+  innerRadius:246,
+  outerRadius:254,
+  zoom:true,
+  genomeFillColor:["#999999"],
+  ticks:{
+  display:false,
+  len:5,
+  color:"#000",
+  textSize:10,
+  textColor:"#000",
+  scale:30000000,
+  realLength:false,
+  },
+  genomeLabel:{
+  display:true,
+  textSize:15,
+  textColor:"#000",
+  dx:0.028,
+  dy:"-0.55em",
+  },
+  genomeBorder:{
+  display:true,
+  borderColor:"#000",
+  borderSize:0.5,
+  },
+  TEXTModuleDragEvent:false,
+  LOLLIPOPxlink:false,
+  LOLLIPOPMouseEvent:true,
+  LOLLIPOPMouseClickDisplay:false,
+  LOLLIPOPMouseClickColor:"none",
+  LOLLIPOPMouseClickCircleSize: "none",
+  LOLLIPOPMouseClickCircleOpacity: "none",
+  LOLLIPOPMouseClickCircleStrokeColor: "none",
+  LOLLIPOPMouseClickCircleStrokeWidth:"none",
+  LOLLIPOPMouseClickTextFromData: "first",
+  LOLLIPOPMouseClickTextOpacity:0,
+  LOLLIPOPMouseClickTextColor: "none",
+  LOLLIPOPMouseClickTextSize: 0,
+  LOLLIPOPMouseClickTextPostionX: 0,
+  LOLLIPOPMouseClickTextPostionY: 0,
+  LOLLIPOPMouseClickTextDrag: true,
+  LOLLIPOPMouseDownDisplay:false,
+  LOLLIPOPMouseDownColor:"none",
+  LOLLIPOPMouseDownCircleSize: "none",
+  LOLLIPOPMouseDownCircleOpacity: "none",
+  LOLLIPOPMouseDownCircleStrokeColor: "none",
+  LOLLIPOPMouseDownCircleStrokeWidth:"none",
+  LOLLIPOPMouseEnterDisplay:false,
+  LOLLIPOPMouseEnterColor:"none",
+  LOLLIPOPMouseEnterCircleSize: "none",
+  LOLLIPOPMouseEnterCircleOpacity: "none",
+  LOLLIPOPMouseEnterCircleStrokeColor: "none",
+  LOLLIPOPMouseEnterCircleStrokeWidth:"none",
+  LOLLIPOPMouseLeaveDisplay:false,
+  LOLLIPOPMouseLeaveColor:"none",
+  LOLLIPOPMouseLeaveCircleSize: "none",
+  LOLLIPOPMouseLeaveCircleOpacity: "none",
+  LOLLIPOPMouseLeaveCircleStrokeColor: "none",
+  LOLLIPOPMouseLeaveCircleStrokeWidth:"none",
+  LOLLIPOPMouseMoveDisplay:false,
+  LOLLIPOPMouseMoveColor:"none",
+  LOLLIPOPMouseMoveCircleSize: "none",
+  LOLLIPOPMouseMoveCircleOpacity: "none",
+  LOLLIPOPMouseMoveCircleStrokeColor: "none",
+  LOLLIPOPMouseMoveCircleStrokeWidth:"none",
+  LOLLIPOPMouseOutDisplay:true,
+  LOLLIPOPMouseOutAnimationTime:700,
+  LOLLIPOPMouseOutColor:"none",
+  LOLLIPOPMouseOutCircleSize: "none",
+  LOLLIPOPMouseOutCircleOpacity: 1,
+  LOLLIPOPMouseOutCircleStrokeColor: "#999999",
+  LOLLIPOPMouseOutCircleStrokeWidth:1,
+  LOLLIPOPMouseUpDisplay:false,
+  LOLLIPOPMouseUpColor:"none",
+  LOLLIPOPMouseUpCircleSize: "none",
+  LOLLIPOPMouseUpCircleOpacity: "none",
+  LOLLIPOPMouseUpCircleStrokeColor: "none",
+  LOLLIPOPMouseUpCircleStrokeWidth:"none",
+  LOLLIPOPMouseOverDisplay:true,
+  LOLLIPOPMouseOverColor:"red",
+  LOLLIPOPMouseOverCircleSize: 5,
+  LOLLIPOPMouseOverCircleOpacity: 1,
+  LOLLIPOPMouseOverCircleStrokeColor: "#F26223",
+  LOLLIPOPMouseOverCircleStrokeWidth:3,
+  LOLLIPOPMouseOverTooltipsHtml01:"protein : ",
+  LOLLIPOPMouseOverTooltipsHtml02:"<br>chr : ",
+  LOLLIPOPMouseOverTooltipsHtml03:"<br>pos : ",
+  LOLLIPOPMouseOverTooltipsHtml04:"<br>strand : ",
+  LOLLIPOPMouseOverTooltipsHtml05:"<br>CancerTypeNumber : ",
+  LOLLIPOPMouseOverTooltipsHtml06:"<br>AA_pos : ",
+  LOLLIPOPMouseOverTooltipsHtml07:"<br>AA_change : ",
+  LOLLIPOPMouseOverTooltipsHtml08:"<br>Consequence : ",
+  LOLLIPOPMouseOverTooltipsHtml09:"",
+  LOLLIPOPMouseOverTooltipsPosition:"absolute",
+  LOLLIPOPMouseOverTooltipsBackgroundColor:"white",
+  LOLLIPOPMouseOverTooltipsBorderStyle:"solid",
+  LOLLIPOPMouseOverTooltipsBorderWidth:1,
+  LOLLIPOPMouseOverTooltipsPadding:"3px",
+  LOLLIPOPMouseOverTooltipsBorderRadius:"3px",
+  LOLLIPOPMouseOverTooltipsOpacity:0.8,
+  ARCMouseEvent:true,
+  ARCMouseClickDisplay:false,
+  ARCMouseClickColor:"none",
+  ARCMouseClickArcOpacity: "none",
+  ARCMouseClickArcStrokeColor: "none",
+  ARCMouseClickArcStrokeWidth:"none",
+  ARCMouseClickTextFromData: "first",
+  ARCMouseClickTextOpacity:0,
+  ARCMouseClickTextColor: "none",
+  ARCMouseClickTextSize: 0,
+  ARCMouseClickTextPostionX: 0,
+  ARCMouseClickTextPostionY: 0,
+  ARCMouseClickTextDrag: true,
+  ARCMouseDownDisplay:false,
+  ARCMouseDownColor:"none",
+  ARCMouseDownArcOpacity: "none",
+  ARCMouseDownArcStrokeColor: "none",
+  ARCMouseDownArcStrokeWidth:"none",
+  ARCMouseEnterDisplay:false,
+  ARCMouseEnterColor:"none",
+  ARCMouseEnterArcOpacity: "none",
+  ARCMouseEnterArcStrokeColor: "none",
+  ARCMouseEnterArcStrokeWidth:"none",
+  ARCMouseLeaveDisplay:false,
+  ARCMouseLeaveColor:"none",
+  ARCMouseLeaveArcOpacity: "none",
+  ARCMouseLeaveArcStrokeColor: "none",
+  ARCMouseLeaveArcStrokeWidth:"none",
+  ARCMouseMoveDisplay:false,
+  ARCMouseMoveColor:"none",
+  ARCMouseMoveArcOpacity: "none",
+  ARCMouseMoveArcStrokeColor: "none",
+  ARCMouseMoveArcStrokeWidth:"none",
+  ARCMouseOutDisplay:true,
+  ARCMouseOutAnimationTime:700,
+  ARCMouseOutColor:"none",
+  ARCMouseOutArcOpacity: 1,
+  ARCMouseOutArcStrokeColor: "#9400D3",
+  ARCMouseOutArcStrokeWidth:0,
+  ARCMouseUpDisplay:false,
+  ARCMouseUpColor:"none",
+  ARCMouseUpArcOpacity: "none",
+  ARCMouseUpArcStrokeColor: "none",
+  ARCMouseUpArcStrokeWidth:"none",
+  ARCMouseOverDisplay:true,
+  ARCMouseOverColor:"red",
+  ARCMouseOverArcOpacity: 1,
+  ARCMouseOverArcStrokeColor: "#F26223",
+  ARCMouseOverArcStrokeWidth:3,
+  ARCMouseOverTooltipsHtml01:"item : ",
+  ARCMouseOverTooltipsHtml02:"<br>start : ",
+  ARCMouseOverTooltipsHtml03:"<br>end : ",
+  ARCMouseOverTooltipsHtml04:"<br>des : ",
+  ARCMouseOverTooltipsHtml05:" ",
+  ARCMouseOverTooltipsPosition:"absolute",
+  ARCMouseOverTooltipsBackgroundColor:"white",
+  ARCMouseOverTooltipsBorderStyle:"solid",
+  ARCMouseOverTooltipsBorderWidth:1,
+  ARCMouseOverTooltipsPadding:"3px",
+  ARCMouseOverTooltipsBorderRadius:"3px",
+  ARCMouseOverTooltipsOpacity:0.8,
+  });
+  NGCircos1.draw_genome(NGCircos1.genomeLength);
+  NGCircos1.draw_genome(NGCircos1.genomeLength2);
+
+</script>
+    <script src=../lib/saveSvgAsPng.js></script>
+    <script>
+            
+      (function(){
+        var downloadImg = getEle(".download-img"),
+          imgName = getEle("."+NGCircos1.svgClassName);
+        
+        //					imgScale = getEle(".img-scale");
+
+        downloadImg.addEventListener("click",function(){
+          var mySvg = getEle("."+NGCircos1.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos1.svgClassName;
+            
+//					saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+          saveSvgAsPng(mySvg, oImgName+".png");
+
+        })
+
+        function getEle(obj){
+          var d = document;
+          return d.querySelector(obj);
+        }
+      })()
+
+    </script>
+    </body>
+</html>

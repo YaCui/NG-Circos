@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:xlink="http://www.w3.org/1999/xlink">
+<head>
+<meta charset="utf-8">
+<title>LocusZoom</title>
+</head>
+<style>
+a {color: #000000;TEXT-DECORATION: none}
+a:active {background: #AFC1DC}
+.DownButtonNormal{
+	height: 18px;
+	line-height: 18px;
+	padding: 0 11px;
+	background: #FFFFFF;
+	border: 1px #D9D9D9 solid;
+	border-radius: 3px;
+	display: inline-block;
+	font-size: 12px;
+	outline: none;
+}
+
+</style>
+<body>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/d3.js"></script>
+<script src="../lib/biocircos-2.0.0.js"></script>
+<script src="./locus.js"></script>
+<!-- 	Download button for png -->
+<div class="svg-box img-container">
+	<button class="svg-action-btn download-img">Download png ↓</button>
+	<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', '../lib/svg-crowbar.js'); } else { e.setAttribute('src', '../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a>
+</div>  
+<div id="biocircos"></div>
+<script>
+//var BioCircosGenome = [[
+//["1",100000000],
+//]];
+//
+//var SNP01 = [ "SNP01" , {
+//	maxRadius: 205,
+//	minRadius: 153,
+//	SNPFillColorType: "r2",
+//	SNPFillr2MaxColor:"#ff0031",
+//	SNPFillr2MinColor:"#342e6d",
+//	PointType: "circle",
+//	circleSize: 10,
+//} , [
+//	{chr: "1", pos: "100", value: "20.2218", des: "rs603424", color: "rgb(153,102,0)",r2value:"0"},
+//	{chr: "1", pos: "200", value: "19", des: "rs11190870", color: "rgb(153,102,0)",r2value:"0.2"},
+//	{chr: "1", pos: "300", value: "25.1549", des: "rs11191548", color: "rgb(153,102,0)",r2value:"0.3"},
+//	{chr: "1", pos: "400", value: "74.0969", des: "rs7903146", color: "rgb(153,102,0)",r2value:"0.4"},
+//	{chr: "1", pos: "500", value: "24.699", des: "rs6638512", color: "rgb(153,153,153)",r2value:"0.5"},
+//	{chr: "1", pos: "600", value: "90.699", des: "rs2497938", color: "rgb(153,153,153)",r2value:"0.6"},
+//	{chr: "1", pos: "700", value: "18.1549", des: "rs11796357", color: "rgb(153,153,153)",r2value:"0.8"},
+//	{chr: "1", pos: "800", value: "32.699", des: "rs5912838", color: "rgb(153,153,153)",r2value:"1"},
+//]];
+//
+//var BACKGROUND01 = [ "BACKGROUND01" , {
+//	BginnerRadius: 143,
+//	BgouterRadius: 215,
+//	BgFillColor: "#F2F2F2",
+//	BgborderColor : "#000",
+//	BgborderSize : 0.3,
+//	axisShow: "true",
+//	axisWidth: 0.3,
+//	axisColor: "#000",
+//	axisOpacity: 0.5,
+//	axisNum: 8,
+//}];
+//
+//var LINE01 = [ "LINE01" , {
+//	maxRadius: 205,
+//	minRadius: 153,
+//	LineColor: "#EEAD0E",
+//	LineWidth: 2,
+//	LineType:"linear" //linear,cardinal,basis,monotone
+//} , [
+//	{chr: "1", pos: "100", value: "0.5"},
+//	{chr: "1", pos: "102", value: "0"},
+//	{chr: "1", pos: "198", value: "0"},
+//	{chr: "1", pos: "200", value: "0.22385"},
+//	{chr: "1", pos: "202", value: "0"},
+//	{chr: "1", pos: "298", value: "0"},
+//	{chr: "1", pos: "300", value: "0.238643"},
+//	{chr: "1", pos: "302", value: "0"},
+//	{chr: "1", pos: "398", value: "0"},
+//	{chr: "1", pos: "400", value: "0.876947"},
+//	{chr: "1", pos: "402", value: "0"},
+//	{chr: "1", pos: "498", value: "0"},
+//	{chr: "1", pos: "500", value: "0.267261"},
+//	{chr: "1", pos: "502", value: "0"},
+//	{chr: "1", pos: "598", value: "0"},
+//	{chr: "1", pos: "600", value: "0.847613"},
+//	{chr: "1", pos: "602", value: "0"},
+//	{chr: "1", pos: "698", value: "0"},
+//	{chr: "1", pos: "700", value: "0.830811"},
+//	{chr: "1", pos: "702", value: "0"},
+//	{chr: "1", pos: "798", value: "0"},
+//	{chr: "1", pos: "800", value: "0.43466"},
+//	{chr: "1", pos: "802", value: "0"},
+//	{chr: "1", pos: "902", value: "0"},
+//	{chr: "1", pos: "1000", value: "0"},
+//]];
+//
+BioCircos1 = new BioCircos(SNP01,BACKGROUND01,LINE01,SNP02,GENE01,GENE02,BioCircosGenome,{
+target:"biocircos",
+svgWidth:900,
+svgHeight:600,
+svgClassName:"LocusZoom",
+chrPad:0.04,
+innerRadius:220,
+outerRadius:225,
+zoom:true,
+genomeFillColor:["#999999"],
+ticks:{
+display:true,
+len:5,
+color:"#000",
+textSize:10,
+textColor:"#000",
+scale:50000,
+realLength:true,
+offset:33454302,
+},
+genomeLabel:{
+display:true,
+textSize:15,
+textColor:"#000",
+dx:0.5,
+dy:"-0.55em",
+},
+genomeBorder:{
+display:false,
+borderColor:"#000",
+borderSize:0.5,
+},
+
+});
+BioCircos1.draw_genome(BioCircos1.genomeLength);
+BioCircos1.draw_genome(BioCircos1.genomeLength2);
+</script>
+		<script src=../lib/saveSvgAsPng.js></script>
+		<script>
+						
+			(function(){
+				var downloadImg = getEle(".download-img"),
+					imgName = getEle("."+BioCircos1.svgClassName);
+				
+				//					imgScale = getEle(".img-scale");
+
+				downloadImg.addEventListener("click",function(){
+					var mySvg = getEle("."+BioCircos1.svgClassName),
+						//iImgScale = parseInt(imgScale.value) || 1,
+						oImgName = imgName.value || BioCircos1.svgClassName;
+						
+//					saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+					saveSvgAsPng(mySvg, oImgName+".png");
+
+				})
+
+				function getEle(obj){
+					var d = document;
+					return d.querySelector(obj);
+				}
+			})()
+
+		</script>
+<!-- 	<script type="text/javascript" src="http://ra.revolvermaps.com/0/0/8.js?i=07q3ne39401&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script> -->
+<!-- 	<script type="text/javascript" src="http://ra.revolvermaps.com/0/0/6.js?i=0ye9gq9f4wf&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script> -->
+</body>
+</html>

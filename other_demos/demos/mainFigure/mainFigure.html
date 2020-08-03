@@ -1,0 +1,1001 @@
+<html>
+<head>
+        <meta charset="utf-8">
+        <title>mainFigure</title>
+</head>
+
+<style>
+.SNPCombinationAxis path,
+.SNPCombinationAxis line{
+	fill: none;
+	stroke: black;
+	shape-rendering: crispEdges;
+}
+a {color: #000000;TEXT-DECORATION: none}
+a:active {background: #AFC1DC}
+.DownButtonNormal{
+	height: 18px;
+	line-height: 18px;
+	padding: 0 11px;
+	background: #FFFFFF;
+	border: 1px #D9D9D9 solid;
+	border-radius: 3px;
+	display: inline-block;
+	font-size: 12px;
+	outline: none;
+}
+
+</style>
+   <body>
+		<script src="../lib/jquery.js"></script>
+		<script src="../lib/d3.js"></script>
+
+    <!-- Data configuration -->
+    <script src="./WIG1.js"></script>
+    <script src="./WIG4.js"></script>
+
+<!-- 		<script src="label.js"></script> -->
+		<script src=../lib/NGCircos.js></script>
+		<!-- 	Download button for png -->
+				<div class="svg-box img-container">
+					<button class="svg-action-btn download-img">Download png ↓</button>
+					<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', '../lib/svg-crowbar.js'); } else { e.setAttribute('src', '../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a>
+				</div>  
+		
+		<div id="NGCircos"></div>
+		<script>
+
+		var NGCircosGenome = [
+		[
+			["chr8",1000],
+		],[
+			["chr8",1000],
+		]
+		];
+
+    var ARC1 = [ "ARC1" , {
+      compareGroup:2,
+      innerRadius: 10,
+      outerRadius: -10,
+    } , [
+      {chr: "chr8", start: "75" , end: "150", color: "#647AC3", des: "MYC mRNA"},
+    ]];
+
+    var ARC2 = [ "ARC2" , {
+      compareGroup:2,
+      innerRadius: 10,
+      outerRadius: -10,
+    } , [
+      {chr: "chr8", start: "300" , end: "315", color: "#C40128", des: "Promoter"},
+    ]];
+
+	var ARC3 = [ "ARC3" , {
+		compareGroup:2,
+		innerRadius: 10,
+		outerRadius: -10,
+	} , [
+		{chr: "chr8", start: "335" , end: "350", color: "#2BA902", des: "PVT1"},
+	]];
+	
+	var ARC4 = [ "ARC4" , {
+		compareGroup:2,
+		innerRadius: 10,
+		outerRadius: -10,
+	} , [
+		{chr: "chr8", start: "500" , end: "515", color: "#2BA902", des: "PVT1"},
+	]];
+
+	var ARC5 = [ "ARC5" , {
+		compareGroup:2,
+		innerRadius: 10,
+		outerRadius: -10,
+	} , [
+		{chr: "chr8", start: "660" , end: "675", color: "#2BA902", des: "PVT1"},
+	]];
+
+	var ARC6 = [ "ARC6" , {
+		compareGroup:2,
+		innerRadius: 10,
+		outerRadius: -10,
+	} , [
+		{chr: "chr8", start: "780" , end: "795", color: "#2BA902", des: "PVT1"},
+	]];
+	
+	var ARC7 = [ "ARC7" , {
+		compareGroup:2,
+		innerRadius: 10,
+		outerRadius: -10,
+	} , [
+		{chr: "chr8", start: "390" , end: "395", color: "#A4A317", des: "822E"},
+	]];
+	
+	var ARC8 = [ "ARC8" , {
+		compareGroup:2,
+		innerRadius: 10,
+		outerRadius: -10,
+	} , [
+		{chr: "chr8", start: "420" , end: "425", color: "#A4A317", des: "822E"},
+	]];
+	
+	var ARC9 = [ "ARC9" , {
+		compareGroup:2,
+		innerRadius: 10,
+		outerRadius: -10,
+	} , [
+		{chr: "chr8", start: "550" , end: "555", color: "#A4A317", des: "822E"},
+	]];
+	
+	var ARC10 = [ "ARC10" , {
+		compareGroup:2,
+		innerRadius: 10,
+		outerRadius: -10,
+	} , [
+		{chr: "chr8", start: "580" , end: "585", color: "#A4A317", des: "822E"},
+	]];
+	
+    var ARC11 = [ "ARC11" , {
+      compareGroup:1,
+      innerRadius: 10,
+      outerRadius: -10,
+    } , [
+      {chr: "chr8", start: "100" , end: "175", color: "#647AC3", des: "MYC mRNA"},
+    ]];
+
+    var ARC12 = [ "ARC12" , {
+      compareGroup:1,
+      innerRadius: 10,
+      outerRadius: -10,
+    } , [
+      {chr: "chr8", start: "300" , end: "315", color: "#C40128", des: "Promoter"},
+    ]];
+
+	var ARC13 = [ "ARC13" , {
+		compareGroup:1,
+		innerRadius: 10,
+		outerRadius: -10,
+	} , [
+		{chr: "chr8", start: "320" , end: "335", color: "#2BA902", des: "PVT1"},
+	]];
+	
+	var ARC14 = [ "ARC14" , {
+		compareGroup:1,
+		innerRadius: 10,
+		outerRadius: -10,
+	} , [
+		{chr: "chr8", start: "500" , end: "515", color: "#2BA902", des: "PVT1"},
+	]];
+
+	var ARC15 = [ "ARC15" , {
+		compareGroup:1,
+		innerRadius: 10,
+		outerRadius: -10,
+	} , [
+		{chr: "chr8", start: "660" , end: "675", color: "#2BA902", des: "PVT1"},
+	]];
+
+	var ARC16 = [ "ARC16" , {
+		compareGroup:1,
+		innerRadius: 10,
+		outerRadius: -10,
+	} , [
+		{chr: "chr8", start: "780" , end: "795", color: "#2BA902", des: "PVT1"},
+	]];
+	
+	var ARC17 = [ "ARC17" , {
+		compareGroup:1,
+		innerRadius: 10,
+		outerRadius: -10,																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								
+	} , [
+		{chr: "chr8", start: "380" , end: "385", color: "#A4A317", des: "822E"},
+	]];
+	
+	var ARC18 = [ "ARC18" , {
+		compareGroup:1,
+		innerRadius: 10,
+		outerRadius: -10,
+	} , [
+		{chr: "chr8", start: "430" , end: "435", color: "#A4A317", des: "822E"},
+	]];
+	
+	var ARC19 = [ "ARC19" , {
+		compareGroup:1,
+		innerRadius: 10,
+		outerRadius: -10,
+	} , [
+		{chr: "chr8", start: "570" , end: "575", color: "#A4A317", des: "822E"},
+	]];
+	
+	var ARC20 = [ "ARC20" , {
+		compareGroup:1,
+		innerRadius: 10,
+		outerRadius: -10,
+	} , [
+		{chr: "chr8", start: "600" , end: "605", color: "#A4A317", des: "822E"},
+	]];
+
+      var TEXT1 = [ "TEXT1" , {
+         x: -280,
+         y: 290,
+         textSize: 20,
+         textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+         textColor: "black",
+         textOpacity: 1.0,
+         text: "Functional PVT1 promoter"
+      }];
+
+      var TEXT2 = [ "TEXT2" , {
+         x: 60,
+         y: 290,
+         textSize: 20,
+         textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+         textColor: "black",
+         textOpacity: 1.0,
+         text: "Non-functional PVT1 promoter"
+      }];
+
+		var AUXILIARYLINE1 = [ "AUXILIARYLINE1" , {
+				 startX: -265,
+				 startY: -105,
+				 endX: -211,
+				 endY: -173,
+				 AUXILIARYLINEType:"curve",
+				 AUXILIARYLINEControlPointX:-220,
+				 AUXILIARYLINEControlPointY:-110,
+				 AUXILIARYLINELineType:"dot",
+				 AUXILIARYLINEDashArray:4,
+				 AUXILIARYLINEColor: "black",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEMarker:true,
+				 AUXILIARYLINEMarkerType:"arrow",
+				 AUXILIARYLINEMarkerColor:"black",
+				 AUXILIARYLINEMarkerPosition:2,
+			}];
+		
+		var AUXILIARYLINE2 = [ "AUXILIARYLINE2" , {
+				 startX: -218,
+				 startY: -190,
+				 endX: -242,
+				 endY: -195,
+				 AUXILIARYLINEType:"broken",
+				 AUXILIARYLINEControlPointX:-230,
+				 AUXILIARYLINEControlPointY:-205,
+				 AUXILIARYLINELineType:"solid",
+				 AUXILIARYLINEColor: "black",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEMarker:true,
+				 AUXILIARYLINEMarkerType:"arrow",
+				 AUXILIARYLINEMarkerColor:"black",
+				 AUXILIARYLINEMarkerPosition:2,
+			}];
+			
+		var AUXILIARYLINE3 = [ "AUXILIARYLINE3" , {
+				 startX: -287,
+				 startY: -89,
+				 endX: -305,
+				 endY: -80,
+				 AUXILIARYLINEType:"broken",
+				 AUXILIARYLINEControlPointX:-300,
+				 AUXILIARYLINEControlPointY:-95,
+				 AUXILIARYLINELineType:"solid",
+				 AUXILIARYLINEColor: "black",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEMarker:true,
+				 AUXILIARYLINEMarkerType:"arrow",
+				 AUXILIARYLINEMarkerColor:"black",
+				 AUXILIARYLINEMarkerPosition:2,
+			}];
+		
+		var AUXILIARYLINE4 = [ "AUXILIARYLINE4" , {
+				 startX: -280,
+				 startY: -60,
+				 endX: -269,
+				 endY: -95,
+				 AUXILIARYLINEType:"curve",
+				 AUXILIARYLINEControlPointX:-270,
+				 AUXILIARYLINEControlPointY:-70,
+				 AUXILIARYLINELineType:"dot",
+				 AUXILIARYLINEDashArray:4,
+				 AUXILIARYLINEColor: "black",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEMarker:true,
+				 AUXILIARYLINEMarkerType:"arrow",
+				 AUXILIARYLINEMarkerColor:"black",
+				 AUXILIARYLINEMarkerHeight:3,
+				 AUXILIARYLINEMarkerPosition:2,
+			}];
+
+		var AUXILIARYLINE5 = [ "AUXILIARYLINE5" , {
+				 startX: -290,
+				 startY: 0,
+				 endX: -266,
+				 endY: -97,
+				 AUXILIARYLINEType:"curve",
+				 AUXILIARYLINEControlPointX:-265,
+				 AUXILIARYLINEControlPointY:-50,
+				 AUXILIARYLINELineType:"dot",
+				 AUXILIARYLINEDashArray:4,
+				 AUXILIARYLINEColor: "black",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEMarker:true,
+				 AUXILIARYLINEMarkerType:"arrow",
+				 AUXILIARYLINEMarkerColor:"black",
+				 AUXILIARYLINEMarkerHeight:3,
+				 AUXILIARYLINEMarkerPosition:2,
+			}];
+
+		var AUXILIARYLINE6 = [ "AUXILIARYLINE6" , {
+				 startX: -288,
+				 startY: 22,
+				 endX: -264,
+				 endY: -100,
+				 AUXILIARYLINEType:"curve",
+				 AUXILIARYLINEControlPointX:-255,
+				 AUXILIARYLINEControlPointY:-50,
+				 AUXILIARYLINELineType:"dot",
+				 AUXILIARYLINEDashArray:4,
+				 AUXILIARYLINEColor: "black",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEMarker:true,
+				 AUXILIARYLINEMarkerType:"arrow",
+				 AUXILIARYLINEMarkerColor:"black",
+				 AUXILIARYLINEMarkerHeight:3,
+				 AUXILIARYLINEMarkerPosition:2,
+			}];
+
+		var AUXILIARYLINE7 = [ "AUXILIARYLINE7" , {
+				 startX: -286,
+				 startY: 38,
+				 endX: -261,
+				 endY: -103,
+				 AUXILIARYLINEType:"curve",
+				 AUXILIARYLINEControlPointX:-245,
+				 AUXILIARYLINEControlPointY:-30,
+				 AUXILIARYLINELineType:"dot",
+				 AUXILIARYLINEDashArray:4,
+				 AUXILIARYLINEColor: "black",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEMarker:true,
+				 AUXILIARYLINEMarkerType:"arrow",
+				 AUXILIARYLINEMarkerColor:"black",
+				 AUXILIARYLINEMarkerHeight:3,
+				 AUXILIARYLINEMarkerPosition:2,
+			}];
+		
+		var AUXILIARYLINE8 = [ "AUXILIARYLINE8" , {
+				 startX: 278,
+				 startY: -65,
+				 endX: 229,
+				 endY: -155,
+				 AUXILIARYLINEType:"curve",
+				 AUXILIARYLINEControlPointX:235,
+				 AUXILIARYLINEControlPointY:-120,
+				 AUXILIARYLINELineType:"dot",
+				 AUXILIARYLINEDashArray:4,
+				 AUXILIARYLINEColor: "black",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEMarker:true,
+				 AUXILIARYLINEMarkerType:"arrow",
+				 AUXILIARYLINEMarkerColor:"black",
+				 AUXILIARYLINEMarkerPosition:2,
+			}];
+
+		var AUXILIARYLINE9 = [ "AUXILIARYLINE9" , {
+				 startX: 285,
+				 startY: -40,
+				 endX: 226,
+				 endY: -158,
+				 AUXILIARYLINEType:"curve",
+				 AUXILIARYLINEControlPointX:225,
+				 AUXILIARYLINEControlPointY:-120,
+				 AUXILIARYLINELineType:"dot",
+				 AUXILIARYLINEDashArray:4,
+				 AUXILIARYLINEColor: "black",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEMarker:true,
+				 AUXILIARYLINEMarkerType:"arrow",
+				 AUXILIARYLINEMarkerColor:"black",
+				 AUXILIARYLINEMarkerPosition:2,
+			}];
+
+		var AUXILIARYLINE10 = [ "AUXILIARYLINE10" , {
+				 startX: 285,
+				 startY: 37,
+				 endX: 223,
+				 endY: -162,
+				 AUXILIARYLINEType:"curve",
+				 AUXILIARYLINEControlPointX:220,
+				 AUXILIARYLINEControlPointY:-120,
+				 AUXILIARYLINELineType:"dot",
+				 AUXILIARYLINEDashArray:4,
+				 AUXILIARYLINEColor: "black",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEMarker:true,
+				 AUXILIARYLINEMarkerType:"arrow",
+				 AUXILIARYLINEMarkerColor:"black",
+				 AUXILIARYLINEMarkerPosition:2,
+			}];
+
+		var AUXILIARYLINE11 = [ "AUXILIARYLINE11" , {
+				 startX: 283,
+				 startY: 53,
+				 endX: 220,
+				 endY: -165,
+				 AUXILIARYLINEType:"curve",
+				 AUXILIARYLINEControlPointX:220,
+				 AUXILIARYLINEControlPointY:-80,
+				 AUXILIARYLINELineType:"dot",
+				 AUXILIARYLINEDashArray:4,
+				 AUXILIARYLINEColor: "black",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEMarker:true,
+				 AUXILIARYLINEMarkerType:"arrow",
+				 AUXILIARYLINEMarkerColor:"black",
+				 AUXILIARYLINEMarkerPosition:2,
+			}];
+
+		var AUXILIARYLINE12 = [ "AUXILIARYLINE12" , {
+				 startX: 288,
+				 startY: -98,
+				 endX: 303,
+				 endY: -90,
+				 AUXILIARYLINEType:"broken",
+				 AUXILIARYLINEControlPointX:298,
+				 AUXILIARYLINEControlPointY:-102,
+				 AUXILIARYLINELineType:"solid",
+				 AUXILIARYLINEColor: "black",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEMarker:true,
+				 AUXILIARYLINEMarkerType:"arrow",
+				 AUXILIARYLINEMarkerColor:"black",
+				 AUXILIARYLINEMarkerPosition:2,
+			}];
+		
+		var AUXILIARYLINE13 = [ "AUXILIARYLINE13" , {
+				 startX: 228,
+				 startY: -184,
+				 endX: 253,
+				 endY: -180,
+				 AUXILIARYLINEType:"broken",
+				 AUXILIARYLINEControlPointX:238,
+				 AUXILIARYLINEControlPointY:-194,
+				 AUXILIARYLINELineType:"solid",
+				 AUXILIARYLINEColor: "black",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEMarker:true,
+				 AUXILIARYLINEMarkerType:"arrow",
+				 AUXILIARYLINEMarkerColor:"black",
+				 AUXILIARYLINEMarkerPosition:2,
+			}];
+			
+		var AUXILIARYLINE14 = [ "AUXILIARYLINE14" , {
+				 startX: 267,
+				 startY: -104,
+				 endX: 283,
+				 endY: -105,
+				 AUXILIARYLINEType:"straight",
+				 AUXILIARYLINELineType:"solid",
+				 AUXILIARYLINEColor: "black",
+				 AUXILIARYLINEWidth: 1,
+				 AUXILIARYLINEMarker:false,
+			}];
+			
+		var AUXILIARYLINE15 = [ "AUXILIARYLINE15" , {
+				 startX: 370,
+				 startY: -285,
+				 endX: 750,
+				 endY: -285,
+				 AUXILIARYLINEColor: "#497EBB",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEType:"straight", 
+				 AUXILIARYLINEMarker: false,
+			}];
+			
+		var AUXILIARYLINE16 = [ "AUXILIARYLINE16" , {
+				 startX: 370,
+				 startY: -285,
+				 endX: 370,
+				 endY: -40,
+				 AUXILIARYLINEColor: "#497EBB",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEType:"straight", 
+				 AUXILIARYLINEMarker: false,
+			}];
+
+		var AUXILIARYLINE17 = [ "AUXILIARYLINE17" , {
+				 startX: 370,
+				 startY: -40,
+				 endX: 750,
+				 endY: -40,
+				 AUXILIARYLINEColor: "#497EBB",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEType:"straight", 
+				 AUXILIARYLINEMarker: false,
+			}];
+			
+		var AUXILIARYLINE18 = [ "AUXILIARYLINE18" , {
+				 startX: 750,
+				 startY: -285,
+				 endX: 750,
+				 endY: -40,
+				 AUXILIARYLINEColor: "#497EBB",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEType:"straight", 
+				 AUXILIARYLINEMarker: false,
+			}];
+	
+		var AUXILIARYLINE19 = [ "AUXILIARYLINE19" , {
+				 startX: 370,
+				 startY: -30,
+				 endX: 750,
+				 endY: -30,
+				 AUXILIARYLINEColor: "#497EBB",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEType:"straight", 
+				 AUXILIARYLINEMarker: false,
+			}];
+			
+		var AUXILIARYLINE20 = [ "AUXILIARYLINE20" , {
+				 startX: 370,
+				 startY: -30,
+				 endX: 370,
+				 endY: 255,
+				 AUXILIARYLINEColor: "#497EBB",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEType:"straight", 
+				 AUXILIARYLINEMarker: false,
+			}];
+
+		var AUXILIARYLINE21 = [ "AUXILIARYLINE21" , {
+				 startX: 370,
+				 startY: 255,
+				 endX: 750,
+				 endY: 255,
+				 AUXILIARYLINEColor: "#497EBB",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEType:"straight", 
+				 AUXILIARYLINEMarker: false,
+			}];
+			
+		var AUXILIARYLINE22 = [ "AUXILIARYLINE22" , {
+				 startX: 750,
+				 startY: -30,
+				 endX: 750,
+				 endY: 255,
+				 AUXILIARYLINEColor: "#497EBB",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEType:"straight", 
+				 AUXILIARYLINEMarker: false,
+			}];
+
+		var AUXILIARYLINE23 = [ "AUXILIARYLINE23" , {
+				 startX: 370,
+				 startY: 0,
+				 endX: 750,
+				 endY: 0,
+				 AUXILIARYLINEColor: "#497EBB",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEType:"straight", 
+				 AUXILIARYLINELineType:"dot",
+				 AUXILIARYLINEDashArray:3,
+				 AUXILIARYLINEMarker: false,
+			}];
+				
+		var AUXILIARYLINE24 = [ "AUXILIARYLINE24" , {
+				 startX: 370,
+				 startY: -250,
+				 endX: 750,
+				 endY: -250,
+				 AUXILIARYLINEColor: "#497EBB",
+				 AUXILIARYLINEWidth: 2,
+				 AUXILIARYLINEType:"straight", 
+				 AUXILIARYLINELineType:"dot",
+				 AUXILIARYLINEDashArray:3,
+				 AUXILIARYLINEMarker: false,
+			}];
+
+		var TEXT3 = [ "TEXT3" , {
+					x: -230,
+					y: -220,
+					textSize: 15,
+					textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "MYC"
+				}];
+		
+		var TEXT4 = [ "TEXT4" , {
+					x: -333,
+					y: -110,
+					textSize: 13,
+					textWeight: "lighter", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "Promoter"
+				}];
+				
+		var TEXT5 = [ "TEXT5" , {
+					x: -350,
+					y: -80,
+					textSize: 15,
+					textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "PVT1"
+				}];
+		
+		var TEXT6 = [ "TEXT6" , {
+					x: -328,
+					y: -60,
+					textSize: 12,
+					textWeight: "lighter", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "822E"
+				}];
+		
+		var TEXT7 = [ "TEXT7" , {
+					x: -330,
+					y: -44,
+					textSize: 12,
+					textWeight: "lighter", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "866E"
+				}];
+				
+		var TEXT8 = [ "TEXT8" , {
+					x: -333,
+					y: 28,
+					textSize: 12,
+					textWeight: "lighter", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "912E"
+				}];
+		
+		var TEXT9 = [ "TEXT9" , {
+					x: -330,
+					y: 44,
+					textSize: 12,
+					textWeight: "lighter", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "919E"
+				}];
+		
+		var TEXT10 = [ "TEXT10" , {
+					x: 200,
+					y: -210,
+					textSize: 15,
+					textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "MYC"
+				}];
+		
+		var TEXT11 = [ "TEXT11" , {
+					x: 284,
+					y: -110,
+					textSize: 13,
+					textWeight: "lighter", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "Promoter"
+				}];
+				
+		var TEXT12 = [ "TEXT12" , {
+					x: 310,
+					y: -80,
+					textSize: 15,
+					textWeight: "normal", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "PVT1"
+				}];
+		
+		var TEXT13 = [ "TEXT13" , {
+					x: 300,
+					y: -65,
+					textSize: 12,
+					textWeight: "lighter", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "822E"
+				}];
+		
+		var TEXT14 = [ "TEXT14" , {
+					x: 306,
+					y: -38,
+					textSize: 12,
+					textWeight: "lighter", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "866E"
+				}];
+				
+		var TEXT15 = [ "TEXT15" , {
+					x: 306,
+					y: 38,
+					textSize: 12,
+					textWeight: "lighter", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "912E"
+				}];
+		
+		var TEXT16 = [ "TEXT16" , {
+					x: 304,
+					y: 56,
+					textSize: 12,
+					textWeight: "lighter", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+					textColor: "black",
+					textOpacity: 1.0,
+					text: "919E"
+				}];
+
+		var LOLLIPOP1 = [ "LOLLIPOP1" , {
+			compareGroup:1,
+			LOLLIPOPFillColor:"#ADD8E6",
+			LOLLIPOPSecondColor: "#FFFFFF",
+			PointType: "circle",
+			circleSize: 6,
+			rectWidth:2,
+			rectHeight: 2,
+			stroke:true,
+			strokeColor: "#999999",
+			strokeWidth: "1px",
+			lineAutoHeight: true,
+			lineAutoMaximumHeightZoomRate:0.6,
+			LOLLIPOPAnimationDisplay: false,
+			LOLLIPOPLineWidth: 1,
+			LOLLIPOPLineColor: "#000000",
+			realStart: 0,
+			} , [
+			{protein:"chr8",chr:"chr8",pos:"100",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#ADD8E6",type:"Homo",link:"https://www.intogen.org/search?gene=EGFR"},
+			{protein:"chr8",chr:"chr8",pos:"120",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero",link:"https://www.intogen.org/search?gene=EGFR"},
+			{protein:"chr8",chr:"chr8",pos:"140",strand:"+",CancerTypeNumber:"1.7",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo",link:"https://www.intogen.org/search?gene=EGFR"},
+			{protein:"chr8",chr:"chr8",pos:"665",strand:"+",CancerTypeNumber:"2.5",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#ADD8E6",type:"Homo",link:"https://www.intogen.org/search?gene=EGFR"},
+			{protein:"chr8",chr:"chr8",pos:"673",strand:"+",CancerTypeNumber:"1.3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Hetero",link:"https://www.intogen.org/search?gene=EGFR"},
+			{protein:"chr8",chr:"chr8",pos:"740",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo",link:"https://www.intogen.org/search?gene=EGFR"},
+			{protein:"chr8",chr:"chr8",pos:"783",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#ADD8E6",type:"Homo",link:"https://www.intogen.org/search?gene=EGFR"},
+			{protein:"chr8",chr:"chr8",pos:"788",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo",link:"https://www.intogen.org/search?gene=EGFR"},
+		]];
+
+
+		var LOLLIPOP2 = [ "LOLLIPOP2" , {
+			compareGroup:2,
+			LOLLIPOPFillColor:"#9400D3",
+			LOLLIPOPSecondColor: "#FFFFFF",
+			PointType: "circle",
+			circleSize: 6,
+			rectWidth:2,
+			rectHeight: 2,
+			stroke:true,
+			strokeColor: "#999999",
+			strokeWidth: "1px",
+			lineAutoHeight: true,
+			lineAutoMaximumHeightZoomRate:0.6,
+			LOLLIPOPAnimationDisplay: false,
+			LOLLIPOPLineWidth: 1,
+			LOLLIPOPLineColor: "#000000",
+			realStart: 0,
+			} , [
+			{protein:"chr8",chr:"chr8",pos:"50",strand:"+",CancerTypeNumber:"2.3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo",link:"https://www.intogen.org/search?gene=EGFR"},
+			{protein:"chr8",chr:"chr8",pos:"85",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#ADD8E6",type:"Hetero",link:"https://www.intogen.org/search?gene=EGFR"},
+			{protein:"chr8",chr:"chr8",pos:"100",strand:"+",CancerTypeNumber:"1.7",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo",link:"https://www.intogen.org/search?gene=EGFR"},
+			{protein:"chr8",chr:"chr8",pos:"640",strand:"+",CancerTypeNumber:"2.5",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#ADD8E6",type:"Hetero",link:"https://www.intogen.org/search?gene=EGFR"},
+			{protein:"chr8",chr:"chr8",pos:"670",strand:"+",CancerTypeNumber:"1.3",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo",link:"https://www.intogen.org/search?gene=EGFR"},
+			{protein:"chr8",chr:"chr8",pos:"600",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo",link:"https://www.intogen.org/search?gene=EGFR"},
+			{protein:"chr8",chr:"chr8",pos:"783",strand:"+",CancerTypeNumber:"2",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#ADD8E6",type:"Homo",link:"https://www.intogen.org/search?gene=EGFR"},
+			{protein:"chr8",chr:"chr8",pos:"788",strand:"+",CancerTypeNumber:"1",AA_pos:"AA_858",AA_change:"L/R",Consequence:"missense_variant",color:"#FEFF00",type:"Homo",link:"https://www.intogen.org/search?gene=EGFR"},
+		]];
+
+
+		var SNP1 = [ "SNP1" , {
+			compareGroup:1,
+			maxRadius: 130,
+			minRadius: 90,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+			SNPFillColor: "#9400D3",
+			PointType: "circle",
+			circleSize: 6,
+			rectWidth: 2,
+			rectHeight: 2,
+			SNPAnimationDisplay: false,
+		} , [
+			{chr: "chr8", pos: "320", value: "14", des: "rs6990534", color: "#991ECC",index:"1",image:"https://raw.githubusercontent.com/mrcuizhe/Image_NGCircos2/master/combination_snp/EUR.rs6990534.400kb-1.png"},
+			{chr: "chr8", pos: "500", value: "55", des: "rs10956401", color: "#991ECC",index:"2",image:"https://raw.githubusercontent.com/mrcuizhe/Image_NGCircos2/master/combination_snp/EUR.rs10956401.400kb-1.png"},
+			{chr: "chr8", pos: "700", value: "25", des: "rs12548939", color: "#991ECC",index:"3",image:"https://raw.githubusercontent.com/mrcuizhe/Image_NGCircos2/master/combination_snp/EUR.rs12548939.400kb-1.png"},
+		],
+		[
+			["eas","sas","afr","eur","amr"],
+			["0.512","0.71","0.691","0.669","0.58"],
+			["0.214","0.44","0.125","0.386","0.5"],
+			["0.114","0.34","0.044","0.328","0.21"]
+		]
+		];
+		
+		var SNP2 = [ "SNP2" , {
+			compareGroup:2,
+			maxRadius: 130,
+			minRadius: 90,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+			SNPFillColor: "#6B5A80",
+			PointType: "circle",
+			circleSize: 6,
+			rectWidth: 2,
+			rectHeight: 2,
+			SNPAnimationDisplay: false,
+		} , [
+			{chr: "chr8", pos: "200", value: "63", des: "rs66824612", color: "#6B5A80",index:"1",image:"https://raw.githubusercontent.com/mrcuizhe/Image_NGCircos2/master/combination_snp/EUR.rs66824612.400kb-1.png"},
+			{chr: "chr8", pos: "500", value: "55", des: "rs12548939", color: "#6B5A80",index:"2",image:"https://raw.githubusercontent.com/mrcuizhe/Image_NGCircos2/master/combination_snp/EUR.rs12548939.400kb-1.png"},
+			{chr: "chr8", pos: "700", value: "42.0969", des: "rs12548939", color: "#6B5A80",index:"3",image:"https://raw.githubusercontent.com/mrcuizhe/Image_NGCircos2/master/combination_snp/EUR.rs12548939.400kb-1.png"},
+		],
+		[
+			["eas","sas","afr","eur","amr"],
+			["0.512","0.71","0.691","0.669","0.58"],
+			["0.214","0.44","0.125","0.386","0.5"],
+			["0.114","0.34","0.044","0.328","0.21"]
+		]
+		];
+		
+		var CHORD1 = [ "CHORD1" , {
+			CHORDinnerRadius: 95,
+			CHORDouterRadius: 100,
+			CHORDFillOpacity:0.67,
+			CHORDStrokeWidth: "0.5px",
+			CHORDAutoFillColor: false,
+			CHORDFillColor:["white","#92CCE8","#FFAB6F","white","#FFAB6F","white","white","white","#FFAB6F","#FFAB6F","white","white","#92CCE8","white"],
+			CHORDFillStrokeColor:["white","#92CCE8","#FFAB6F","white","#FFAB6F","white","white","white","#FFAB6F","#FFAB6F","white","white","#92CCE8","white"],
+			CHORDouterARC:true,
+			CHORDouterARCAutoColor:false,
+			CHORDouterARCColor:["white","#92CCE8","#92CCE8","#92CCE8","#FFAB6F","#FFAB6F","white","white","#FFAB6F","#FFAB6F","#FFAB6F","#92CCE8","#92CCE8","white"],
+			CHORDouterARCStrokeColor:["white","#92CCE8","#92CCE8","#92CCE8","#FFAB6F","#FFAB6F","white","white","#FFAB6F","#FFAB6F","#FFAB6F","#92CCE8","#92CCE8","white"],
+			CHORDouterARCText:false,
+			} , [
+			[ " " , " " , " " , " " , " "  ],
+			[
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 500 ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 200 ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  , 500 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  , 250 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 250 ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 500 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 500 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  , 250 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 450 ,  0  ,  0  ],
+			  [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 250 ,  0  ,  0  ,  0  ],
+			  [  0  , 200 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			  [ 500 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			]
+//			[ [ 500,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+//			  [  0 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 150 ,  0  ,  0  ,  0  ,  0  ,  0  ],
+//			  [  0 ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+//			  [  0 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 300 ,  0  ],
+//			  [  0 ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+//			  [  0 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 450 ,  0  ,  0  ,  0  ],
+//			  [  0 ,  0  ,  0  ,  0  ,  0  ,  0  , 500 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+//			  [  0 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 500 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+//			  [  0 , 300 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+//			  [  0 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  50 ,  0  ,  0  ,  0  ,  0  ],
+//			  [  0 ,  0  ,  0  ,  0  ,  0  , 100 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+//			  [  0 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 200 ,  0  ,  0  ],
+//			  [  0 ,  0  ,  0  , 350 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+//			  [  0 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 500 ]
+//			]
+		]];
+
+		
+		NGCircos1 = new NGCircos(AUXILIARYLINE1,AUXILIARYLINE2,AUXILIARYLINE3,AUXILIARYLINE4,AUXILIARYLINE5,AUXILIARYLINE6,AUXILIARYLINE7,AUXILIARYLINE8,AUXILIARYLINE9,AUXILIARYLINE10,AUXILIARYLINE11,AUXILIARYLINE12,AUXILIARYLINE13,AUXILIARYLINE14,AUXILIARYLINE15,AUXILIARYLINE16,AUXILIARYLINE17,AUXILIARYLINE18,AUXILIARYLINE19,AUXILIARYLINE20,AUXILIARYLINE21,AUXILIARYLINE22,AUXILIARYLINE23,AUXILIARYLINE24,TEXT1,TEXT2,TEXT3,TEXT4,TEXT5,TEXT6,TEXT7,TEXT8,TEXT9,TEXT10,TEXT11,TEXT12,TEXT13,TEXT14,TEXT15,TEXT16,ARC1,ARC2,ARC3,ARC4,ARC5,ARC6,ARC7,ARC8,ARC9,ARC10,ARC11,ARC12,ARC13,ARC14,ARC15,ARC16,ARC17,ARC18,ARC19,ARC20,LOLLIPOP1,LOLLIPOP2,WIG1,WIG4,SNP1,SNP2,CHORD1,NGCircosGenome,{
+			target:"NGCircos",
+			svgWidth:900,
+			svgHeight:600,
+			svgClassName:"mainFigure",
+			chrPad:0,
+			innerRadius:246,
+			outerRadius:250,
+			zoom:true,
+			compareEvent:true,
+			compareEventGroupGapRate:0.2,
+			compareEventGroupDistance:100,
+			genomeFillColor:["white","#666600","white","white","#666600","white"],
+			ticks:{
+			display:false,
+			len:5,
+			color:"black",
+			textSize:10,
+			textColor:"black",
+			scale:500,
+			realLength:true,
+			},
+			genomeLabel:{
+			display:false,
+			textSize:15,
+			textColor:"#000",
+			dx:0.028,
+			dy:"-0.55em",
+			},
+			genomeBorder:{
+			display:true,
+			borderColor:"black",
+			borderSize:0.5,
+			},
+			SNPMouseEvent:true,
+			SNPMouseCombinationEvent:true,
+			SNPMouseCombinationImageDisplay:true,
+			SNPMouseCombinationImageTitle:"LD",
+			SNPMouseCombinationImageTitleSize:20,
+			SNPMouseCombinationImageTitleWeight:"bold",
+			SNPMouseCombinationImageTitleColor:"black",
+			SNPMouseCombinationImagePositionX:350,
+			SNPMouseCombinationImagePositionY:-241,
+			SNPMouseCombinationImageHeight:200,
+			SNPMouseCombinationImageWidth:400,
+			SNPMouseCombinationGraphDisplay:true,
+			SNPMouseCombinationGraphTitle:"Mutation rates in populations",
+			SNPMouseCombinationGraphTitleSize:20,
+			SNPMouseCombinationGraphTitleWeight:"bold",
+			SNPMouseCombinationGraphTitleColor:"black",
+			SNPMouseCombinationGraphType:"histogram",   //histogram
+			SNPMouseCombinationGraphPositionX:400,
+			SNPMouseCombinationGraphPositionY:200,
+			SNPMouseCombinationGraphHeight:200,
+			SNPMouseCombinationGraphWidth:300,
+			SNPMouseCombinationGraphHistogramBarColor:"#99CCFE",
+			SNPMouseCombinationGraphHistogramPadding:30,
+			SNPMouseCombinationGraphHistogramPositionCorrectX:13,
+			SNPMouseCombinationTextDisplay:true,
+			SNPMouseCombinationTextColor:"#666666",
+			SNPMouseCombinationTextSize:13,
+			SNPMouseCombinationTextWeight:"bold",
+			SNPMouseCombinationTextPositionCorrectX:20,
+			SNPMouseCombinationTextPositionCorrectY:16,
+			SNPMouseOverDisplay : true,
+			SNPMouseOverColor : "red",
+			SNPMouseOverCircleSize : 5,
+			SNPMouseOverCircleOpacity : 1.0,
+			SNPMouseOverCircleStrokeColor : "#F26223",
+			SNPMouseOverCircleStrokeWidth : 3,
+			SNPMouseOverTooltipsHtml01 : "chr : ",
+			SNPMouseOverTooltipsHtml02 : "<br>position : ",
+			SNPMouseOverTooltipsHtml03 : "<br>-log10(Pvalue) : ",
+			SNPMouseOverTooltipsHtml04 : "<br>rsid : ",
+			SNPMouseOverTooltipsHtml05 : "",
+			SNPMouseOverTooltipsBorderWidth : 1,
+			SNPMouseOutDisplay : true,
+			SNPMouseOutAnimationTime : 700,
+			SNPMouseOutColor : "none",
+			SNPMouseOutCircleSize : "none",
+			SNPMouseOutCircleOpacity : 1.0,
+			SNPMouseOutCircleStrokeWidth : 0,
+		});
+		NGCircos1.draw_genome(NGCircos1.genomeLength);
+		NGCircos1.draw_genome(NGCircos1.genomeLength2);
+		</script>
+		<script src=../lib/saveSvgAsPng.js></script>
+		<script>
+						
+			(function(){
+				var downloadImg = getEle(".download-img"),
+					imgName = getEle("."+NGCircos1.svgClassName);
+				
+				//					imgScale = getEle(".img-scale");
+
+				downloadImg.addEventListener("click",function(){
+					var mySvg = getEle("."+NGCircos1.svgClassName),
+						//iImgScale = parseInt(imgScale.value) || 1,
+						oImgName = imgName.value || NGCircos1.svgClassName;
+						
+//					saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+					saveSvgAsPng(mySvg, oImgName+".png");
+
+				})
+
+				function getEle(obj){
+					var d = document;
+					return d.querySelector(obj);
+				}
+			})()
+		</script>
+    </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NGCircos.js</title>
+    </head>
+    <body>
+        <!-- NGCircos.js, Jquery.js and D3.js import -->
+        <script src="../lib/jquery.js"></script>
+        <script src="../lib/d3.js"></script>
+        <script src="../lib/NGCircos.js"></script>
+        <!-- Prepare a <div> tag with "NGCircos" id to set the picture position your will draw in html -->
+        <div class="svg-box img-container">
+          <button class="svg-action-btn download-img">Download png ↓</button>
+          <button> <a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', '../lib/svg-crowbar.js'); } else { e.setAttribute('src', '../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a> </button>
+        </div>
+        <div id="NGCircos"></div>
+<!-- Data configuration -->
+<script src="./BUBBLE01.js"></script>
+<!-- Genome configuration -->
+<script>
+  var NGCircosGenome = [
+    [
+     ["2L" , 23011544],
+     ["2R" , 21146708],
+     ["3L" , 24543557],
+     ["3R" , 27905053],
+     ["X" , 22422827],
+     ["4" , 1351857]
+    ]
+  ];
+  NGCircos01 = new NGCircos(BUBBLE01,BUBBLE02,BUBBLE03,NGCircosGenome,{       // Initialize NGCircos.js with "NGCircosGenome" and Main configuration
+     target : "NGCircos",
+     svgWidth : 900,
+     svgHeight : 900,
+     innerRadius: 305,
+     outerRadius: 310,
+     zoom : true,
+     genomeFillColor: ["#999999"],
+     ticks : {
+        display : true,
+        len : 5,
+        color : "#000",
+        textSize : 8,
+        textColor : "#000",
+        scale : 5000000
+     },
+     genomeLabel : {
+        display : true,
+        textSize : 16,
+        textColor : "#000",
+        dx : 0,
+        dy : "-0.95em"
+     },
+     BUBBLEMouseEvent: true,
+     BUBBLEMouseClickDisplay: true,
+     BUBBLEMouseClickColor: "green",
+     BUBBLEMouseClickOpacity: 1,
+     BUBBLEMouseClickStrokeColor: "#F26223",
+     BUBBLEMouseClickStrokeWidth: 0,
+     BUBBLEMouseOutDisplay: true,
+     BUBBLEMouseOutAnimationTime: 500,
+     BUBBLEMouseOutColor: "none",
+     BUBBLEMouseOutOpacity: 1,
+     BUBBLEMouseOutStrokeColor: "none",
+     BUBBLEMouseOutStrokeWidth: 0,
+     BUBBLEMouseOverDisplay: true,
+     BUBBLEMouseOverColor: "none",
+     BUBBLEMouseOverOpacity: 1,
+     BUBBLEMouseOverStrokeColor: "#F26223",
+     BUBBLEMouseOverStrokeWidth: 3,
+
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);  // NGCircos.js callback
+  NGCircos01.draw_genome(NGCircos01.genomeLength2); // NGCircos2.js callback second time
+</script>
+<script src=../lib/saveSvgAsPng.js></script>
+<script>
+
+   (function(){
+      var downloadImg = getEle(".download-img"),
+         imgName = getEle("."+NGCircos01.svgClassName);
+
+      //                                  imgScale = getEle(".img-scale");
+
+      downloadImg.addEventListener("click",function(){
+         var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+      //                                  saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+         saveSvgAsPng(mySvg, oImgName+".png");
+
+      })
+
+      function getEle(obj){
+         var d = document;
+         return d.querySelector(obj);
+      }
+   })()
+
+</script>
+    </body>
+</html>

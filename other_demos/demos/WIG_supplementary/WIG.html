@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NGCircos.js</title>
+    </head>
+    <body>
+        <!-- NGCircos.js, Jquery.js and D3.js import -->
+        <script src="../lib/jquery.js"></script>
+        <script src="../lib/d3.js"></script>
+        <script src="../lib/NGCircos.js"></script>
+        <!-- Prepare a <div> tag with "NGCircos" id to set the picture position your will draw in html -->
+        <div class="svg-box img-container">
+          <button class="svg-action-btn download-img">Download png ↓</button>
+          <button> <a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', '../lib/svg-crowbar.js'); } else { e.setAttribute('src', '../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a> </button>
+        </div>
+        <div id="NGCircos"></div>
+<!-- Data configuration -->
+<script src="./WIG01.js"></script>
+<script>
+var BACKGROUND01 = [ "BACKGROUND01" , {
+  BginnerRadius: 220,
+  BgouterRadius: 170,
+  BgFillColor: "#F2F2F2",
+  BgborderColor : "#000",
+  BgborderSize : 0.3
+}];
+var BACKGROUND02 = [ "BACKGROUND02" , {
+  BginnerRadius: 160,
+  BgouterRadius: 110,
+  BgFillColor: "#F2F2F2",
+  BgborderColor : "#000",
+  BgborderSize : 0.3
+}];
+var BACKGROUND03 = [ "BACKGROUND03" , {
+  BginnerRadius: 100,
+  BgouterRadius: 50,
+  BgFillColor: "#F2F2F2",
+  BgborderColor : "#000",
+  BgborderSize : 0.3
+}];
+</script>
+<!-- Genome configuration -->
+<script>
+  var NGCircosGenome = [      // Configure your own genome here.
+    [
+     ["chr8" , 1000],
+    ]
+  ];
+  NGCircos01 = new NGCircos(BACKGROUND01,BACKGROUND02,BACKGROUND03,WIG01,WIG02,WIG03,NGCircosGenome,{       // Initialize NGCircos.js with "NGCircosGenome" and Main configuration
+     target : "NGCircos",                              // Main configuration "target"
+     svgWidth : 900,                                  // Main configuration "svgWidth"
+     svgHeight : 600,                                 // Main configuration "svgHeight"
+     chrPad : 0.03,
+     innerRadius : 225,
+     outerRadius : 230,
+     genomeFillColor : ["#e6e4e3"],
+     genomeBorder  : {
+       display : false,
+       borderColor : "#000",
+       borderSize : 0.5,
+    },
+     ticks : {
+       display : false,
+       len : 5,
+       color : "#000",
+       textSize : 10,
+       textColor : "#000",
+       scale : 30000000,
+      //zhec2
+       realLength : false,
+      //zhec2
+      //offset from realLength
+       offset: 0 ,
+      //offset from realLength
+    },
+    genomeLabel : {
+       display : true,
+       textSize : 15,
+       textColor : "#000",
+       dx : 0.028,
+       dy : "-0.55em",
+    },
+     WIGMouseEvent : true,
+     WIGMouseClickDisplay : false,
+     WIGMouseClickLineOpacity : 1,           //"none"
+     WIGMouseClickLineStrokeColor : "red",   //"none"
+     WIGMouseClickLineStrokeWidth : "none",  //"none"
+     WIGMouseClickFillColor : "none",  //"none"
+     WIGMouseDownDisplay : false,
+     WIGMouseDownLineOpacity : 1,           //"none"
+     WIGMouseDownLineStrokeColor : "red",   //"none"
+     WIGMouseDownLineStrokeWidth : "none",  //"none"
+     WIGMouseDownFillColor : "none",  //"none"
+     WIGMouseEnterDisplay : false,
+     WIGMouseEnterLineOpacity : 1,           //"none"
+     WIGMouseEnterLineStrokeColor : "red",   //"none"
+     WIGMouseEnterLineStrokeWidth : "none",  //"none"
+     WIGMouseEnterFillColor : "none",  //"none"
+     WIGMouseLeaveDisplay : false,
+     WIGMouseLeaveLineOpacity : 1,           //"none"
+     WIGMouseLeaveLineStrokeColor : "red",   //"none"
+     WIGMouseLeaveLineStrokeWidth : "none",  //"none"
+     WIGMouseLeaveFillColor : "none",  //"none"
+     WIGMouseMoveDisplay : false,
+     WIGMouseMoveLineOpacity : 1,           //"none"
+     WIGMouseMoveLineStrokeColor : "red",   //"none"
+     WIGMouseMoveLineStrokeWidth : "none",  //"none"
+     WIGMouseMoveFillColor : "none",  //"none"
+     WIGMouseOutDisplay : true,
+     WIGMouseOutAnimationTime : 500,
+     WIGMouseOutLineOpacity : 1.0,   //"none"
+     WIGMouseOutLineStrokeColor : "red",    //"none"
+     WIGMouseOutLineStrokeWidth : "none",    //"none"
+     WIGMouseOutFillColor : "none",  //"none"
+     WIGMouseUpDisplay : false,
+     WIGMouseUpLineOpacity : 1,           //"none"
+     WIGMouseUpLineStrokeColor : "red",   //"none"
+     WIGMouseUpLineStrokeWidth : "none",  //"none"
+     WIGMouseUpFillColor : "none",  //"none"
+     WIGMouseOverDisplay : false,
+     WIGMouseOverLineOpacity : 1,           //"none"
+     WIGMouseOverLineStrokeColor : "red",   //"none"
+     WIGMouseOverLineStrokeWidth : "none",  //"none"
+     WIGMouseOverFillColor : "none",  //"none"
+     WIGMouseOverTooltipsHtml01 : "Line",
+     WIGMouseOverTooltipsPosition : "absolute",
+     WIGMouseOverTooltipsBackgroundColor : "white",
+     WIGMouseOverTooltipsBorderStyle : "solid",
+     WIGMouseOverTooltipsBorderWidth : 0,
+     WIGMouseOverTooltipsPadding : "3px",
+     WIGMouseOverTooltipsBorderRadius : "3px",
+     WIGMouseOverTooltipsOpacity : 0.8,
+
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);  // NGCircos.js callback
+  NGCircos01.draw_genome(NGCircos01.genomeLength2); // NGCircos2.js callback second time
+</script>
+<script src=../lib/saveSvgAsPng.js></script>
+<script>
+
+   (function(){
+      var downloadImg = getEle(".download-img"),
+         imgName = getEle("."+NGCircos01.svgClassName);
+
+      //                                  imgScale = getEle(".img-scale");
+
+      downloadImg.addEventListener("click",function(){
+         var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+      //                                  saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+         saveSvgAsPng(mySvg, oImgName+".png");
+
+      })
+
+      function getEle(obj){
+         var d = document;
+         return d.querySelector(obj);
+      }
+   })()
+
+</script>
+    </body>
+</html>

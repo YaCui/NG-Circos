@@ -1,0 +1,1056 @@
+<html>
+<head>  
+        <meta charset="utf-8">  
+        <title>Hox</title>  
+  </head> 
+
+<style>
+
+a {color: #000000;TEXT-DECORATION: none}
+a:active {background: #AFC1DC}
+.DownButtonNormal{
+	height: 18px;
+	line-height: 18px;
+	padding: 0 11px;
+	background: #FFFFFF;
+	border: 1px #D9D9D9 solid;
+	border-radius: 3px;
+	display: inline-block;
+	font-size: 12px;
+	outline: none;
+}
+</style>
+    <body>  
+		<script src="../lib/jquery.js"></script>
+		<script src="../lib/d3.js"></script>
+<!-- 		<script src="label.js"></script> -->
+		<script src="../lib/NGCircos.js"></script>
+		<script src="WIGHOX.js"></script>
+		
+<!-- 	Download button for png -->
+		<div class="svg-box img-container">
+			<button class="svg-action-btn download-img">Download png ↓</button>
+			<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './../lib/svg-crowbar.js'); } else { e.setAttribute('src', './../lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" class="DownButtonNormal" >Download svg ↓</a>
+		</div>  
+		
+		<div id="NGCircos"></div>
+		<script>
+
+		var NGCircosGenome = [
+		[
+			["hs7",1000],
+			["hs17",1200],
+			["hs12",1000],
+			["hs2",1000],
+			["mm2",800],
+			["mm15",900],
+			["mm11",900],
+			["mm6",800],
+		]
+		];
+		
+		var CHORD1 = [ "CHORD1" , {
+			CHORDinnerRadius: 187,
+			CHORDouterRadius: 188,
+			CHORDFillOpacity:0.67,
+			CHORDStrokeColor: "black",
+			CHORDStrokeWidth: "1px",
+			CHORDPadding:0,
+			CHORDAutoFillColor: false,
+			CHORDFillColor:["none","#ea9238","none","#f2dd75","none","#ea9238","none","#ea9238","none","#ea9238","none","#f2dd75","none","#f2dd75","none","#f2dd75","none"],
+			CHORDFillStrokeColor:["none","#ea9238","none","#f2dd75","none","#ea9238","none","#ea9238","none","#ea9238","none","#f2dd75","none","#f2dd75","none","#f2dd75","none"],
+			CHORDouterARC:false,
+			CHORDouterARCAutoColor:true,
+//			CHORDouterARCColor:["white","#58B2DC","#58B2DC","#58B2DC","#EF6746","#EF6746","#EF6746","#EF6746","white","#EF6746","#EF6746","#EF6746","#EF6746","white","#EF6746","#EF6746","#EF6746","#EF6746","#EF6746","#58B2DC","#58B2DC","white"],
+//			CHORDouterARCStrokeColor:["white","#58B2DC","#58B2DC","#58B2DC","#EF6746","#EF6746","#EF6746","#EF6746","white","#EF6746","#EF6746","#EF6746","#EF6746","white","#EF6746","#EF6746","#EF6746","#EF6746","#EF6746","#58B2DC","#58B2DC","white"],
+			CHORDouterARCText:false,
+			} , [
+			[ "","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","" ],
+			[[  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 400 ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 500 ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 1800,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 200 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 2500,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 100 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 2000,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 1000,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 1500,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ],
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 1500,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 100 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 2200,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 200 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  ,  0  ,  50 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  ,  0  , 1700,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  ,  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  ,  0  , 500 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [  0  , 50  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ], 
+			 [ 800 ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ,  0  ]
+			 
+			]
+		]];
+			
+		  var GENE1 = [ "GENE1" , {
+				compareGroup:1,
+	  			outerRadius: -16,
+	  			innerRadius: -10,
+				pathColor:"#e6e4e3",
+				pathWidth:1,
+				arrow:false,
+				arrowGap: 10,
+				arrowColor: "red",
+				arrowSize: "12px",
+				cdsColor: "#427fbe",
+				cdsStrokeColor: "white",
+				cdsStrokeWidth: 1,
+		  		} , [
+		  			{chr: "hs7", strand: "+", start: "0", end: "1000", type:"gene", name:"gene1"},
+					{chr: "hs7", strand: "+", start: "150", end: "180", type:"cds", name:"exon1"},
+					{chr: "hs7", strand: "+", start: "180", end: "230", type:"cds", name:"exon2"},
+					{chr: "hs7", strand: "+", start: "240", end: "290", type:"cds", name:"exon3"},
+					{chr: "hs7", strand: "+", start: "310", end: "360", type:"cds", name:"exon3"},
+					{chr: "hs7", strand: "+", start: "500", end: "550", type:"cds", name:"exon5"},
+					{chr: "hs7", strand: "+", start: "800", end: "850", type:"cds", name:"exon6"},
+		  			{chr: "hs17", strand: "+", start: "0", end: "1200", type:"gene", name:"gene1"},
+					{chr: "hs17", strand: "+", start: "200", end: "250", type:"cds", name:"exon1"},
+					{chr: "hs17", strand: "+", start: "300", end: "350", type:"cds", name:"exon2"},
+					{chr: "hs17", strand: "+", start: "480", end: "530", type:"cds", name:"exon3"},
+					{chr: "hs17", strand: "+", start: "750", end: "800", type:"cds", name:"exon4"},
+					{chr: "hs17", strand: "+", start: "1000", end: "1050", type:"cds", name:"exon5"},
+		  			{chr: "hs12", strand: "+", start: "0", end: "1000", type:"gene", name:"gene1"},
+					{chr: "hs12", strand: "+", start: "350", end: "400", type:"cds", name:"exon1"},
+					{chr: "hs12", strand: "+", start: "650", end: "700", type:"cds", name:"exon2"},
+					{chr: "hs12", strand: "+", start: "750", end: "800", type:"cds", name:"exon3"},
+					{chr: "hs2", strand: "+", start: "0", end: "1000", type:"gene", name:"gene1"},
+					{chr: "hs2", strand: "+", start: "250", end: "300", type:"cds", name:"exon1"},
+					{chr: "hs2", strand: "+", start: "320", end: "370", type:"cds", name:"exon2"},
+					{chr: "hs2", strand: "+", start: "500", end: "550", type:"cds", name:"exon3"},
+					{chr: "hs2", strand: "+", start: "700", end: "750", type:"cds", name:"exon4"},
+					{chr: "hs2", strand: "+", start: "800", end: "830", type:"cds", name:"exon5"},
+					{chr: "hs2", strand: "+", start: "830", end: "880", type:"cds", name:"exon6"},
+					{chr: "mm2", strand: "+", start: "0", end: "800", type:"gene", name:"gene1"},
+					{chr: "mm15", strand: "+", start: "0", end: "900", type:"gene", name:"gene1"},
+					{chr: "mm11", strand: "+", start: "0", end: "900", type:"gene", name:"gene1"},
+					{chr: "mm6", strand: "+", start: "0", end: "800", type:"gene", name:"gene1"},
+				    ]
+			];
+		
+		 var GENE2 = [ "GENE2" , {
+				compareGroup:1,
+	  			outerRadius: -26,
+	  			innerRadius: -20,
+				pathColor:"#e6e4e3",
+				pathWidth:1,
+				arrow:false,
+				arrowGap: 10,
+				arrowColor: "red",
+				arrowSize: "12px",
+				cdsColor: "#e33237",
+				cdsStrokeColor: "white",
+				cdsStrokeWidth: 1,
+		  		} , [
+		  			{chr: "hs7", strand: "+", start: "0", end: "1000", type:"gene", name:"gene1"},
+		  			{chr: "hs17", strand: "+", start: "0", end: "1200", type:"gene", name:"gene1"},
+					{chr: "hs17", strand: "+", start: "870", end: "920", type:"cds", name:"exon1"},
+		  			{chr: "hs12", strand: "+", start: "0", end: "1000", type:"gene", name:"gene1"},
+					{chr: "hs2", strand: "+", start: "0", end: "1000", type:"gene", name:"gene1"},
+					{chr: "mm2", strand: "+", start: "0", end: "800", type:"gene", name:"gene1"},
+					{chr: "mm2", strand: "+", start: "50", end: "90", type:"cds", name:"exon1"},
+					{chr: "mm2", strand: "+", start: "200", end: "240", type:"cds", name:"exon2"},
+					{chr: "mm2", strand: "+", start: "450", end: "490", type:"cds", name:"exon3"},
+					{chr: "mm2", strand: "+", start: "500", end: "540", type:"cds", name:"exon4"},
+					{chr: "mm2", strand: "+", start: "600", end: "640", type:"cds", name:"exon5"},
+					{chr: "mm2", strand: "+", start: "720", end: "760", type:"cds", name:"exon6"},
+					{chr: "mm15", strand: "+", start: "0", end: "900", type:"gene", name:"gene1"},
+					{chr: "mm15", strand: "+", start: "200", end: "240", type:"cds", name:"exon1"},
+					{chr: "mm15", strand: "+", start: "240", end: "260", type:"cds", name:"exon2"},
+					{chr: "mm15", strand: "+", start: "260", end: "280", type:"cds", name:"exon3"},
+					{chr: "mm15", strand: "+", start: "280", end: "300", type:"cds", name:"exon4"},
+					{chr: "mm15", strand: "+", start: "300", end: "320", type:"cds", name:"exon5"},
+					{chr: "mm15", strand: "+", start: "340", end: "380", type:"cds", name:"exon6"},
+					{chr: "mm15", strand: "+", start: "380", end: "420", type:"cds", name:"exon7"},
+					{chr: "mm15", strand: "+", start: "420", end: "460", type:"cds", name:"exon8"},
+					{chr: "mm15", strand: "+", start: "480", end: "520", type:"cds", name:"exon9"},
+					{chr: "mm15", strand: "+", start: "540", end: "580", type:"cds", name:"exon10"},
+					{chr: "mm15", strand: "+", start: "680", end: "720", type:"cds", name:"exon11"},
+					{chr: "mm15", strand: "+", start: "720", end: "760", type:"cds", name:"exon12"},
+					{chr: "mm11", strand: "+", start: "0", end: "900", type:"gene", name:"gene1"},
+					{chr: "mm11", strand: "+", start: "0", end: "40", type:"cds", name:"exon1"},
+					{chr: "mm11", strand: "+", start: "200", end: "240", type:"cds", name:"exon2"},
+					{chr: "mm11", strand: "+", start: "280", end: "320", type:"cds", name:"exon3"},
+					{chr: "mm11", strand: "+", start: "550", end: "590", type:"cds", name:"exon4"},
+					{chr: "mm11", strand: "+", start: "610", end: "650", type:"cds", name:"exon5"},
+					{chr: "mm11", strand: "+", start: "730", end: "770", type:"cds", name:"exon6"},
+					{chr: "mm11", strand: "+", start: "780", end: "820", type:"cds", name:"exon7"},
+					{chr: "mm6", strand: "+", start: "0", end: "800", type:"gene", name:"gene1"},
+					{chr: "mm6", strand: "+", start: "200", end: "240", type:"cds", name:"exon1"},
+					{chr: "mm6", strand: "+", start: "380", end: "420", type:"cds", name:"exon2"},
+					{chr: "mm6", strand: "+", start: "440", end: "480", type:"cds", name:"exon3"},
+					{chr: "mm6", strand: "+", start: "480", end: "500", type:"cds", name:"exon4"},
+					{chr: "mm6", strand: "+", start: "500", end: "540", type:"cds", name:"exon5"},
+					{chr: "mm6", strand: "+", start: "540", end: "560", type:"cds", name:"exon6"},
+					{chr: "mm6", strand: "+", start: "570", end: "610", type:"cds", name:"exon7"},
+					{chr: "mm6", strand: "+", start: "610", end: "630", type:"cds", name:"exon8"},
+					{chr: "mm6", strand: "+", start: "760", end: "800", type:"cds", name:"exon9"},
+				    ]
+			];
+			
+		var HEATMAP1 = [ "HEATMAP1" , {
+			innerRadius: -35,
+			outerRadius: -65,
+			maxColor: "#542f90",
+			minColor: "#f5f3f8"
+		} , [
+			{chr: "hs7", start: "1", end: "10", name: "test heatmap", value: "0.3"},
+			{chr: "hs7", start: "10", end: "20", name: "test heatmap", value: "0"},
+			{chr: "hs7", start: "20", end: "30", name: "test heatmap", value: "0.5"},
+			{chr: "hs7", start: "30", end: "150", name: "test heatmap", value: "0"},
+			{chr: "hs7", start: "150", end: "160", name: "test heatmap", value: "0.5"},
+			{chr: "hs7", start: "160", end: "260", name: "test heatmap", value: "0"},
+			{chr: "hs7", start: "260", end: "280", name: "test heatmap", value: "0.3"},
+			{chr: "hs7", start: "280", end: "300", name: "test heatmap", value: "0.7"},
+			{chr: "hs7", start: "300", end: "310", name: "test heatmap", value: "0"},
+			{chr: "hs7", start: "310", end: "330", name: "test heatmap", value: "0.6"},
+			{chr: "hs7", start: "330", end: "340", name: "test heatmap", value: "0.3"},
+			{chr: "hs7", start: "340", end: "350", name: "test heatmap", value: "0.6"},
+			{chr: "hs7", start: "350", end: "360", name: "test heatmap", value: "0.3"},
+			{chr: "hs7", start: "360", end: "430", name: "test heatmap", value: "0.1"},
+			{chr: "hs7", start: "430", end: "440", name: "test heatmap", value: "0.3"},
+			{chr: "hs7", start: "440", end: "450", name: "test heatmap", value: "0.6"},
+			{chr: "hs7", start: "450", end: "460", name: "test heatmap", value: "0.2"},
+			{chr: "hs7", start: "460", end: "470", name: "test heatmap", value: "0.7"},
+			{chr: "hs7", start: "470", end: "480", name: "test heatmap", value: "0.1"},
+			{chr: "hs7", start: "480", end: "490", name: "test heatmap", value: "0.3"},
+			{chr: "hs7", start: "490", end: "500", name: "test heatmap", value: "0.1"},
+			{chr: "hs7", start: "500", end: "510", name: "test heatmap", value: "0.3"},
+			{chr: "hs7", start: "530", end: "540", name: "test heatmap", value: "0.3"},
+			{chr: "hs7", start: "550", end: "560", name: "test heatmap", value: "0.3"},
+			{chr: "hs7", start: "560", end: "570", name: "test heatmap", value: "0.7"},
+			{chr: "hs7", start: "590", end: "600", name: "test heatmap", value: "0.4"},
+			{chr: "hs7", start: "600", end: "610", name: "test heatmap", value: "0.7"},
+			{chr: "hs7", start: "610", end: "620", name: "test heatmap", value: "0.3"},
+			{chr: "hs7", start: "630", end: "640", name: "test heatmap", value: "0.1"},
+			{chr: "hs7", start: "640", end: "660", name: "test heatmap", value: "0.4"},
+			{chr: "hs7", start: "660", end: "670", name: "test heatmap", value: "0.1"},
+			{chr: "hs7", start: "670", end: "700", name: "test heatmap", value: "0"},
+			{chr: "hs7", start: "700", end: "710", name: "test heatmap", value: "0.1"},
+			{chr: "hs7", start: "710", end: "800", name: "test heatmap", value: "0"},
+			{chr: "hs7", start: "800", end: "810", name: "test heatmap", value: "0.6"},
+			{chr: "hs7", start: "810", end: "830", name: "test heatmap", value: "0.3"},
+			{chr: "hs7", start: "830", end: "900", name: "test heatmap", value: "0"},
+			{chr: "hs7", start: "900", end: "910", name: "test heatmap", value: "0.2"},
+			{chr: "hs7", start: "910", end: "1000", name: "test heatmap", value: "0"},
+			{chr: "hs17", start: "1", end: "200", name: "test heatmap", value: "0"},
+			{chr: "hs17", start: "200", end: "210", name: "test heatmap", value: "0.3"},
+			{chr: "hs17", start: "210", end: "310", name: "test heatmap", value: "0"},
+			{chr: "hs17", start: "310", end: "320", name: "test heatmap", value: "0.3"},
+			{chr: "hs17", start: "320", end: "340", name: "test heatmap", value: "0"},
+			{chr: "hs17", start: "340", end: "350", name: "test heatmap", value: "0.3"},
+			{chr: "hs17", start: "350", end: "360", name: "test heatmap", value: "0.1"},
+			{chr: "hs17", start: "360", end: "370", name: "test heatmap", value: "0.6"},
+			{chr: "hs17", start: "370", end: "380", name: "test heatmap", value: "0.5"},
+			{chr: "hs17", start: "380", end: "390", name: "test heatmap", value: "0.2"},
+			{chr: "hs17", start: "410", end: "420", name: "test heatmap", value: "0.1"},
+			{chr: "hs17", start: "430", end: "440", name: "test heatmap", value: "0.3"},
+			{chr: "hs17", start: "450", end: "470", name: "test heatmap", value: "0.2"},
+			{chr: "hs17", start: "470", end: "490", name: "test heatmap", value: "0.1"},
+			{chr: "hs17", start: "500", end: "510", name: "test heatmap", value: "0.6"},
+			{chr: "hs17", start: "510", end: "520", name: "test heatmap", value: "0.3"},
+			{chr: "hs17", start: "520", end: "530", name: "test heatmap", value: "0.1"},
+			{chr: "hs17", start: "530", end: "540", name: "test heatmap", value: "0.3"},
+			{chr: "hs17", start: "550", end: "560", name: "test heatmap", value: "0.3"},
+			{chr: "hs17", start: "560", end: "580", name: "test heatmap", value: "0.7"},
+			{chr: "hs17", start: "580", end: "590", name: "test heatmap", value: "0.3"},
+			{chr: "hs17", start: "610", end: "620", name: "test heatmap", value: "0.1"},
+			{chr: "hs17", start: "620", end: "630", name: "test heatmap", value: "0.4"},
+			{chr: "hs17", start: "630", end: "640", name: "test heatmap", value: "0.1"},
+			{chr: "hs17", start: "650", end: "660", name: "test heatmap", value: "0.1"},
+			{chr: "hs17", start: "660", end: "680", name: "test heatmap", value: "0"},
+			{chr: "hs17", start: "680", end: "690", name: "test heatmap", value: "0.2"},
+			{chr: "hs17", start: "690", end: "940", name: "test heatmap", value: "0"},
+			{chr: "hs17", start: "940", end: "950", name: "test heatmap", value: "0.2"},
+			{chr: "hs17", start: "950", end: "1050", name: "test heatmap", value: "0"},
+			{chr: "hs17", start: "1050", end: "1060", name: "test heatmap", value: "0.2"},
+			{chr: "hs17", start: "1060", end: "1200", name: "test heatmap", value: "0"},
+			{chr: "hs12", start: "0", end: "100", name: "test heatmap", value: "0"},
+			{chr: "hs12", start: "100", end: "110", name: "test heatmap", value: "0.2"},
+			{chr: "hs12", start: "110", end: "120", name: "test heatmap", value: "0"},
+			{chr: "hs12", start: "120", end: "130", name: "test heatmap", value: "0.4"},
+			{chr: "hs12", start: "130", end: "150", name: "test heatmap", value: "0"},
+			{chr: "hs12", start: "150", end: "160", name: "test heatmap", value: "0.2"},
+			{chr: "hs12", start: "160", end: "180", name: "test heatmap", value: "0"},
+			{chr: "hs12", start: "180", end: "190", name: "test heatmap", value: "0.2"},
+			{chr: "hs12", start: "190", end: "200", name: "test heatmap", value: "0.4"},
+			{chr: "hs12", start: "200", end: "210", name: "test heatmap", value: "0.2"},
+			{chr: "hs12", start: "220", end: "230", name: "test heatmap", value: "0.2"},
+			{chr: "hs12", start: "240", end: "250", name: "test heatmap", value: "0.2"},
+			{chr: "hs12", start: "250", end: "260", name: "test heatmap", value: "0.8"},
+			{chr: "hs12", start: "260", end: "270", name: "test heatmap", value: "0.4"},
+			{chr: "hs12", start: "290", end: "300", name: "test heatmap", value: "0.4"},
+			{chr: "hs12", start: "300", end: "310", name: "test heatmap", value: "1"},
+			{chr: "hs12", start: "310", end: "320", name: "test heatmap", value: "0"},
+			{chr: "hs12", start: "320", end: "330", name: "test heatmap", value: "1"},
+			{chr: "hs12", start: "330", end: "370", name: "test heatmap", value: "0.5"},
+			{chr: "hs12", start: "370", end: "380", name: "test heatmap", value: "1"},
+			{chr: "hs12", start: "380", end: "420", name: "test heatmap", value: "0.5"},
+			{chr: "hs12", start: "420", end: "430", name: "test heatmap", value: "1"},
+			{chr: "hs12", start: "430", end: "470", name: "test heatmap", value: "0.5"},
+			{chr: "hs12", start: "470", end: "480", name: "test heatmap", value: "0.1"},
+			{chr: "hs12", start: "480", end: "490", name: "test heatmap", value: "0.4"},
+			{chr: "hs12", start: "490", end: "520", name: "test heatmap", value: "0.1"},
+			{chr: "hs12", start: "520", end: "540", name: "test heatmap", value: "0.4"},
+			{chr: "hs12", start: "540", end: "560", name: "test heatmap", value: "0.8"},
+			{chr: "hs12", start: "560", end: "580", name: "test heatmap", value: "0"},
+			{chr: "hs12", start: "580", end: "600", name: "test heatmap", value: "0.8"},
+			{chr: "hs12", start: "600", end: "620", name: "test heatmap", value: "0.1"},
+			{chr: "hs12", start: "640", end: "660", name: "test heatmap", value: "0.3"},
+			{chr: "hs12", start: "660", end: "680", name: "test heatmap", value: "0.8"},
+			{chr: "hs12", start: "680", end: "700", name: "test heatmap", value: "0.4"},
+			{chr: "hs12", start: "720", end: "740", name: "test heatmap", value: "0.1"},
+			{chr: "hs12", start: "740", end: "760", name: "test heatmap", value: "0.3"},
+			{chr: "hs12", start: "760", end: "780", name: "test heatmap", value: "0.1"},
+			{chr: "hs12", start: "780", end: "810", name: "test heatmap", value: "0.4"},
+			{chr: "hs12", start: "810", end: "830", name: "test heatmap", value: "0.1"},
+			{chr: "hs12", start: "830", end: "850", name: "test heatmap", value: "0.3"},
+			{chr: "hs12", start: "870", end: "890", name: "test heatmap", value: "0.1"},
+			{chr: "hs12", start: "890", end: "940", name: "test heatmap", value: "0"},
+			{chr: "hs12", start: "940", end: "950", name: "test heatmap", value: "0.4"},
+			{chr: "hs12", start: "950", end: "1000", name: "test heatmap", value: "0"},
+			{chr: "hs2", start: "0", end: "250", name: "test heatmap", value: "0"},
+			{chr: "hs2", start: "250", end: "270", name: "test heatmap", value: "0.1"},
+			{chr: "hs2", start: "270", end: "290", name: "test heatmap", value: "0.6"},
+			{chr: "hs2", start: "290", end: "310", name: "test heatmap", value: "0"},
+			{chr: "hs2", start: "310", end: "330", name: "test heatmap", value: "0.6"},
+			{chr: "hs2", start: "350", end: "370", name: "test heatmap", value: "0.3"},
+			{chr: "hs2", start: "370", end: "390", name: "test heatmap", value: "0.1"},
+			{chr: "hs2", start: "390", end: "410", name: "test heatmap", value: "0.6"},
+			{chr: "hs2", start: "430", end: "450", name: "test heatmap", value: "0.6"},
+			{chr: "hs2", start: "450", end: "470", name: "test heatmap", value: "0.1"},
+			{chr: "hs2", start: "470", end: "490", name: "test heatmap", value: "0.6"},
+			{chr: "hs2", start: "490", end: "510", name: "test heatmap", value: "0.1"},
+			{chr: "hs2", start: "510", end: "530", name: "test heatmap", value: "0.6"},
+			{chr: "hs2", start: "530", end: "550", name: "test heatmap", value: "0.3"},
+			{chr: "hs2", start: "570", end: "590", name: "test heatmap", value: "0.1"},
+			{chr: "hs2", start: "610", end: "630", name: "test heatmap", value: "0.1"},
+			{chr: "hs2", start: "640", end: "670", name: "test heatmap", value: "0.5"},
+			{chr: "hs2", start: "670", end: "700", name: "test heatmap", value: "0.3"},
+			{chr: "hs2", start: "700", end: "720", name: "test heatmap", value: "0.7"},
+			{chr: "hs2", start: "720", end: "740", name: "test heatmap", value: "0.1"},
+			{chr: "hs2", start: "780", end: "810", name: "test heatmap", value: "0.3"},
+			{chr: "hs2", start: "810", end: "830", name: "test heatmap", value: "0"},
+			{chr: "hs2", start: "830", end: "850", name: "test heatmap", value: "0.3"},
+			{chr: "hs2", start: "850", end: "870", name: "test heatmap", value: "0"},
+			{chr: "hs2", start: "870", end: "890", name: "test heatmap", value: "0.3"},
+			{chr: "hs2", start: "890", end: "930", name: "test heatmap", value: "0"},
+			{chr: "hs2", start: "930", end: "960", name: "test heatmap", value: "0.3"},
+			{chr: "hs2", start: "960", end: "1000", name: "test heatmap", value: "0"},
+			{chr: "mm2", start: "0", end: "100", name: "test heatmap", value: "0"},
+			{chr: "mm2", start: "100", end: "120", name: "test heatmap", value: "0.3"},
+			{chr: "mm2", start: "120", end: "220", name: "test heatmap", value: "0"},
+			{chr: "mm2", start: "220", end: "240", name: "test heatmap", value: "0.4"},
+			{chr: "mm2", start: "240", end: "290", name: "test heatmap", value: "0"},
+			{chr: "mm2", start: "290", end: "310", name: "test heatmap", value: "0.5"},
+			{chr: "mm2", start: "310", end: "330", name: "test heatmap", value: "0.3"},
+			{chr: "mm2", start: "330", end: "350", name: "test heatmap", value: "0.5"},
+			{chr: "mm2", start: "350", end: "370", name: "test heatmap", value: "0.3"},
+			{chr: "mm2", start: "370", end: "390", name: "test heatmap", value: "0.4"},
+			{chr: "mm2", start: "410", end: "430", name: "test heatmap", value: "0.3"},
+			{chr: "mm2", start: "470", end: "490", name: "test heatmap", value: "0.8"},
+			{chr: "mm2", start: "500", end: "510", name: "test heatmap", value: "0.2"},
+			{chr: "mm2", start: "510", end: "520", name: "test heatmap", value: "0.1"},
+			{chr: "mm2", start: "520", end: "530", name: "test heatmap", value: "0.3"},
+			{chr: "mm2", start: "530", end: "550", name: "test heatmap", value: "0.2"},
+			{chr: "mm2", start: "550", end: "560", name: "test heatmap", value: "0.5"},
+			{chr: "mm2", start: "560", end: "570", name: "test heatmap", value: "0.2"},
+			{chr: "mm2", start: "590", end: "600", name: "test heatmap", value: "0.2"},
+			{chr: "mm2", start: "600", end: "610", name: "test heatmap", value: "0.6"},
+			{chr: "mm2", start: "620", end: "630", name: "test heatmap", value: "0.1"},
+			{chr: "mm2", start: "630", end: "640", name: "test heatmap", value: "0.7"},
+			{chr: "mm2", start: "650", end: "660", name: "test heatmap", value: "0.2"},
+			{chr: "mm2", start: "660", end: "760", name: "test heatmap", value: "0"},
+			{chr: "mm2", start: "760", end: "770", name: "test heatmap", value: "0.4"},
+			{chr: "mm2", start: "770", end: "800", name: "test heatmap", value: "0"},
+			{chr: "mm15", start: "0", end: "20", name: "test heatmap", value: "0.4"},
+			{chr: "mm15", start: "20", end: "40", name: "test heatmap", value: "0"},
+			{chr: "mm15", start: "40", end: "60", name: "test heatmap", value: "0.4"},
+			{chr: "mm15", start: "60", end: "80", name: "test heatmap", value: "0"},
+			{chr: "mm15", start: "80", end: "100", name: "test heatmap", value: "0.4"},
+			{chr: "mm15", start: "100", end: "150", name: "test heatmap", value: "0"},
+			{chr: "mm15", start: "150", end: "170", name: "test heatmap", value: "1"},
+			{chr: "mm15", start: "170", end: "190", name: "test heatmap", value: "0.3"},
+			{chr: "mm15", start: "240", end: "260", name: "test heatmap", value: "0.3"},
+			{chr: "mm15", start: "260", end: "270", name: "test heatmap", value: "0"},
+			{chr: "mm15", start: "270", end: "280", name: "test heatmap", value: "0.7"},
+			{chr: "mm15", start: "280", end: "330", name: "test heatmap", value: "0.1"},
+			{chr: "mm15", start: "330", end: "350", name: "test heatmap", value: "0.3"},
+			{chr: "mm15", start: "350", end: "370", name: "test heatmap", value: "0.1"},
+			{chr: "mm15", start: "370", end: "390", name: "test heatmap", value: "0.3"},
+			{chr: "mm15", start: "390", end: "410", name: "test heatmap", value: "0.1"},
+			{chr: "mm15", start: "410", end: "430", name: "test heatmap", value: "0.3"},
+			{chr: "mm15", start: "430", end: "450", name: "test heatmap", value: "0.1"},
+			{chr: "mm15", start: "450", end: "470", name: "test heatmap", value: "0.3"},
+			{chr: "mm15", start: "490", end: "510", name: "test heatmap", value: "0.1"},
+			{chr: "mm15", start: "510", end: "530", name: "test heatmap", value: "0.4"},
+			{chr: "mm15", start: "530", end: "550", name: "test heatmap", value: "0.1"},
+			{chr: "mm15", start: "570", end: "590", name: "test heatmap", value: "0.1"},
+			{chr: "mm15", start: "610", end: "630", name: "test heatmap", value: "0.1"},
+			{chr: "mm15", start: "650", end: "690", name: "test heatmap", value: "0.2"},
+			{chr: "mm15", start: "710", end: "730", name: "test heatmap", value: "0.1"},
+			{chr: "mm15", start: "740", end: "750", name: "test heatmap", value: "0.1"},
+			{chr: "mm15", start: "760", end: "770", name: "test heatmap", value: "0.3"},
+			{chr: "mm15", start: "780", end: "900", name: "test heatmap", value: "0"},
+			{chr: "mm11", start: "0", end: "30", name: "test heatmap", value: "0"},
+			{chr: "mm11", start: "30", end: "40", name: "test heatmap", value: "0.3"},
+			{chr: "mm11", start: "40", end: "340", name: "test heatmap", value: "0"},
+			{chr: "mm11", start: "340", end: "350", name: "test heatmap", value: "0.2"},
+			{chr: "mm11", start: "350", end: "400", name: "test heatmap", value: "0"},
+			{chr: "mm11", start: "400", end: "420", name: "test heatmap", value: "0.3"},
+			{chr: "mm11", start: "440", end: "450", name: "test heatmap", value: "0.6"},
+			{chr: "mm11", start: "450", end: "460", name: "test heatmap", value: "0.3"},
+			{chr: "mm11", start: "470", end: "480", name: "test heatmap", value: "0.2"},
+			{chr: "mm11", start: "490", end: "500", name: "test heatmap", value: "0.2"},
+			{chr: "mm11", start: "500", end: "510", name: "test heatmap", value: "0.1"},
+			{chr: "mm11", start: "510", end: "550", name: "test heatmap", value: "0.4"},
+			{chr: "mm11", start: "550", end: "560", name: "test heatmap", value: "0.1"},
+			{chr: "mm11", start: "570", end: "590", name: "test heatmap", value: "0.3"},
+			{chr: "mm11", start: "590", end: "610", name: "test heatmap", value: "0.7"},
+			{chr: "mm11", start: "610", end: "630", name: "test heatmap", value: "0.4"},
+			{chr: "mm11", start: "630", end: "650", name: "test heatmap", value: "0.3"},
+			{chr: "mm11", start: "650", end: "670", name: "test heatmap", value: "0.4"},
+			{chr: "mm11", start: "720", end: "740", name: "test heatmap", value: "0.6"},
+			{chr: "mm11", start: "740", end: "780", name: "test heatmap", value: "0"},
+			{chr: "mm11", start: "800", end: "850", name: "test heatmap", value: "0"},
+			{chr: "mm6", start: "0", end: "20", name: "test heatmap", value: "0.3"},
+			{chr: "mm6", start: "20", end: "120", name: "test heatmap", value: "0"},
+			{chr: "mm6", start: "120", end: "180", name: "test heatmap", value: "0.3"},
+			{chr: "mm6", start: "180", end: "350", name: "test heatmap", value: "0"},
+			{chr: "mm6", start: "350", end: "360", name: "test heatmap", value: "0.3"},
+			{chr: "mm6", start: "360", end: "370", name: "test heatmap", value: "0"},
+			{chr: "mm6", start: "370", end: "380", name: "test heatmap", value: "0.3"},
+			{chr: "mm6", start: "380", end: "390", name: "test heatmap", value: "0.1"},
+			{chr: "mm6", start: "390", end: "400", name: "test heatmap", value: "0"},
+			{chr: "mm6", start: "400", end: "440", name: "test heatmap", value: "0.4"},
+			{chr: "mm6", start: "460", end: "480", name: "test heatmap", value: "0.4"},
+			{chr: "mm6", start: "500", end: "510", name: "test heatmap", value: "0.4"},
+			{chr: "mm6", start: "530", end: "540", name: "test heatmap", value: "0.4"},
+			{chr: "mm6", start: "540", end: "580", name: "test heatmap", value: "0.2"},
+			{chr: "mm6", start: "580", end: "600", name: "test heatmap", value: "0.7"},
+			{chr: "mm6", start: "600", end: "620", name: "test heatmap", value: "0.2"},
+			{chr: "mm6", start: "620", end: "650", name: "test heatmap", value: "0.4"},
+			{chr: "mm6", start: "650", end: "690", name: "test heatmap", value: "0.2"},
+			{chr: "mm6", start: "690", end: "730", name: "test heatmap", value: "0.5"},
+			{chr: "mm6", start: "730", end: "740", name: "test heatmap", value: "0.7"},
+			{chr: "mm6", start: "740", end: "750", name: "test heatmap", value: "0.1"},
+			{chr: "mm6", start: "750", end: "800", name: "test heatmap", value: "0.3"},
+			
+		]];
+		
+		var CNV1 = [ "CNV1" , {
+			maxRadius: 270,
+			minRadius: 290,
+			CNVwidth: 6,
+			CNVColor: "#4876FF",
+			strokeColor:"black",
+			strokeWidth:0.5,
+			opacity:1,
+		} , [
+			{chr: "hs7", start: "250", end: "270", value: "0",color:"black"},
+			{chr: "hs7", start: "420", end: "510", value: "0",color:"black"},
+			{chr: "hs7", start: "640", end: "680", value: "0",color:"black"},
+			{chr: "hs7", start: "210", end: "250", value: "2",color:"black"},
+			{chr: "hs7", start: "350", end: "370", value: "2",color:"black"},
+			{chr: "hs7", start: "410", end: "430", value: "2",color:"black"},
+			{chr: "hs7", start: "550", end: "570", value: "2",color:"black"},
+			{chr: "hs7", start: "620", end: "650", value: "2",color:"black"},
+			{chr: "hs7", start: "750", end: "800", value: "2",color:"black"},
+			{chr: "hs7", start: "170", end: "210", value: "4",color:"orange"},
+			{chr: "hs7", start: "270", end: "330", value: "4",color:"black"},
+			{chr: "hs7", start: "390", end: "410", value: "4",color:"black"},
+			{chr: "hs7", start: "480", end: "500", value: "4",color:"black"},
+			{chr: "hs7", start: "580", end: "620", value: "4",color:"yellow"},
+			{chr: "hs7", start: "720", end: "750", value: "4",color:"black"},
+			{chr: "hs7", start: "900", end: "930", value: "4",color:"black"},
+			{chr: "hs17", start: "600", end: "630", value: "0",color:"black"},
+			{chr: "hs17", start: "300", end: "400", value: "2",color:"black"},
+			{chr: "hs17", start: "500", end: "520", value: "2",color:"black"},
+			{chr: "hs17", start: "560", end: "590", value: "2",color:"black"},
+			{chr: "hs17", start: "1000", end: "1030", value: "2",color:"black"},
+			{chr: "hs17", start: "180", end: "210", value: "4",color:"orange"},
+			{chr: "hs17", start: "250", end: "280", value: "4",color:"orange"},
+			{chr: "hs17", start: "400", end: "440", value: "4",color:"orange"},
+			{chr: "hs17", start: "520", end: "560", value: "4",color:"black"},
+			{chr: "hs17", start: "650", end: "680", value: "4",color:"black"},
+			{chr: "hs12", start: "500", end: "600", value: "0",color:"black"},
+			{chr: "hs12", start: "200", end: "220", value: "2",color:"black"},
+			{chr: "hs12", start: "300", end: "330", value: "2",color:"black"},
+			{chr: "hs12", start: "400", end: "440", value: "2",color:"yellow"},
+			{chr: "hs12", start: "500", end: "750", value: "2",color:"black"},
+			{chr: "hs12", start: "100", end: "150", value: "4",color:"black"},
+			{chr: "hs12", start: "240", end: "280", value: "4",color:"black"},
+			{chr: "hs12", start: "240", end: "280", value: "4",color:"black"},
+			{chr: "hs12", start: "350", end: "380", value: "4",color:"black"},
+			{chr: "hs12", start: "350", end: "380", value: "4",color:"black"},
+			{chr: "hs12", start: "460", end: "480", value: "4",color:"black"},
+			{chr: "hs12", start: "580", end: "600", value: "4",color:"black"},
+			{chr: "hs12", start: "730", end: "750", value: "4",color:"black"},
+			{chr: "hs2", start: "500", end: "520", value: "0",color:"black"},
+			{chr: "hs2", start: "300", end: "320", value: "2",color:"black"},
+			{chr: "hs2", start: "380", end: "400", value: "2",color:"black"},
+			{chr: "hs2", start: "450", end: "470", value: "2",color:"black"},
+			{chr: "hs2", start: "730", end: "820", value: "2",color:"black"},
+			{chr: "hs2", start: "180", end: "240", value: "4",color:"yellow"},
+			{chr: "hs2", start: "340", end: "360", value: "4",color:"yellow"},
+			{chr: "hs2", start: "430", end: "450", value: "4",color:"black"},
+			{chr: "hs2", start: "530", end: "550", value: "4",color:"black"},
+			{chr: "hs2", start: "600", end: "620", value: "4",color:"black"},
+			{chr: "hs2", start: "670", end: "730", value: "4",color:"black"},
+			{chr: "hs2", start: "820", end: "840", value: "4",color:"black"},
+			{chr: "mm2", start: "250", end: "400", value: "2",color:"black"},
+			{chr: "mm2", start: "450", end: "470", value: "2",color:"black"},
+			{chr: "mm2", start: "520", end: "540", value: "2",color:"black"},
+			{chr: "mm2", start: "590", end: "610", value: "2",color:"black"},
+			{chr: "mm2", start: "150", end: "170", value: "4",color:"black"},
+			{chr: "mm2", start: "300", end: "350", value: "4",color:"black"},
+			{chr: "mm2", start: "420", end: "440", value: "4",color:"black"},
+			{chr: "mm2", start: "490", end: "510", value: "4",color:"black"},
+			{chr: "mm2", start: "560", end: "580", value: "4",color:"yellow"},
+			{chr: "mm2", start: "670", end: "720", value: "4",color:"yellow"},
+			{chr: "mm15", start: "250", end: "270", value: "2",color:"black"},
+			{chr: "mm15", start: "420", end: "480", value: "2",color:"yellow"},
+			{chr: "mm15", start: "650", end: "670", value: "2",color:"black"},
+			{chr: "mm15", start: "150", end: "170", value: "4",color:"black"},
+			{chr: "mm15", start: "380", end: "400", value: "4",color:"black"},
+			{chr: "mm15", start: "500", end: "540", value: "4",color:"black"},
+			{chr: "mm15", start: "570", end: "590", value: "4",color:"black"},
+			{chr: "mm15", start: "700", end: "750", value: "4",color:"black"},
+			{chr: "mm11", start: "420", end: "450", value: "2",color:"black"},
+			{chr: "mm11", start: "500", end: "520", value: "2",color:"black"},
+			{chr: "mm11", start: "700", end: "730", value: "2",color:"orange"},
+			{chr: "mm11", start: "50", end: "70", value: "4",color:"black"},
+			{chr: "mm11", start: "350", end: "390", value: "4",color:"black"},
+			{chr: "mm11", start: "470", end: "490", value: "4",color:"black"},
+			{chr: "mm11", start: "540", end: "560", value: "4",color:"black"},
+			{chr: "mm11", start: "600", end: "640", value: "4",color:"orange"},
+			{chr: "mm11", start: "670", end: "690", value: "4",color:"black"},
+			{chr: "mm11", start: "780", end: "800", value: "4",color:"orange"},
+			{chr: "mm6", start: "400", end: "430", value: "0",color:"black"},
+			{chr: "mm6", start: "600", end: "620", value: "0",color:"black"},
+			{chr: "mm6", start: "450", end: "500", value: "2",color:"yellow"},
+			{chr: "mm6", start: "530", end: "550", value: "2",color:"black"},
+			{chr: "mm6", start: "640", end: "660", value: "2",color:"black"},
+			{chr: "mm6", start: "690", end: "710", value: "2",color:"black"},
+			{chr: "mm6", start: "750", end: "770", value: "2",color:"black"},
+			{chr: "mm6", start: "150", end: "180", value: "4",color:"black"},
+			{chr: "mm6", start: "350", end: "370", value: "4",color:"black"},
+			{chr: "mm6", start: "430", end: "450", value: "4",color:"black"},
+			{chr: "mm6", start: "500", end: "520", value: "4",color:"black"},
+			{chr: "mm6", start: "560", end: "730", value: "4",color:"black"},
+			{chr: "mm6", start: "780", end: "800", value: "4",color:"orange"},
+		]];
+		
+		var BACKGROUND1 = [ "BACKGROUND1" , {
+			BginnerRadius: 270,
+			BgouterRadius: 300,
+			BgFillColor: "#F2F2F2",
+			BgborderColor : "#F2F2F2",
+			BgborderSize : 0.3,
+			axisShow: "false",
+		}];
+		
+		var TEXT1 = [ "TEXT1" , {
+			x: 38,
+			y: -308,
+			textSize: 10,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "orange",
+			textOpacity: 1.0,
+			rotateRate:-0.45, //(-1,1)
+			text: "HOXA1"
+		}];
+		
+		var AUXILIARYLINE1 = [ "AUXILIARYLINE1" , {
+			 startX: 33,
+			 startY: -300,
+			 endX: 34,
+			 endY: -305,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+		
+		var TEXT2 = [ "TEXT2" , {
+			x: 104,
+			y: -292,
+			textSize: 10,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "#b7ae5e",
+			textOpacity: 1.0,
+			rotateRate:-0.4, //(-1,1)
+			text: "HOXA10"
+		}];
+		
+		var AUXILIARYLINE2 = [ "AUXILIARYLINE2" , {
+			 startX: 97,
+			 startY: -285,
+			 endX: 99,
+			 endY: -290,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+		
+		var TEXT3 = [ "TEXT3" , {
+			x: 248,
+			y: -186,
+			textSize: 8,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "orange",
+			textOpacity: 1.0,
+			rotateRate:-0.2, //(-1,1)
+			text: "HOXAB1"
+		}];
+		
+		var AUXILIARYLINE3 = [ "AUXILIARYLINE3" , {
+			 startX: 238,
+			 startY: -183,
+			 endX: 243,
+			 endY: -187,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+		
+		var TEXT4 = [ "TEXT4" , {
+			x: 255,
+			y: -173,
+			textSize: 8,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "orange",
+			textOpacity: 1.0,
+			rotateRate:-0.2, //(-1,1)
+			text: "HOXAB2"
+		}];
+		
+		var AUXILIARYLINE4 = [ "AUXILIARYLINE4" , {
+			 startX: 247,
+			 startY: -171,
+			 endX: 252,
+			 endY: -175,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+		
+		var TEXT5 = [ "TEXT5" , {
+			x: 270,
+			y: -150,
+			textSize: 8,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "orange",
+			textOpacity: 1.0,
+			rotateRate:-0.15, //(-1,1)
+			text: "HOXAB4"
+		}];
+		
+		var AUXILIARYLINE5 = [ "AUXILIARYLINE5" , {
+			 startX: 261,
+			 startY: -149,
+			 endX: 267,
+			 endY: -152,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+		
+		var TEXT6 = [ "TEXT6" , {
+			x: 282,
+			y: 124,
+			textSize: 10,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "#b7ae5e",
+			textOpacity: 1.0,
+			rotateRate:0.12, //(-1,1)
+			text: "HOXC9"
+		}];
+		
+		var AUXILIARYLINE6 = [ "AUXILIARYLINE6" , {
+			 startX: 276,
+			 startY: 119,
+			 endX: 281,
+			 endY: 121,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+		
+		var TEXT7 = [ "TEXT7" , {
+			x: 135,
+			y: 279,
+			textSize: 10,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "#b7ae5e",
+			textOpacity: 1.0,
+			rotateRate:0.35, //(-1,1)
+			text: "EVX2"
+		}];
+		
+		var AUXILIARYLINE7 = [ "AUXILIARYLINE7" , {
+			 startX: 134,
+			 startY: 270,
+			 endX: 137,
+			 endY: 276,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+		
+		var TEXT8 = [ "TEXT8" , {
+			x: 113,
+			y: 287,
+			textSize: 10,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "#b7ae5e",
+			textOpacity: 1.0,
+			rotateRate:0.37, //(-1,1)
+			text: "HOXD12"
+		}];
+		
+		var AUXILIARYLINE8 = [ "AUXILIARYLINE8" , {
+			 startX: 114,
+			 startY: 279,
+			 endX: 116,
+			 endY: 284,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+		
+		var TEXT9 = [ "TEXT9" , {
+			x: -177,
+			y: 300,
+			textSize: 10,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "#b7ae5e",
+			textOpacity: 1.0,
+			rotateRate:-0.33, //(-1,1)
+			text: "Hoxd12"
+		}];
+		
+		var AUXILIARYLINE9 = [ "AUXILIARYLINE9" , {
+			 startX: -157,
+			 startY: 258,
+			 endX: -159,
+			 endY: 262,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+		
+		var TEXT10 = [ "TEXT10" , {
+			x: -189,
+			y: 275,
+			textSize: 10,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "#b7ae5e",
+			textOpacity: 1.0,
+			rotateRate:-0.31, //(-1,1)
+			text: "Evx2"
+		}];
+		
+		var AUXILIARYLINE10 = [ "AUXILIARYLINE10" , {
+			 startX: -174,
+			 startY: 246,
+			 endX: -177,
+			 endY: 250,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+		
+		var TEXT11 = [ "TEXT11" , {
+			x: -317,
+			y: 135,
+			textSize: 10,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "#b7ae5e",
+			textOpacity: 1.0,
+			rotateRate:-0.12, //(-1,1)
+			text: "Hoxc9"
+		}];
+		
+		var AUXILIARYLINE11 = [ "AUXILIARYLINE11" , {
+			 startX: -278,
+			 startY: 115,
+			 endX: -284,
+			 endY: 118,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+		
+		var TEXT12 = [ "TEXT12" , {
+			x: -288,
+			y: -178,
+			textSize: 10,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "orange",
+			textOpacity: 1.0,
+			rotateRate:0.18, //(-1,1)
+			text: "Hoxb1"
+		}];
+		
+		var AUXILIARYLINE12 = [ "AUXILIARYLINE12" , {
+			 startX: -255,
+			 startY: -160,
+			 endX: -260,
+			 endY: -163,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+		
+		var TEXT13 = [ "TEXT13" , {
+			x: -295,
+			y: -165,
+			textSize: 10,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "orange",
+			textOpacity: 1.0,
+			rotateRate:0.16, //(-1,1)
+			text: "Hoxb2"
+		}];
+		
+		var AUXILIARYLINE13 = [ "AUXILIARYLINE13" , {
+			 startX: -261,
+			 startY: -149,
+			 endX: -266,
+			 endY: -152,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+		
+		var TEXT14 = [ "TEXT14" , {
+			x: -305,
+			y: -148,
+			textSize: 10,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "orange",
+			textOpacity: 1.0,
+			rotateRate:0.15, //(-1,1)
+			text: "Hoxb4"
+		}];
+		
+		var AUXILIARYLINE14 = [ "AUXILIARYLINE14" , {
+			 startX: -269,
+			 startY: -134,
+			 endX: -275,
+			 endY: -137,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+		
+		var TEXT15 = [ "TEXT15" , {
+			x: -83,
+			y: -324,
+			textSize: 10,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "orange",
+			textOpacity: 1.0,
+			rotateRate:0.45, //(-1,1)
+			text: "Hoxa1"
+		}];
+		
+		var AUXILIARYLINE15 = [ "AUXILIARYLINE15" , {
+			 startX: -75,
+			 startY: -290,
+			 endX: -76,
+			 endY: -295,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+		
+		var TEXT16 = [ "TEXT16" , {
+			x: -139,
+			y: -313,
+			textSize: 10,
+			textWeight: "bold", //normal,bold,bolder,lighter,100,200,300,400,500,600,700,800,900
+			textColor: "#b7ae5e",
+			textOpacity: 1.0,
+			rotateRate:0.4, //(-1,1)
+			text: "Hoxa10"
+		}];
+		
+		var AUXILIARYLINE16 = [ "AUXILIARYLINE16" , {
+			 startX: -123,
+			 startY: -274,
+			 endX: -125,
+			 endY: -279,
+			 AUXILIARYLINEType:"straight",
+			 AUXILIARYLINELineType:"solid",
+			 AUXILIARYLINEColor: "black",
+			 AUXILIARYLINEWidth: 1,
+			 AUXILIARYLINEMarker:false,
+		}];
+			
+//		NGCircos1 = new NGCircos(GENE1,GENE2,HEATMAP1,CHORD1,CNV1,BACKGROUND1,WIG1,WIG2,WIG3,WIG4,WIG5,WIG6,WIG7,WIG8,TEXT1,AUXILIARYLINE1,NGCircosGenome,{
+		NGCircos1 = new NGCircos(GENE1,GENE2,HEATMAP1,CHORD1,CNV1,BACKGROUND1,TEXT1,AUXILIARYLINE1,TEXT2,AUXILIARYLINE2,TEXT3,AUXILIARYLINE3,TEXT4,AUXILIARYLINE4,TEXT5,AUXILIARYLINE5,TEXT6,AUXILIARYLINE6,TEXT7,AUXILIARYLINE7,TEXT8,AUXILIARYLINE8,TEXT9,AUXILIARYLINE9,TEXT10,AUXILIARYLINE10,TEXT11,AUXILIARYLINE11,TEXT12,AUXILIARYLINE12,TEXT13,AUXILIARYLINE13,TEXT14,AUXILIARYLINE14,TEXT15,AUXILIARYLINE15,TEXT16,AUXILIARYLINE16,WIG1,WIG2,WIG3,WIG4,WIG5,WIG6,WIG7,WIG8,NGCircosGenome,{
+			target:"NGCircos",
+			svgWidth:1000,
+			svgHeight:900,
+			svgClassName:"hox",
+			chrPad:0.25,
+			innerRadius:250,
+			outerRadius:262,
+			zoom:true,
+			compareEvent:false,
+			combinationEvent:false,
+			genomeFillColor:["#f9cacb","#6fccdc","#68bc45","#65662c","#64652b","#688bc2","#c9da28","#d14799"],
+			ticks:{
+			display:false,
+			len:5,
+			color:"#000",
+			textSize:8,
+			textColor:"#000",
+			scale:50,
+			realLength:true,
+			},
+			genomeLabel:{
+			display:false,
+			textSize:15,
+			textColor:"#000",
+			dx:0.028,
+			dy:"-0.55em",
+			},
+			genomeBorder:{
+			display:true,
+			borderColor:"black",
+			borderSize:0.5,
+			},
+//			TEXTModuleDragEvent:false,
+//			CHORDMouseEvent : true,
+//			CHORDMouseFillColorExcluded:"white",
+//			CHORDMouseClickDisplay : false,
+//			CHORDMouseClickOpacity : 1.0,
+//			CHORDMouseClickStrokeColor : "green",
+//			CHORDMouseClickStrokeWidth : 4,
+//			CHORDMouseDownDisplay : false,
+//			CHORDMouseDownOpacity : 1.0,
+//			CHORDMouseDownStrokeColor : "#F26223",
+//			CHORDMouseDownStrokeWidth : 4,
+//			CHORDMouseEnterDisplay : false,
+//			CHORDMouseEnterOpacity : 1.0,
+//			CHORDMouseEnterStrokeColor : "#F26223",
+//			CHORDMouseEnterStrokeWidth : 4,
+//			CHORDMouseLeaveDisplay : false,
+//			CHORDMouseLeaveOpacity : 1.0,
+//			CHORDMouseLeaveStrokeColor : "#F26223",
+//			CHORDMouseLeaveStrokeWidth : 4,
+//			CHORDMouseMoveDisplay : false,
+//			CHORDMouseMoveOpacity : 1.0,
+//			CHORDMouseMoveStrokeColor : "#F26223",
+//			CHORDMouseMoveStrokeWidth : 4,
+//			CHORDMouseOutDisplay : true,
+//			CHORDMouseOutAnimationTime : 500,
+//			CHORDMouseOutOpacity : 0.67,
+//			CHORDMouseOutStrokeColor : "none",
+//			CHORDMouseOutStrokeWidth : 0,
+//			CHORDMouseUpDisplay : false,
+//			CHORDMouseUpOpacity : 1.0,
+//			CHORDMouseUpStrokeColor : "#F26223",
+//			CHORDMouseUpStrokeWidth : 4,
+//			CHORDMouseOverDisplay : true,
+//			CHORDMouseOverOpacity : 0.8,
+//			CHORDMouseOverStrokeColor : "#F26223",
+//			CHORDMouseOverStrokeWidth : 3,
+//			CHORDMouseOverTooltipsHtml01 : "CHORD : ",
+//			CHORDMouseOverTooltipsHtml02 : "",
+//			CHORDMouseOverTooltipsPosition : "absolute",
+//			CHORDMouseOverTooltipsBackgroundColor : "white",
+//			CHORDMouseOverTooltipsBorderStyle : "solid",
+//			CHORDMouseOverTooltipsBorderWidth : 0,
+//			CHORDMouseOverTooltipsPadding : "3px",
+//			CHORDMouseOverTooltipsBorderRadius : "3px",
+//			CHORDMouseOverTooltipsOpacity : 0.8,
+			
+			});
+
+	
+		NGCircos1.draw_genome(NGCircos1.genomeLength);
+		NGCircos1.draw_genome(NGCircos1.genomeLength2);
+		
+
+		</script>
+		<script src=../lib/saveSvgAsPng.js></script>
+		<script>
+						
+			(function(){
+				var downloadImg = getEle(".download-img"),
+					imgName = getEle("."+NGCircos1.svgClassName);
+				
+				//					imgScale = getEle(".img-scale");
+
+				downloadImg.addEventListener("click",function(){
+					var mySvg = getEle("."+NGCircos1.svgClassName),
+						//iImgScale = parseInt(imgScale.value) || 1,
+						oImgName = imgName.value || NGCircos1.svgClassName;
+						
+//					saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+					saveSvgAsPng(mySvg, oImgName+".png");
+
+				})
+
+				function getEle(obj){
+					var d = document;
+					return d.querySelector(obj);
+				}
+			})()
+		</script>
+    </body>  
+</html>  
