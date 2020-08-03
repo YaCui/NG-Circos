@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>NGCircos.js</title>
+    <link href="css/bootstrap.min.css " rel="stylesheet">
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+    <link href="css/timeline.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/morris.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/google-code-prettify.css" rel="stylesheet">
+    <script src="css/jquery.min.js"></script>
+    <script src="css/bootstrap.min.js"></script>
+    <script src="css/metisMenu.min.js"></script>
+    <script src="css/raphael-min.js"></script>
+    <script src="css/morris.min.js"></script>
+    <script src="css/sb-admin-2.js"></script>
+    <script src="css/google-code-prettify.js"></script>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body onload="prettyPrint()">
+    <div id="wrapper">
+
+
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="index.html"><i class="fa fa-dashboard fa-fw"></i>Tutorials - <text>Step-by-step Guide for 21 Modules in NG-Circos</text></a>
+          </div>
+          <div class="navbar-default sidebar" role="navigation">
+              <div class="sidebar-nav navbar-collapse">
+                  <ul class="nav" id="side-menu">
+                      <li><a href="https://wlcb.oit.uci.edu/NG-Circos"><i class="fa fa-dashboard fa-fw"></i> Home </a></li>
+                      <li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i> ARC module </a></li>
+                      <li><a href="auxiliaryline.html"><i class="fa fa-dashboard fa-fw"></i> AUXILIARYLINE module </a></li>
+                      <li><a href="background.html"><i class="fa fa-dashboard fa-fw"></i> BACKGROUND module </a></li>
+                      <li><a href="bubble.html"><i class="fa fa-dashboard fa-fw"></i> BUBBLE module </a></li>
+                      <li><a href="chord.html"><i class="fa fa-dashboard fa-fw"></i> CHORD module </a></li>
+                      <li><a href="cnv.html"><i class="fa fa-dashboard fa-fw"></i> CNV module </a></li>
+                      <li><a href="combination.html"><i class="fa fa-dashboard fa-fw"></i> COMBINATION module </a></li>
+                      <li><a href="compare.html"><i class="fa fa-dashboard fa-fw"></i> COMPARE module </a></li>
+                      <li><a href="download.html"><i class="fa fa-dashboard fa-fw"></i> DOWNLOAD module </a></li>
+                      <li><a href="gene.html"><i class="fa fa-dashboard fa-fw"></i> GENE module </a></li>
+                      <li><a href="heatmap.html"><i class="fa fa-dashboard fa-fw"></i> HEATMAP module </a></li>
+                      <li><a href="histogram.html"><i class="fa fa-dashboard fa-fw"></i> HISTOGRAM module </a></li>
+                      <li><a href="legend.html"><i class="fa fa-dashboard fa-fw"></i> LEGEND module </a></li>
+                      <li><a href="line.html"><i class="fa fa-dashboard fa-fw"></i> LINE module </a></li>
+                      <li><a href="link.html"><i class="fa fa-dashboard fa-fw"></i> LINK module </a></li>
+                      <li><a href="lollipop.html"><i class="fa fa-dashboard fa-fw"></i> LOLLIPOP module </a></li>
+                      <li><a href="redirect.html"><i class="fa fa-dashboard fa-fw"></i> REDIRECT module </a></li>
+                      <li><a href="scatter.html"><i class="fa fa-dashboard fa-fw"></i> SCATTER module </a></li>
+                      <li><a href="snp.html"><i class="fa fa-dashboard fa-fw"></i> SNP module </a></li>
+                      <li><a href="text.html"><i class="fa fa-dashboard fa-fw"></i> TEXT module </a></li>
+                      <li><a href="wig.html"><i class="fa fa-dashboard fa-fw"></i> WIG module </a></li>
+                      <li><a href="CbioPortal.html"><i class="fa fa-dashboard fa-fw"></i> CbioPortal demo </a></li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Display a REDIRECT module step by step </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>0. Download all files in this tutorial.</h3>
+                    <p>Download <a href="./download/REDIRECT.zip" style="font-size: 20px"> REDIRECT.zip</a> and click *.html file(in REDIRECT.zip) to open this demo in local browser!.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                   <h3>1. REDIRECT data preparation in LOLLIPOP</h3>
+                   <p>
+<ul class="simple">
+<h4>Modify the output file you got from NGCircos_PrepareData.py</h4>
+<div class="section">
+<p>Before, the LOLLIPOP01.js looks like this: </p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>var LOLLIPOP01 = [ "LOLLIPOP01" , {
+   LOLLIPOPFillColor:"#9400D3",
+   LOLLIPOPSecondColor: "#FFFFFFF",
+   PointType: "circle",
+   circleSize: 6,
+   stroke:true,
+   strokeColor: "#999999",
+   strokeWidth: "1px",
+   lineAutoHeight: true,
+   LOLLIPOPAnimationDisplay: false,
+   LOLLIPOPLineWidth: 1,
+   LOLLIPOPLineColor: "#000000",
+   realStart: 101219350,
+} , [
+   {protein: "EGFR", chr: "7", pos: "101219410", strand: "+", CancerTypeNumber: "2", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Hetero"},
+   {protein: "EGFR", chr: "7", pos: "101219417", strand: "+", CancerTypeNumber: "2", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Homo"},
+   {protein: "EGFR", chr: "7", pos: "101219425", strand: "+", CancerTypeNumber: "1", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Homo"},
+   {protein: "EGFR", chr: "7", pos: "101219431", strand: "+", CancerTypeNumber: "3", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Homo"},
+   ......
+   {protein: "EGFR", chr: "7", pos: "101220278", strand: "+", CancerTypeNumber: "3", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Hetero"},
+   {protein: "EGFR", chr: "7", pos: "101220281", strand: "+", CancerTypeNumber: "2", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Homo"},
+   {protein: "EGFR", chr: "7", pos: "101220288", strand: "+", CancerTypeNumber: "1", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Homo"},
+   {protein: "EGFR", chr: "7", pos: "101220295", strand: "+", CancerTypeNumber: "1", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Hetero"},
+]];
+</pre></div>
+</div>
+<p>To start using REDIRECT module in LOLLIPOP, add a parameter called link for each mutation as the following: </p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>var LOLLIPOP01 = [ "LOLLIPOP01" , {
+   var LOLLIPOP01 = [ "LOLLIPOP01" , {
+   LOLLIPOPFillColor:"#9400D3",
+   LOLLIPOPSecondColor: "#FFFFFFF",
+   PointType: "circle",
+   circleSize: 6,
+   stroke:true,
+   strokeColor: "#999999",
+   strokeWidth: "1px",
+   lineAutoHeight: true,
+   LOLLIPOPAnimationDisplay: false,
+   LOLLIPOPLineWidth: 1,
+   LOLLIPOPLineColor: "#000000",
+   realStart: 101219350,
+} , [
+   {protein: "EGFR", chr: "7", pos: "101219410", strand: "+", CancerTypeNumber: "2", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Hetero", link: "https://www.intogen.org/search?gene=EGFR"},
+   {protein: "EGFR", chr: "7", pos: "101219417", strand: "+", CancerTypeNumber: "2", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Homo", link: "https://www.intogen.org/search?gene=EGFR"},
+   {protein: "EGFR", chr: "7", pos: "101219425", strand: "+", CancerTypeNumber: "1", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Homo", link: "https://www.intogen.org/search?gene=EGFR"},
+   {protein: "EGFR", chr: "7", pos: "101219431", strand: "+", CancerTypeNumber: "3", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Homo", link: "https://www.intogen.org/search?gene=EGFR"},
+   ......
+   {protein: "EGFR", chr: "7", pos: "101220278", strand: "+", CancerTypeNumber: "3", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Hetero", link: "https://www.intogen.org/search?gene=EGFR"},
+   {protein: "EGFR", chr: "7", pos: "101220281", strand: "+", CancerTypeNumber: "2", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Homo", link: "https://www.intogen.org/search?gene=EGFR"},
+   {protein: "EGFR", chr: "7", pos: "101220288", strand: "+", CancerTypeNumber: "1", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Homo", link: "https://www.intogen.org/search?gene=EGFR"},
+   {protein: "EGFR", chr: "7", pos: "101220295", strand: "+", CancerTypeNumber: "1", AA_pos: "AA_858", AA_change: "L/R", Consequence: "missense_variant", color: "#FEFF00", type: "Hetero", link: "https://www.intogen.org/search?gene=EGFR"},
+]];
+</pre></div>
+</div>
+<h4>Example file: <a href="js/REDIRECT01.js">REDIRECT01.js</a></h4>
+</div>
+</ul>
+
+<h3>2. Set LOLLIPOPxlink as true(default false) in NGCircos01<a class="headerlink"></a></h3>
+<ul>
+    <h4>The code should looks like below: </h4>
+    <div class="highlight-javascript notranslate"><div class="highlight"><pre>NGCircos01 = new NGCircos(LOLLIPOP01,NGCircosGenome,{
+   target:"NGCircos",
+   svgWidth:900,
+   svgHeight:600,
+   svgClassName:"lollipop",
+   ......
+   LOLLIPOPxlink:true,
+   ......</pre></div>
+    </div>
+</ul>
+
+<h3>3. Source code<a class="headerlink"></a></h3>
+<ul>
+    <h4> When step 1 and 2 are finished, the configuration for NGCircos: </h4>
+    <pre class="prettyprint"><xmp><button class="svg-action-btn download-img" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black">Download png ↓</button>
+<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './lib/svg-crowbar.js'); } else { e.setAttribute('src', './lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black" >Download svg ↓</a>
+<div id="NGCircos"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="NGCircos"></div>
+                </div>
+            </div>
+<!-- Data configuration -->
+<script src="./lib/jquery.js"></script>
+<script src="./lib/d3.js"></script>
+<script src="./lib/NGCircos.js"></script>
+<script src="js/REDIRECT01.js"></script>
+<!-- Genome configuration -->
+<script>
+var ARC01 = [ "ARC01" , {
+innerRadius:240,
+outerRadius:256,
+} , [
+{chr:"EGFR",start:"57",end:"167",color:"#FFBB77",des:"Recep_L_domain"},
+{chr:"EGFR",start:"185",end:"338",color:"#FF7F0E",des:"Furin-like_domain"},
+{chr:"EGFR",start:"361",end:"480",color:"#FFBB77",des:"Recep_L_domain"},
+{chr:"EGFR",start:"505",end:"636",color:"#1F77B4",des:"GF_recep_IV_domain"},
+{chr:"EGFR",start:"713",end:"965",color:"#AEC6E7",des:"Pkinase_Tyr_domain"},
+]];
+</script>
+<!-- Genome configuration -->
+<script>
+  var NGCircosGenome = [[
+  ["EGFR",1211],
+  ]];
+  NGCircos01 = new NGCircos(LOLLIPOP01,ARC01, NGCircosGenome,{
+  target:"NGCircos",
+  svgWidth:900,
+  svgHeight:600,
+  svgClassName:"lollipop",
+  chrPad:0.04,
+  innerRadius:246,
+  outerRadius:250,
+  zoom:true,
+  genomeFillColor:["#999999"],
+  ticks:{
+  display:false,
+  len:5,
+  color:"#000",
+  textSize:10,
+  textColor:"#000",
+  scale:30000000,
+  realLength:false,
+  },
+  genomeLabel:{
+  display:true,
+  textSize:15,
+  textColor:"#000",
+  dx:0.028,
+  dy:"-0.55em",
+  },
+  genomeBorder:{
+  display:true,
+  borderColor:"#000",
+  borderSize:0.5,
+  },
+  TEXTModuleDragEvent:false,
+  LOLLIPOPxlink:true,
+  LOLLIPOPMouseEvent:true,
+  LOLLIPOPMouseClickDisplay:false,
+  LOLLIPOPMouseClickColor:"none",
+  LOLLIPOPMouseClickCircleSize: "none",
+  LOLLIPOPMouseClickCircleOpacity: "none",
+  LOLLIPOPMouseClickCircleStrokeColor: "none",
+  LOLLIPOPMouseClickCircleStrokeWidth:"none",
+  LOLLIPOPMouseClickTextFromData: "first",
+  LOLLIPOPMouseClickTextOpacity:0,
+  LOLLIPOPMouseClickTextColor: "none",
+  LOLLIPOPMouseClickTextSize: 0,
+  LOLLIPOPMouseClickTextPostionX: 0,
+  LOLLIPOPMouseClickTextPostionY: 0,
+  LOLLIPOPMouseClickTextDrag: true,
+  LOLLIPOPMouseDownDisplay:false,
+  LOLLIPOPMouseDownColor:"none",
+  LOLLIPOPMouseDownCircleSize: "none",
+  LOLLIPOPMouseDownCircleOpacity: "none",
+  LOLLIPOPMouseDownCircleStrokeColor: "none",
+  LOLLIPOPMouseDownCircleStrokeWidth:"none",
+  LOLLIPOPMouseEnterDisplay:false,
+  LOLLIPOPMouseEnterColor:"none",
+  LOLLIPOPMouseEnterCircleSize: "none",
+  LOLLIPOPMouseEnterCircleOpacity: "none",
+  LOLLIPOPMouseEnterCircleStrokeColor: "none",
+  LOLLIPOPMouseEnterCircleStrokeWidth:"none",
+  LOLLIPOPMouseLeaveDisplay:false,
+  LOLLIPOPMouseLeaveColor:"none",
+  LOLLIPOPMouseLeaveCircleSize: "none",
+  LOLLIPOPMouseLeaveCircleOpacity: "none",
+  LOLLIPOPMouseLeaveCircleStrokeColor: "none",
+  LOLLIPOPMouseLeaveCircleStrokeWidth:"none",
+  LOLLIPOPMouseMoveDisplay:false,
+  LOLLIPOPMouseMoveColor:"none",
+  LOLLIPOPMouseMoveCircleSize: "none",
+  LOLLIPOPMouseMoveCircleOpacity: "none",
+  LOLLIPOPMouseMoveCircleStrokeColor: "none",
+  LOLLIPOPMouseMoveCircleStrokeWidth:"none",
+  LOLLIPOPMouseOutDisplay:true,
+  LOLLIPOPMouseOutAnimationTime:700,
+  LOLLIPOPMouseOutColor:"none",
+  LOLLIPOPMouseOutCircleSize: "none",
+  LOLLIPOPMouseOutCircleOpacity: 1,
+  LOLLIPOPMouseOutCircleStrokeColor: "#999999",
+  LOLLIPOPMouseOutCircleStrokeWidth:1,
+  LOLLIPOPMouseUpDisplay:false,
+  LOLLIPOPMouseUpColor:"none",
+  LOLLIPOPMouseUpCircleSize: "none",
+  LOLLIPOPMouseUpCircleOpacity: "none",
+  LOLLIPOPMouseUpCircleStrokeColor: "none",
+  LOLLIPOPMouseUpCircleStrokeWidth:"none",
+  LOLLIPOPMouseOverDisplay:true,
+  LOLLIPOPMouseOverColor:"red",
+  LOLLIPOPMouseOverCircleSize: 5,
+  LOLLIPOPMouseOverCircleOpacity: 1,
+  LOLLIPOPMouseOverCircleStrokeColor: "#F26223",
+  LOLLIPOPMouseOverCircleStrokeWidth:3,
+  LOLLIPOPMouseOverTooltipsHtml01:"protein : ",
+  LOLLIPOPMouseOverTooltipsHtml02:"<br>chr : ",
+  LOLLIPOPMouseOverTooltipsHtml03:"<br>pos : ",
+  LOLLIPOPMouseOverTooltipsHtml04:"<br>strand : ",
+  LOLLIPOPMouseOverTooltipsHtml05:"<br>CancerTypeNumber : ",
+  LOLLIPOPMouseOverTooltipsHtml06:"<br>AA_pos : ",
+  LOLLIPOPMouseOverTooltipsHtml07:"<br>AA_change : ",
+  LOLLIPOPMouseOverTooltipsHtml08:"<br>Consequence : ",
+  LOLLIPOPMouseOverTooltipsHtml09:"",
+  LOLLIPOPMouseOverTooltipsPosition:"absolute",
+  LOLLIPOPMouseOverTooltipsBackgroundColor:"white",
+  LOLLIPOPMouseOverTooltipsBorderStyle:"solid",
+  LOLLIPOPMouseOverTooltipsBorderWidth:1,
+  LOLLIPOPMouseOverTooltipsPadding:"3px",
+  LOLLIPOPMouseOverTooltipsBorderRadius:"3px",
+  LOLLIPOPMouseOverTooltipsOpacity:0.8,
+  ARCMouseEvent:true,
+  ARCMouseClickDisplay:false,
+  ARCMouseClickColor:"none",
+  ARCMouseClickArcOpacity: "none",
+  ARCMouseClickArcStrokeColor: "none",
+  ARCMouseClickArcStrokeWidth:"none",
+  ARCMouseClickTextFromData: "first",
+  ARCMouseClickTextOpacity:0,
+  ARCMouseClickTextColor: "none",
+  ARCMouseClickTextSize: 0,
+  ARCMouseClickTextPostionX: 0,
+  ARCMouseClickTextPostionY: 0,
+  ARCMouseClickTextDrag: true,
+  ARCMouseDownDisplay:false,
+  ARCMouseDownColor:"none",
+  ARCMouseDownArcOpacity: "none",
+  ARCMouseDownArcStrokeColor: "none",
+  ARCMouseDownArcStrokeWidth:"none",
+  ARCMouseEnterDisplay:false,
+  ARCMouseEnterColor:"none",
+  ARCMouseEnterArcOpacity: "none",
+  ARCMouseEnterArcStrokeColor: "none",
+  ARCMouseEnterArcStrokeWidth:"none",
+  ARCMouseLeaveDisplay:false,
+  ARCMouseLeaveColor:"none",
+  ARCMouseLeaveArcOpacity: "none",
+  ARCMouseLeaveArcStrokeColor: "none",
+  ARCMouseLeaveArcStrokeWidth:"none",
+  ARCMouseMoveDisplay:false,
+  ARCMouseMoveColor:"none",
+  ARCMouseMoveArcOpacity: "none",
+  ARCMouseMoveArcStrokeColor: "none",
+  ARCMouseMoveArcStrokeWidth:"none",
+  ARCMouseOutDisplay:true,
+  ARCMouseOutAnimationTime:700,
+  ARCMouseOutColor:"none",
+  ARCMouseOutArcOpacity: 1,
+  ARCMouseOutArcStrokeColor: "#9400D3",
+  ARCMouseOutArcStrokeWidth:0,
+  ARCMouseUpDisplay:false,
+  ARCMouseUpColor:"none",
+  ARCMouseUpArcOpacity: "none",
+  ARCMouseUpArcStrokeColor: "none",
+  ARCMouseUpArcStrokeWidth:"none",
+  ARCMouseOverDisplay:true,
+  ARCMouseOverColor:"red",
+  ARCMouseOverArcOpacity: 1,
+  ARCMouseOverArcStrokeColor: "#F26223",
+  ARCMouseOverArcStrokeWidth:3,
+  ARCMouseOverTooltipsHtml01:"item : ",
+  ARCMouseOverTooltipsHtml02:"<br>start : ",
+  ARCMouseOverTooltipsHtml03:"<br>end : ",
+  ARCMouseOverTooltipsHtml04:"<br>des : ",
+  ARCMouseOverTooltipsHtml05:" ",
+  ARCMouseOverTooltipsPosition:"absolute",
+  ARCMouseOverTooltipsBackgroundColor:"white",
+  ARCMouseOverTooltipsBorderStyle:"solid",
+  ARCMouseOverTooltipsBorderWidth:1,
+  ARCMouseOverTooltipsPadding:"3px",
+  ARCMouseOverTooltipsBorderRadius:"3px",
+  ARCMouseOverTooltipsOpacity:0.8,
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);
+  NGCircos01.draw_genome(NGCircos01.genomeLength2);
+</script>
+<script src="./lib/saveSvgAsPng.js"></script>
+<script>
+
+      (function(){
+        var downloadImg = getEle(".download-img"),
+          imgName = getEle("."+NGCircos01.svgClassName);
+
+        //          imgScale = getEle(".img-scale");
+
+        downloadImg.addEventListener("click",function(){
+          var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+//          saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+          saveSvgAsPng(mySvg, oImgName+".png");
+
+        })
+
+        function getEle(obj){
+          var d = document;
+          return d.querySelector(obj);
+        }
+      })()
+</script></xmp></pre>
+</ul>
+
+<h3>4. Visualization of REDIRECT data using NG-Circos<a class="headerlink"></a></h3>
+<button class="svg-action-btn download-img" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black">Download png ↓</button>
+<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './lib/svg-crowbar.js'); } else { e.setAttribute('src', './lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black" >Download svg ↓</a>
+<div id="NGCircos"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="NGCircos"></div>
+                </div>
+            </div>
+<!-- Data configuration -->
+<script src="./lib/jquery.js"></script>
+<script src="./lib/d3.js"></script>
+<script src="./lib/NGCircos.js"></script>
+<script src="js/REDIRECT01.js"></script>
+<!-- Genome configuration -->
+<script>
+var ARC01 = [ "ARC01" , {
+innerRadius:240,
+outerRadius:256,
+} , [
+{chr:"EGFR",start:"57",end:"167",color:"#FFBB77",des:"Recep_L_domain"},
+{chr:"EGFR",start:"185",end:"338",color:"#FF7F0E",des:"Furin-like_domain"},
+{chr:"EGFR",start:"361",end:"480",color:"#FFBB77",des:"Recep_L_domain"},
+{chr:"EGFR",start:"505",end:"636",color:"#1F77B4",des:"GF_recep_IV_domain"},
+{chr:"EGFR",start:"713",end:"965",color:"#AEC6E7",des:"Pkinase_Tyr_domain"},
+]];
+</script>
+<!-- Genome configuration -->
+<script>
+  var NGCircosGenome = [[
+  ["EGFR",1211],
+  ]];
+  NGCircos01 = new NGCircos(LOLLIPOP01,ARC01, NGCircosGenome,{
+  target:"NGCircos",
+  svgWidth:900,
+  svgHeight:600,
+  svgClassName:"lollipop",
+  chrPad:0.04,
+  innerRadius:246,
+  outerRadius:250,
+  zoom:true,
+  genomeFillColor:["#999999"],
+  ticks:{
+  display:false,
+  len:5,
+  color:"#000",
+  textSize:10,
+  textColor:"#000",
+  scale:30000000,
+  realLength:false,
+  },
+  genomeLabel:{
+  display:true,
+  textSize:15,
+  textColor:"#000",
+  dx:0.028,
+  dy:"-0.55em",
+  },
+  genomeBorder:{
+  display:true,
+  borderColor:"#000",
+  borderSize:0.5,
+  },
+  TEXTModuleDragEvent:false,
+  LOLLIPOPxlink:true,
+  LOLLIPOPMouseEvent:true,
+  LOLLIPOPMouseClickDisplay:false,
+  LOLLIPOPMouseClickColor:"none",
+  LOLLIPOPMouseClickCircleSize: "none",
+  LOLLIPOPMouseClickCircleOpacity: "none",
+  LOLLIPOPMouseClickCircleStrokeColor: "none",
+  LOLLIPOPMouseClickCircleStrokeWidth:"none",
+  LOLLIPOPMouseClickTextFromData: "first",
+  LOLLIPOPMouseClickTextOpacity:0,
+  LOLLIPOPMouseClickTextColor: "none",
+  LOLLIPOPMouseClickTextSize: 0,
+  LOLLIPOPMouseClickTextPostionX: 0,
+  LOLLIPOPMouseClickTextPostionY: 0,
+  LOLLIPOPMouseClickTextDrag: true,
+  LOLLIPOPMouseDownDisplay:false,
+  LOLLIPOPMouseDownColor:"none",
+  LOLLIPOPMouseDownCircleSize: "none",
+  LOLLIPOPMouseDownCircleOpacity: "none",
+  LOLLIPOPMouseDownCircleStrokeColor: "none",
+  LOLLIPOPMouseDownCircleStrokeWidth:"none",
+  LOLLIPOPMouseEnterDisplay:false,
+  LOLLIPOPMouseEnterColor:"none",
+  LOLLIPOPMouseEnterCircleSize: "none",
+  LOLLIPOPMouseEnterCircleOpacity: "none",
+  LOLLIPOPMouseEnterCircleStrokeColor: "none",
+  LOLLIPOPMouseEnterCircleStrokeWidth:"none",
+  LOLLIPOPMouseLeaveDisplay:false,
+  LOLLIPOPMouseLeaveColor:"none",
+  LOLLIPOPMouseLeaveCircleSize: "none",
+  LOLLIPOPMouseLeaveCircleOpacity: "none",
+  LOLLIPOPMouseLeaveCircleStrokeColor: "none",
+  LOLLIPOPMouseLeaveCircleStrokeWidth:"none",
+  LOLLIPOPMouseMoveDisplay:false,
+  LOLLIPOPMouseMoveColor:"none",
+  LOLLIPOPMouseMoveCircleSize: "none",
+  LOLLIPOPMouseMoveCircleOpacity: "none",
+  LOLLIPOPMouseMoveCircleStrokeColor: "none",
+  LOLLIPOPMouseMoveCircleStrokeWidth:"none",
+  LOLLIPOPMouseOutDisplay:true,
+  LOLLIPOPMouseOutAnimationTime:700,
+  LOLLIPOPMouseOutColor:"none",
+  LOLLIPOPMouseOutCircleSize: "none",
+  LOLLIPOPMouseOutCircleOpacity: 1,
+  LOLLIPOPMouseOutCircleStrokeColor: "#999999",
+  LOLLIPOPMouseOutCircleStrokeWidth:1,
+  LOLLIPOPMouseUpDisplay:false,
+  LOLLIPOPMouseUpColor:"none",
+  LOLLIPOPMouseUpCircleSize: "none",
+  LOLLIPOPMouseUpCircleOpacity: "none",
+  LOLLIPOPMouseUpCircleStrokeColor: "none",
+  LOLLIPOPMouseUpCircleStrokeWidth:"none",
+  LOLLIPOPMouseOverDisplay:true,
+  LOLLIPOPMouseOverColor:"red",
+  LOLLIPOPMouseOverCircleSize: 5,
+  LOLLIPOPMouseOverCircleOpacity: 1,
+  LOLLIPOPMouseOverCircleStrokeColor: "#F26223",
+  LOLLIPOPMouseOverCircleStrokeWidth:3,
+  LOLLIPOPMouseOverTooltipsHtml01:"protein : ",
+  LOLLIPOPMouseOverTooltipsHtml02:"<br>chr : ",
+  LOLLIPOPMouseOverTooltipsHtml03:"<br>pos : ",
+  LOLLIPOPMouseOverTooltipsHtml04:"<br>strand : ",
+  LOLLIPOPMouseOverTooltipsHtml05:"<br>CancerTypeNumber : ",
+  LOLLIPOPMouseOverTooltipsHtml06:"<br>AA_pos : ",
+  LOLLIPOPMouseOverTooltipsHtml07:"<br>AA_change : ",
+  LOLLIPOPMouseOverTooltipsHtml08:"<br>Consequence : ",
+  LOLLIPOPMouseOverTooltipsHtml09:"",
+  LOLLIPOPMouseOverTooltipsPosition:"absolute",
+  LOLLIPOPMouseOverTooltipsBackgroundColor:"white",
+  LOLLIPOPMouseOverTooltipsBorderStyle:"solid",
+  LOLLIPOPMouseOverTooltipsBorderWidth:1,
+  LOLLIPOPMouseOverTooltipsPadding:"3px",
+  LOLLIPOPMouseOverTooltipsBorderRadius:"3px",
+  LOLLIPOPMouseOverTooltipsOpacity:0.8,
+  ARCMouseEvent:true,
+  ARCMouseClickDisplay:false,
+  ARCMouseClickColor:"none",
+  ARCMouseClickArcOpacity: "none",
+  ARCMouseClickArcStrokeColor: "none",
+  ARCMouseClickArcStrokeWidth:"none",
+  ARCMouseClickTextFromData: "first",
+  ARCMouseClickTextOpacity:0,
+  ARCMouseClickTextColor: "none",
+  ARCMouseClickTextSize: 0,
+  ARCMouseClickTextPostionX: 0,
+  ARCMouseClickTextPostionY: 0,
+  ARCMouseClickTextDrag: true,
+  ARCMouseDownDisplay:false,
+  ARCMouseDownColor:"none",
+  ARCMouseDownArcOpacity: "none",
+  ARCMouseDownArcStrokeColor: "none",
+  ARCMouseDownArcStrokeWidth:"none",
+  ARCMouseEnterDisplay:false,
+  ARCMouseEnterColor:"none",
+  ARCMouseEnterArcOpacity: "none",
+  ARCMouseEnterArcStrokeColor: "none",
+  ARCMouseEnterArcStrokeWidth:"none",
+  ARCMouseLeaveDisplay:false,
+  ARCMouseLeaveColor:"none",
+  ARCMouseLeaveArcOpacity: "none",
+  ARCMouseLeaveArcStrokeColor: "none",
+  ARCMouseLeaveArcStrokeWidth:"none",
+  ARCMouseMoveDisplay:false,
+  ARCMouseMoveColor:"none",
+  ARCMouseMoveArcOpacity: "none",
+  ARCMouseMoveArcStrokeColor: "none",
+  ARCMouseMoveArcStrokeWidth:"none",
+  ARCMouseOutDisplay:true,
+  ARCMouseOutAnimationTime:700,
+  ARCMouseOutColor:"none",
+  ARCMouseOutArcOpacity: 1,
+  ARCMouseOutArcStrokeColor: "#9400D3",
+  ARCMouseOutArcStrokeWidth:0,
+  ARCMouseUpDisplay:false,
+  ARCMouseUpColor:"none",
+  ARCMouseUpArcOpacity: "none",
+  ARCMouseUpArcStrokeColor: "none",
+  ARCMouseUpArcStrokeWidth:"none",
+  ARCMouseOverDisplay:true,
+  ARCMouseOverColor:"red",
+  ARCMouseOverArcOpacity: 1,
+  ARCMouseOverArcStrokeColor: "#F26223",
+  ARCMouseOverArcStrokeWidth:3,
+  ARCMouseOverTooltipsHtml01:"item : ",
+  ARCMouseOverTooltipsHtml02:"<br>start : ",
+  ARCMouseOverTooltipsHtml03:"<br>end : ",
+  ARCMouseOverTooltipsHtml04:"<br>des : ",
+  ARCMouseOverTooltipsHtml05:" ",
+  ARCMouseOverTooltipsPosition:"absolute",
+  ARCMouseOverTooltipsBackgroundColor:"white",
+  ARCMouseOverTooltipsBorderStyle:"solid",
+  ARCMouseOverTooltipsBorderWidth:1,
+  ARCMouseOverTooltipsPadding:"3px",
+  ARCMouseOverTooltipsBorderRadius:"3px",
+  ARCMouseOverTooltipsOpacity:0.8,
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);
+  NGCircos01.draw_genome(NGCircos01.genomeLength2);
+</script>
+<script src="./lib/saveSvgAsPng.js"></script>
+<script>
+
+      (function(){
+        var downloadImg = getEle(".download-img"),
+          imgName = getEle("."+NGCircos01.svgClassName);
+
+        //          imgScale = getEle(".img-scale");
+
+        downloadImg.addEventListener("click",function(){
+          var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+//          saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+          saveSvgAsPng(mySvg, oImgName+".png");
+
+        })
+
+        function getEle(obj){
+          var d = document;
+          return d.querySelector(obj);
+        }
+      })()
+</script>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

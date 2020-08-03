@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>NGCircos.js</title>
+    <link href="css/bootstrap.min.css " rel="stylesheet">
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+    <link href="css/timeline.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/morris.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/google-code-prettify.css" rel="stylesheet">
+    <script src="css/jquery.min.js"></script>
+    <script src="css/bootstrap.min.js"></script>
+    <script src="css/metisMenu.min.js"></script>
+    <script src="css/raphael-min.js"></script>
+    <script src="css/morris.min.js"></script>
+    <script src="css/sb-admin-2.js"></script>
+    <script src="css/google-code-prettify.js"></script>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body onload="prettyPrint()">
+    <div id="wrapper">
+
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="index.html"><i class="fa fa-dashboard fa-fw"></i>Tutorials - <text>Step-by-step Guide for 21 Modules in NG-Circos</text></a>
+          </div>
+          <div class="navbar-default sidebar" role="navigation">
+              <div class="sidebar-nav navbar-collapse">
+                  <ul class="nav" id="side-menu">
+                      <li><a href="https://wlcb.oit.uci.edu/NG-Circos"><i class="fa fa-dashboard fa-fw"></i> Home </a></li>
+                      <li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i> ARC module </a></li>
+                      <li><a href="auxiliaryline.html"><i class="fa fa-dashboard fa-fw"></i> AUXILIARYLINE module </a></li>
+                      <li><a href="background.html"><i class="fa fa-dashboard fa-fw"></i> BACKGROUND module </a></li>
+                      <li><a href="bubble.html"><i class="fa fa-dashboard fa-fw"></i> BUBBLE module </a></li>
+                      <li><a href="chord.html"><i class="fa fa-dashboard fa-fw"></i> CHORD module </a></li>
+                      <li><a href="cnv.html"><i class="fa fa-dashboard fa-fw"></i> CNV module </a></li>
+                      <li><a href="combination.html"><i class="fa fa-dashboard fa-fw"></i> COMBINATION module </a></li>
+                      <li><a href="compare.html"><i class="fa fa-dashboard fa-fw"></i> COMPARE module </a></li>
+                      <li><a href="download.html"><i class="fa fa-dashboard fa-fw"></i> DOWNLOAD module </a></li>
+                      <li><a href="gene.html"><i class="fa fa-dashboard fa-fw"></i> GENE module </a></li>
+                      <li><a href="heatmap.html"><i class="fa fa-dashboard fa-fw"></i> HEATMAP module </a></li>
+                      <li><a href="histogram.html"><i class="fa fa-dashboard fa-fw"></i> HISTOGRAM module </a></li>
+                      <li><a href="legend.html"><i class="fa fa-dashboard fa-fw"></i> LEGEND module </a></li>
+                      <li><a href="line.html"><i class="fa fa-dashboard fa-fw"></i> LINE module </a></li>
+                      <li><a href="link.html"><i class="fa fa-dashboard fa-fw"></i> LINK module </a></li>
+                      <li><a href="lollipop.html"><i class="fa fa-dashboard fa-fw"></i> LOLLIPOP module </a></li>
+                      <li><a href="redirect.html"><i class="fa fa-dashboard fa-fw"></i> REDIRECT module </a></li>
+                      <li><a href="scatter.html"><i class="fa fa-dashboard fa-fw"></i> SCATTER module </a></li>
+                      <li><a href="snp.html"><i class="fa fa-dashboard fa-fw"></i> SNP module </a></li>
+                      <li><a href="text.html"><i class="fa fa-dashboard fa-fw"></i> TEXT module </a></li>
+                      <li><a href="wig.html"><i class="fa fa-dashboard fa-fw"></i> WIG module </a></li>
+                      <li><a href="CbioPortal.html"><i class="fa fa-dashboard fa-fw"></i> CbioPortal demo </a></li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Display a WIG module step by step </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>0. Download all files in this tutorial.</h3>
+                    <p>Download <a href="./download/WIG.zip" style="font-size: 20px"> WIG.zip</a> and click *.html file(in WIG.zip) to open this demo in local browser!.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                   <h3>1. Input data.</h3>
+                   <p>
+<ul class="simple">
+<h4>Example file: <a href="data/WIG01.txt">WIG01.txt</a></h4>
+<div class="section">
+<h4>Data structure<a class="headerlink" title="Permalink to this headline"></a></h4>
+<p>Users should prepare the input data in the following format (separated by tabs).</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>#chr posStart   posEnd       value
+1    813468   813470 6
+1    3383745   3383747       3
+1    6157646   6157648       3
+1    24793116   24793118     9
+......
+X    136860114   136860116   3
+X    138413104   138413106   9
+X    149344414   149344416   9
+X    154203563   154203565   5
+</pre></div>
+</div>
+<p>Following fields are required:</p>
+<ul class="simple">
+<li><p>The 1 column(<code class="docutils literal notranslate"><span class="pre">chr</span></code>) is the name of the chromosome.</p></li>
+<li><p>The 2 column(<code class="docutils literal notranslate"><span class="pre">posStart</span></code>) is the start position of the sequence.</p></li>
+<li><p>The 3 column(<code class="docutils literal notranslate"><span class="pre">posEnd</span></code>) is the end position of the sequence.</p></li>
+<li><p>The 4 column(<code class="docutils literal notranslate"><span class="pre">value</span></code>) is the value of the point.</p></li>
+</ul>
+</div>
+</ul>
+
+<h3>2. Prepare module through python script.</h3>
+<ul class="simple">
+    <h4> Use:</h4>
+    <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python NGCircos_PrepareData.py WIG WIG01.txt &gt; WIG01.js</pre></div>
+    <h4> Example file: <a href="data/WIG01.txt">WIG01.js</a></h4>
+    <h4> Details in js file:</h4>
+    <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>var WIG01 = [ "WIG01" , {
+  maxRadius: 220,
+  minRadius: 170,
+  WIGStrokeColor: "#EEAD0E",
+  WIGColor: "red",
+  WIGWIGStrokeType: "cardinal",
+} , [
+  {chr: "1", pos: "813468", value: "6"},
+  {chr: "1", pos: "813469", value: "6"},
+  {chr: "1", pos: "813470", value: "6"},
+  {chr: "1", pos: "3383745", value: "3"},
+  ......
+  {chr: "X", pos: "136860114", value: "3"},
+  {chr: "X", pos: "136860115", value: "3"},
+  {chr: "X", pos: "136860116", value: "3"},
+  {chr: "X", pos: "138413104", value: "9"},
+]];
+    </pre></div></div>
+    <h5> Note: explaination for each parameter is available in document</h5>
+</ul>
+
+<h3>3. Including WIG data<a class="headerlink"></a></h3>
+<ul>
+    <h4>Use &lt;script&gt; tag to include WIG01.js.</h4>
+    <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/WIG01.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> </pre></div>
+    </div>
+</ul>
+
+<h3>4. Initialize NG-Circos with WIG data<a class="headerlink"></a></h3>
+<ul>
+    <h4>Prepare a &lt;div&gt; tag with <strong>“example”</strong> id to set the picture position your will draw in html, e.g.:</h4>
+    <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">NGCircos01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NGCircos</span><span class="p">(</span><span class="nx">WIG01</span><span class="p">,</span><span class="nx">NGCircosGenome</span><span class="p">,{</span> <span class="c1">// Initialize with &quot;WIG01&quot; data tag</span></pre></div>
+    </div>
+</ul>
+
+<h3>5. Source code<a class="headerlink"></a></h3>
+<ul>
+    <h4> When step 1 to 4 are finished, the configuration for NGCircos: </h4>
+    <pre class="prettyprint"><xmp><button class="svg-action-btn download-img" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black">Download png ↓</button>
+<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './lib/svg-crowbar.js'); } else { e.setAttribute('src', './lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black" >Download svg ↓</a>
+<div id="NGCircos"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="NGCircos"></div>
+                </div>
+            </div>
+<!-- Data configuration -->
+<script src="./lib/jquery.js"></script>
+<script src="./lib/d3.js"></script>
+<script src="./lib/NGCircos.js"></script>
+<script src="js/WIG01.js"></script>
+<!-- Genome configuration -->
+<script>
+var BACKGROUND01 = [ "BACKGROUND01" , {
+  BginnerRadius: 220,
+  BgouterRadius: 170,
+  BgFillColor: "#F2F2F2",
+  BgborderColor : "#000",
+  BgborderSize : 0.3
+}];
+
+  var NGCircosGenome = [      // Configure your own genome here.
+    [
+     ["1" , 249250621],
+     ["2" , 243199373],
+     ["3" , 198022430],
+     ["4" , 191154276],
+     ["5" , 180915260],
+     ["6" , 171115067],
+     ["7" , 159138663],
+     ["8" , 146364022],
+     ["9" , 141213431],
+     ["10" , 135534747],
+     ["11" , 135006516],
+     ["12" , 133851895],
+     ["13" , 115169878],
+     ["14" , 107349540],
+     ["15" , 102531392],
+     ["16" , 90354753],
+     ["17" , 81195210],
+     ["18" , 78077248],
+     ["19" , 59128983],
+     ["20" , 63025520],
+     ["21" , 48129895],
+     ["22" , 51304566],
+     ["X" , 155270560],
+     ["Y" , 59373566]
+    ]
+  ];
+  NGCircos01 = new NGCircos(BACKGROUND01,WIG01,NGCircosGenome,{       // Initialize NGCircos.js with "NGCircosGenome" and Main configuration
+     target : "NGCircos",                              // Main configuration "target"
+     svgWidth : 900,                                  // Main configuration "svgWidth"
+     svgHeight : 600,                                 // Main configuration "svgHeight"
+     WIGMouseEvent : true,
+     WIGMouseClickDisplay : false,
+     WIGMouseClickLineOpacity : 1,           //"none"
+     WIGMouseClickLineStrokeColor : "red",   //"none"
+     WIGMouseClickLineStrokeWidth : "none",  //"none"
+     WIGMouseClickFillColor : "none",  //"none"
+     WIGMouseDownDisplay : false,
+     WIGMouseDownLineOpacity : 1,           //"none"
+     WIGMouseDownLineStrokeColor : "red",   //"none"
+     WIGMouseDownLineStrokeWidth : "none",  //"none"
+     WIGMouseDownFillColor : "none",  //"none"
+     WIGMouseEnterDisplay : false,
+     WIGMouseEnterLineOpacity : 1,           //"none"
+     WIGMouseEnterLineStrokeColor : "red",   //"none"
+     WIGMouseEnterLineStrokeWidth : "none",  //"none"
+     WIGMouseEnterFillColor : "none",  //"none"
+     WIGMouseLeaveDisplay : false,
+     WIGMouseLeaveLineOpacity : 1,           //"none"
+     WIGMouseLeaveLineStrokeColor : "red",   //"none"
+     WIGMouseLeaveLineStrokeWidth : "none",  //"none"
+     WIGMouseLeaveFillColor : "none",  //"none"
+     WIGMouseMoveDisplay : false,
+     WIGMouseMoveLineOpacity : 1,           //"none"
+     WIGMouseMoveLineStrokeColor : "red",   //"none"
+     WIGMouseMoveLineStrokeWidth : "none",  //"none"
+     WIGMouseMoveFillColor : "none",  //"none"
+     WIGMouseOutDisplay : true,
+     WIGMouseOutAnimationTime : 500,
+     WIGMouseOutLineOpacity : 1.0,   //"none"
+     WIGMouseOutLineStrokeColor : "red",    //"none"
+     WIGMouseOutLineStrokeWidth : "none",    //"none"
+     WIGMouseOutFillColor : "none",  //"none"
+     WIGMouseUpDisplay : false,
+     WIGMouseUpLineOpacity : 1,           //"none"
+     WIGMouseUpLineStrokeColor : "red",   //"none"
+     WIGMouseUpLineStrokeWidth : "none",  //"none"
+     WIGMouseUpFillColor : "none",  //"none"
+     WIGMouseOverDisplay : false,
+     WIGMouseOverLineOpacity : 1,           //"none"
+     WIGMouseOverLineStrokeColor : "red",   //"none"
+     WIGMouseOverLineStrokeWidth : "none",  //"none"
+     WIGMouseOverFillColor : "none",  //"none"
+     WIGMouseOverTooltipsHtml01 : "Line",
+     WIGMouseOverTooltipsPosition : "absolute",
+     WIGMouseOverTooltipsBackgroundColor : "white",
+     WIGMouseOverTooltipsBorderStyle : "solid",
+     WIGMouseOverTooltipsBorderWidth : 0,
+     WIGMouseOverTooltipsPadding : "3px",
+     WIGMouseOverTooltipsBorderRadius : "3px",
+     WIGMouseOverTooltipsOpacity : 0.8,
+
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);  // NGCircos.js callback
+  NGCircos01.draw_genome(NGCircos01.genomeLength2); // NGCircos2.js callback second time
+</script>
+<script src="./lib/saveSvgAsPng.js"></script>
+<script>
+
+      (function(){
+        var downloadImg = getEle(".download-img"),
+          imgName = getEle("."+NGCircos01.svgClassName);
+
+        //          imgScale = getEle(".img-scale");
+
+        downloadImg.addEventListener("click",function(){
+          var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+//          saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+          saveSvgAsPng(mySvg, oImgName+".png");
+
+        })
+
+        function getEle(obj){
+          var d = document;
+          return d.querySelector(obj);
+        }
+      })()
+</script></xmp></pre>
+</ul>
+
+<h3>6. Visualization of WIG data using NG-Circos<a class="headerlink"></a></h3>
+<button class="svg-action-btn download-img" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black">Download png ↓</button>
+<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './lib/svg-crowbar.js'); } else { e.setAttribute('src', './lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black" >Download svg ↓</a>
+<div id="NGCircos"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="NGCircos"></div>
+                </div>
+            </div>
+<!-- Data configuration -->
+<script src="./lib/jquery.js"></script>
+<script src="./lib/d3.js"></script>
+<script src="./lib/NGCircos.js"></script>
+<script src="js/WIG01.js"></script>
+<!-- Genome configuration -->
+<script>
+var BACKGROUND01 = [ "BACKGROUND01" , {
+  BginnerRadius: 220,
+  BgouterRadius: 170,
+  BgFillColor: "#F2F2F2",
+  BgborderColor : "#000",
+  BgborderSize : 0.3
+}];
+
+  var NGCircosGenome = [      // Configure your own genome here.
+    [
+     ["1" , 249250621],
+     ["2" , 243199373],
+     ["3" , 198022430],
+     ["4" , 191154276],
+     ["5" , 180915260],
+     ["6" , 171115067],
+     ["7" , 159138663],
+     ["8" , 146364022],
+     ["9" , 141213431],
+     ["10" , 135534747],
+     ["11" , 135006516],
+     ["12" , 133851895],
+     ["13" , 115169878],
+     ["14" , 107349540],
+     ["15" , 102531392],
+     ["16" , 90354753],
+     ["17" , 81195210],
+     ["18" , 78077248],
+     ["19" , 59128983],
+     ["20" , 63025520],
+     ["21" , 48129895],
+     ["22" , 51304566],
+     ["X" , 155270560],
+     ["Y" , 59373566]
+    ]
+  ];
+  NGCircos01 = new NGCircos(BACKGROUND01,WIG01,NGCircosGenome,{       // Initialize NGCircos.js with "NGCircosGenome" and Main configuration
+     target : "NGCircos",                              // Main configuration "target"
+     svgWidth : 900,                                  // Main configuration "svgWidth"
+     svgHeight : 600,                                 // Main configuration "svgHeight"
+     WIGMouseEvent : true,
+     WIGMouseClickDisplay : false,
+     WIGMouseClickLineOpacity : 1,           //"none"
+     WIGMouseClickLineStrokeColor : "red",   //"none"
+     WIGMouseClickLineStrokeWidth : "none",  //"none"
+     WIGMouseClickFillColor : "none",  //"none"
+     WIGMouseDownDisplay : false,
+     WIGMouseDownLineOpacity : 1,           //"none"
+     WIGMouseDownLineStrokeColor : "red",   //"none"
+     WIGMouseDownLineStrokeWidth : "none",  //"none"
+     WIGMouseDownFillColor : "none",  //"none"
+     WIGMouseEnterDisplay : false,
+     WIGMouseEnterLineOpacity : 1,           //"none"
+     WIGMouseEnterLineStrokeColor : "red",   //"none"
+     WIGMouseEnterLineStrokeWidth : "none",  //"none"
+     WIGMouseEnterFillColor : "none",  //"none"
+     WIGMouseLeaveDisplay : false,
+     WIGMouseLeaveLineOpacity : 1,           //"none"
+     WIGMouseLeaveLineStrokeColor : "red",   //"none"
+     WIGMouseLeaveLineStrokeWidth : "none",  //"none"
+     WIGMouseLeaveFillColor : "none",  //"none"
+     WIGMouseMoveDisplay : false,
+     WIGMouseMoveLineOpacity : 1,           //"none"
+     WIGMouseMoveLineStrokeColor : "red",   //"none"
+     WIGMouseMoveLineStrokeWidth : "none",  //"none"
+     WIGMouseMoveFillColor : "none",  //"none"
+     WIGMouseOutDisplay : true,
+     WIGMouseOutAnimationTime : 500,
+     WIGMouseOutLineOpacity : 1.0,   //"none"
+     WIGMouseOutLineStrokeColor : "red",    //"none"
+     WIGMouseOutLineStrokeWidth : "none",    //"none"
+     WIGMouseOutFillColor : "none",  //"none"
+     WIGMouseUpDisplay : false,
+     WIGMouseUpLineOpacity : 1,           //"none"
+     WIGMouseUpLineStrokeColor : "red",   //"none"
+     WIGMouseUpLineStrokeWidth : "none",  //"none"
+     WIGMouseUpFillColor : "none",  //"none"
+     WIGMouseOverDisplay : false,
+     WIGMouseOverLineOpacity : 1,           //"none"
+     WIGMouseOverLineStrokeColor : "red",   //"none"
+     WIGMouseOverLineStrokeWidth : "none",  //"none"
+     WIGMouseOverFillColor : "none",  //"none"
+     WIGMouseOverTooltipsHtml01 : "Line",
+     WIGMouseOverTooltipsPosition : "absolute",
+     WIGMouseOverTooltipsBackgroundColor : "white",
+     WIGMouseOverTooltipsBorderStyle : "solid",
+     WIGMouseOverTooltipsBorderWidth : 0,
+     WIGMouseOverTooltipsPadding : "3px",
+     WIGMouseOverTooltipsBorderRadius : "3px",
+     WIGMouseOverTooltipsOpacity : 0.8,
+
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);  // NGCircos.js callback
+  NGCircos01.draw_genome(NGCircos01.genomeLength2); // NGCircos2.js callback second time
+</script>
+<script src="./lib/saveSvgAsPng.js"></script>
+<script>
+
+      (function(){
+        var downloadImg = getEle(".download-img"),
+          imgName = getEle("."+NGCircos01.svgClassName);
+
+        //          imgScale = getEle(".img-scale");
+
+        downloadImg.addEventListener("click",function(){
+          var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+//          saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+          saveSvgAsPng(mySvg, oImgName+".png");
+
+        })
+
+        function getEle(obj){
+          var d = document;
+          return d.querySelector(obj);
+        }
+      })()
+</script>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>NGCircos.js</title>
+    <link href="css/bootstrap.min.css " rel="stylesheet">
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+    <link href="css/timeline.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/morris.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/google-code-prettify.css" rel="stylesheet">
+    <script src="css/jquery.min.js"></script>
+    <script src="css/bootstrap.min.js"></script>
+    <script src="css/metisMenu.min.js"></script>
+    <script src="css/raphael-min.js"></script>
+    <script src="css/morris.min.js"></script>
+    <script src="css/sb-admin-2.js"></script>
+    <script src="css/google-code-prettify.js"></script>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body onload="prettyPrint()">
+    <div id="wrapper">
+
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="index.html"><i class="fa fa-dashboard fa-fw"></i>Tutorials - <text>Step-by-step Guide for 21 Modules in NG-Circos</text></a>
+          </div>
+          <div class="navbar-default sidebar" role="navigation">
+              <div class="sidebar-nav navbar-collapse">
+                  <ul class="nav" id="side-menu">
+                      <li><a href="https://wlcb.oit.uci.edu/NG-Circos"><i class="fa fa-dashboard fa-fw"></i> Home </a></li>
+                      <li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i> ARC module </a></li>
+                      <li><a href="auxiliaryline.html"><i class="fa fa-dashboard fa-fw"></i> AUXILIARYLINE module </a></li>
+                      <li><a href="background.html"><i class="fa fa-dashboard fa-fw"></i> BACKGROUND module </a></li>
+                      <li><a href="bubble.html"><i class="fa fa-dashboard fa-fw"></i> BUBBLE module </a></li>
+                      <li><a href="chord.html"><i class="fa fa-dashboard fa-fw"></i> CHORD module </a></li>
+                      <li><a href="cnv.html"><i class="fa fa-dashboard fa-fw"></i> CNV module </a></li>
+                      <li><a href="combination.html"><i class="fa fa-dashboard fa-fw"></i> COMBINATION module </a></li>
+                      <li><a href="compare.html"><i class="fa fa-dashboard fa-fw"></i> COMPARE module </a></li>
+                      <li><a href="download.html"><i class="fa fa-dashboard fa-fw"></i> DOWNLOAD module </a></li>
+                      <li><a href="gene.html"><i class="fa fa-dashboard fa-fw"></i> GENE module </a></li>
+                      <li><a href="heatmap.html"><i class="fa fa-dashboard fa-fw"></i> HEATMAP module </a></li>
+                      <li><a href="histogram.html"><i class="fa fa-dashboard fa-fw"></i> HISTOGRAM module </a></li>
+                      <li><a href="legend.html"><i class="fa fa-dashboard fa-fw"></i> LEGEND module </a></li>
+                      <li><a href="line.html"><i class="fa fa-dashboard fa-fw"></i> LINE module </a></li>
+                      <li><a href="link.html"><i class="fa fa-dashboard fa-fw"></i> LINK module </a></li>
+                      <li><a href="lollipop.html"><i class="fa fa-dashboard fa-fw"></i> LOLLIPOP module </a></li>
+                      <li><a href="redirect.html"><i class="fa fa-dashboard fa-fw"></i> REDIRECT module </a></li>
+                      <li><a href="scatter.html"><i class="fa fa-dashboard fa-fw"></i> SCATTER module </a></li>
+                      <li><a href="snp.html"><i class="fa fa-dashboard fa-fw"></i> SNP module </a></li>
+                      <li><a href="text.html"><i class="fa fa-dashboard fa-fw"></i> TEXT module </a></li>
+                      <li><a href="wig.html"><i class="fa fa-dashboard fa-fw"></i> WIG module </a></li>
+                      <li><a href="CbioPortal.html"><i class="fa fa-dashboard fa-fw"></i> CbioPortal demo </a></li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Display a LINK module step by step  </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>0. Download all files in this tutorial.</h3>
+                    <p>Download <a href="./download/LINK.zip" style="font-size: 20px"> LINK.zip</a> and click *.html file(in LINK.zip) to open this demo in local browser!.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                   <h3>1. Input data.</h3>
+<ul class="simple">
+<h4>Example file: <a href="data/LINK01.txt">LINK01.txt</a></h4>
+<div class="section">
+<h4>Data structure<a class="headerlink" title="Permalink to this headline"></a></h4>
+<p>Users should prepare the input data in the following format (separated by tabs).</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>#name   g1chr   g1start g1end   g1name  g2chr   g2start g2end   g2name
+FGFR3--TACC3    4       1795662 1808986 FGFR3   4       1723217 1746905 TACC3
+CCDC6--RET      10      43595894        43623714        RET     10      61552678        61666182        TACC3
+ETV6--NTRK3     12      11905384        12043977        ETV6    15      88420169        88799384        NTRK3
+EGFR--SEPT14    7       55086971        55273307        EGFR    7       55861237        55930482        SEPT14
+EML4--ALK       2       42472644        42557344        EML4    2       29416093        30143525        ALK
+ABL1--BCR       9       133589707       133761067       ABL1    22      23523148        23657706        BCR
+</pre></div>
+</div>
+<p>Following fields are required:</p>
+<ul class="simple">
+<li><p>The 1 column(<code class="docutils literal notranslate"><span class="pre">name</span></code>) is the name of the link.</p></li>
+<li><p>The 2 column(<code class="docutils literal notranslate"><span class="pre">g1chr</span></code>) is the chromosome of gene 1.</p></li>
+<li><p>The 3 column(<code class="docutils literal notranslate"><span class="pre">g1start</span></code>) is the start of gene 1.</p></li>
+<li><p>The 4 column(<code class="docutils literal notranslate"><span class="pre">g1end</span></code>) is the end of gene 1.</p></li>
+<li><p>The 5 column(<code class="docutils literal notranslate"><span class="pre">g1name</span></code>) is the name of gene 1.</p></li>
+<li><p>The 6 column(<code class="docutils literal notranslate"><span class="pre">g2chr</span></code>) is the chromosome of gene 2.</p></li>
+<li><p>The 7 column(<code class="docutils literal notranslate"><span class="pre">g2start</span></code>) is the start of gene 2.</p></li>
+<li><p>The 8 column(<code class="docutils literal notranslate"><span class="pre">g2end</span></code>) is the end of gene 2.</p></li>
+<li><p>The 9 column(<code class="docutils literal notranslate"><span class="pre">g2name</span></code>) is the name of gene 2.</p></li>
+</ul>
+</div>
+</ul>
+</div>
+</div>
+
+<h3>2. Prepare module through python script.</h3>
+<ul class="simple">
+    <h4> Use:</h4>
+    <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python NGCircos_PrepareData.py LINK LINK01.txt &gt; LINK01.js</pre></div>
+    <h4> Example file: <a href="data/LINK01.txt">LINK01.js</a></h4>
+    <h4> Details in js file:</h4>
+    <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>var LINK01 = [ "LINK01" , {
+    LinkRadius: 140,
+    LinkFillColor: "#F26223",
+    LinkWidth: 3,
+    LinkType:"Q",
+    displayLinkAxis: true,
+    LinkAxisColor: "#B8B8B8",
+    LinkAxisWidth: 0.5,
+    LinkAxisPad: 3,
+    displayLinkLabel: true,
+    LinkLabelColor: "red",
+    LinkLabelSize: 13,
+    LinkLabelPad: 8,
+    } , [
+    {fusion: "FGFR3--TACC3", g1chr: "4", g1start: "1795662", g1end: "1808986", g1name: "FGFR3", g2chr: "4", g2start: "1723217", g2end: "1746905", g2name: "TACC3"},
+    {fusion: "CCDC6--RET", g1chr: "10", g1start: "43595894", g1end: "43623714", g1name: "RET", g2chr: "10", g2start: "61552678", g2end: "61666182", g2name: "TACC3"},
+    {fusion: "ETV6--NTRK3", g1chr: "12", g1start: "11905384", g1end: "12043977", g1name: "ETV6", g2chr: "15", g2start: "88420169", g2end: "88799384", g2name: "NTRK3"},
+    {fusion: "EGFR--SEPT14", g1chr: "7", g1start: "55086971", g1end: "55273307", g1name: "EGFR", g2chr: "7", g2start: "55861237", g2end: "55930482", g2name: "SEPT14"},
+    {fusion: "EML4--ALK", g1chr: "2", g1start: "42472644", g1end: "42557344", g1name: "EML4", g2chr: "2", g2start: "29416093", g2end: "30143525", g2name: "ALK"},
+    {fusion: "ABL1--BCR", g1chr: "9", g1start: "133589707", g1end: "133761067", g1name: "ABL1", g2chr: "22", g2start: "23523148", g2end: "23657706", g2name: "BCR"},
+]];
+    </pre></div></div>
+    <h5> Note: explaination for each parameter is available in document</h5>
+    </div>
+</ul>
+
+<h3>3. Including LINK data<a class="headerlink"></a></h3>
+<ul>
+    <h4>Use &lt;script&gt; tag to include LINK01.js.</h4>
+    <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/LINK01.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> </pre></div>
+    </div>
+</ul>
+
+<h3>4. Initialize NG-Circos with LINK data<a class="headerlink"></a></h3>
+<ul>
+    <h4>Prepare a &lt;div&gt; tag with <strong>“example”</strong> id to set the picture position your will draw in html, e.g.:</h4>
+    <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">NGCircos01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NGCircos</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span><span class="nx">NGCircosGenome</span><span class="p">,{</span> <span class="c1">// Initialize with &quot;LINK01&quot; data tag</span></pre></div>
+    </div>
+</ul>
+
+<h3>5. Source code<a class="headerlink"></a></h3>
+<ul>
+    <h4> When step 1 to 4 are finished, the configuration for NGCircos: </h4>
+    <pre class="prettyprint"><xmp><button class="svg-action-btn download-img" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black">Download png ↓</button>
+<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './lib/svg-crowbar.js'); } else { e.setAttribute('src', './lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black" >Download svg ↓</a>
+<div id="NGCircos"></div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="NGCircos"></div>
+                </div>
+            </div>
+<!-- Data configuration -->
+<script src="./lib/jquery.js"></script>
+<script src="./lib/d3.js"></script>
+<script src="./lib/NGCircos.js"></script>
+<script src="js/LINK01.js"></script>
+<!-- Genome configuration -->
+<style>
+    .NGCircosLINKTooltip{
+    position: absolute;
+    width: 120;
+    height: auto;
+    font-family: simsun;
+    font-size: 14px;
+    text-align: center;
+    border-style: solid;
+    border-width: 3px;
+    background-color: red;
+    border-radius: 5px;
+    }
+</style>
+<script>
+  var NGCircosGenome = [      // Configure your own genome here.
+    [
+     ["1" , 249250621],
+     ["2" , 243199373],
+     ["3" , 198022430],
+     ["4" , 191154276],
+     ["5" , 180915260],
+     ["6" , 171115067],
+     ["7" , 159138663],
+     ["8" , 146364022],
+     ["9" , 141213431],
+     ["10" , 135534747],
+     ["11" , 135006516],
+     ["12" , 133851895],
+     ["13" , 115169878],
+     ["14" , 107349540],
+     ["15" , 102531392],
+     ["16" , 90354753],
+     ["17" , 81195210],
+     ["18" , 78077248],
+     ["19" , 59128983],
+     ["20" , 63025520],
+     ["21" , 48129895],
+     ["22" , 51304566],
+     ["X" , 155270560],
+     ["Y" , 59373566]
+    ]
+  ];
+  NGCircos01 = new NGCircos(LINK01,NGCircosGenome,{       // Initialize NGCircos.js with "NGCircosGenome" and Main configuration
+     target : "NGCircos",                              // Main configuration "target"
+     svgWidth : 900,                                  // Main configuration "svgWidth"
+     svgHeight : 600,                                 // Main configuration "svgHeight"
+     svgClassName: "NGCircos",                  // Main configuration "svgClassName"
+     LINKMouseEvent: true,
+     LINKMouseOutDisplay: true,
+     LINKMouseOutAnimationTime: 500,
+     LINKMouseOutOpacity: 1,
+     LINKMouseOutStrokeColor: "green",
+     LINKMouseOutStrokeWidth: 4,
+     LINKMouseOverDisplay: true,
+     LINKMouseOverStrokeColor: "green",
+     LINKMouseOverOpacity: 1,
+     LINKMouseOverStrokeWidth: 3,
+     LINKLabelDragEvent: false,
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);  // NGCircos.js callback
+  NGCircos01.draw_genome(NGCircos01.genomeLength2);
+</script>
+<script src="./lib/saveSvgAsPng.js"></script>
+<script>
+
+      (function(){
+        var downloadImg = getEle(".download-img"),
+          imgName = getEle("."+NGCircos01.svgClassName);
+
+        //          imgScale = getEle(".img-scale");
+
+        downloadImg.addEventListener("click",function(){
+          var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+//          saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+          saveSvgAsPng(mySvg, oImgName+".png");
+
+        })
+
+        function getEle(obj){
+          var d = document;
+          return d.querySelector(obj);
+        }
+      })()
+</script></xmp></pre>
+</ul>
+
+<h3>6. Visualization of LINK data using NG-Circos<a class="headerlink"></a></h3>
+<button class="svg-action-btn download-img" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black">Download png</button>
+<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './lib/svg-crowbar.js'); } else { e.setAttribute('src', './lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black" >Download svg </a>
+<div id="NGCircos"></div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="NGCircos"></div>
+                </div>
+            </div>
+<!-- Data configuration -->
+<script src="./lib/jquery.js"></script>
+<script src="./lib/d3.js"></script>
+<script src="./lib/NGCircos.js"></script>
+<script src="js/LINK01.js"></script>
+<!-- Genome configuration -->
+<style>
+    .NGCircosLINKTooltip{
+    position: absolute;
+    width: 120;
+    height: auto;
+    font-family: simsun;
+    font-size: 14px;
+    text-align: center;
+    border-style: solid;
+    border-width: 3px;
+    background-color: red;
+    border-radius: 5px;
+    }
+</style>
+<script>
+  var NGCircosGenome = [      // Configure your own genome here.
+    [
+     ["1" , 249250621],
+     ["2" , 243199373],
+     ["3" , 198022430],
+     ["4" , 191154276],
+     ["5" , 180915260],
+     ["6" , 171115067],
+     ["7" , 159138663],
+     ["8" , 146364022],
+     ["9" , 141213431],
+     ["10" , 135534747],
+     ["11" , 135006516],
+     ["12" , 133851895],
+     ["13" , 115169878],
+     ["14" , 107349540],
+     ["15" , 102531392],
+     ["16" , 90354753],
+     ["17" , 81195210],
+     ["18" , 78077248],
+     ["19" , 59128983],
+     ["20" , 63025520],
+     ["21" , 48129895],
+     ["22" , 51304566],
+     ["X" , 155270560],
+     ["Y" , 59373566]
+    ]
+  ];
+  NGCircos01 = new NGCircos(LINK01,NGCircosGenome,{       // Initialize NGCircos.js with "NGCircosGenome" and Main configuration
+     target : "NGCircos",                              // Main configuration "target"
+     svgWidth : 900,                                  // Main configuration "svgWidth"
+     svgHeight : 600,                                 // Main configuration "svgHeight"
+     svgClassName: "NGCircos",                  // Main configuration "svgClassName"
+     LINKMouseEvent: true,
+     LINKMouseOutDisplay: true,
+     LINKMouseOutAnimationTime: 500,
+     LINKMouseOutOpacity: 1,
+     LINKMouseOutStrokeColor: "green",
+     LINKMouseOutStrokeWidth: 4,
+     LINKMouseOverDisplay: true,
+     LINKMouseOverStrokeColor: "green",
+     LINKMouseOverOpacity: 1,
+     LINKMouseOverStrokeWidth: 3,
+     LINKLabelDragEvent: false,
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);
+  NGCircos01.draw_genome(NGCircos01.genomeLength2);
+</script>
+<script src=./lib/saveSvgAsPng.js></script>
+<script>
+
+      (function(){
+        var downloadImg = getEle(".download-img"),
+          imgName = getEle("."+NGCircos01.svgClassName);
+
+        //          imgScale = getEle(".img-scale");
+
+        downloadImg.addEventListener("click",function(){
+          var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+//          saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+          saveSvgAsPng(mySvg, oImgName+".png");
+
+        })
+
+        function getEle(obj){
+          var d = document;
+          return d.querySelector(obj);
+        }
+      })()
+</script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

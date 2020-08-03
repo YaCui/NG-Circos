@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>NGCircos.js</title>
+    <link href="css/bootstrap.min.css " rel="stylesheet">
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+    <link href="css/timeline.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/morris.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/google-code-prettify.css" rel="stylesheet">
+    <script src="css/jquery.min.js"></script>
+    <script src="css/bootstrap.min.js"></script>
+    <script src="css/metisMenu.min.js"></script>
+    <script src="css/raphael-min.js"></script>
+    <script src="css/morris.min.js"></script>
+    <script src="css/sb-admin-2.js"></script>
+    <script src="css/google-code-prettify.js"></script>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body onload="prettyPrint()">
+    <div id="wrapper">
+
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="index.html"><i class="fa fa-dashboard fa-fw"></i>Tutorials - <text>Step-by-step Guide for 21 Modules in NG-Circos</text></a>
+          </div>
+          <div class="navbar-default sidebar" role="navigation">
+              <div class="sidebar-nav navbar-collapse">
+                  <ul class="nav" id="side-menu">
+                      <li><a href="https://wlcb.oit.uci.edu/NG-Circos"><i class="fa fa-dashboard fa-fw"></i> Home </a></li>
+                      <li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i> ARC module </a></li>
+                      <li><a href="auxiliaryline.html"><i class="fa fa-dashboard fa-fw"></i> AUXILIARYLINE module </a></li>
+                      <li><a href="background.html"><i class="fa fa-dashboard fa-fw"></i> BACKGROUND module </a></li>
+                      <li><a href="bubble.html"><i class="fa fa-dashboard fa-fw"></i> BUBBLE module </a></li>
+                      <li><a href="chord.html"><i class="fa fa-dashboard fa-fw"></i> CHORD module </a></li>
+                      <li><a href="cnv.html"><i class="fa fa-dashboard fa-fw"></i> CNV module </a></li>
+                      <li><a href="combination.html"><i class="fa fa-dashboard fa-fw"></i> COMBINATION module </a></li>
+                      <li><a href="compare.html"><i class="fa fa-dashboard fa-fw"></i> COMPARE module </a></li>
+                      <li><a href="download.html"><i class="fa fa-dashboard fa-fw"></i> DOWNLOAD module </a></li>
+                      <li><a href="gene.html"><i class="fa fa-dashboard fa-fw"></i> GENE module </a></li>
+                      <li><a href="heatmap.html"><i class="fa fa-dashboard fa-fw"></i> HEATMAP module </a></li>
+                      <li><a href="histogram.html"><i class="fa fa-dashboard fa-fw"></i> HISTOGRAM module </a></li>
+                      <li><a href="legend.html"><i class="fa fa-dashboard fa-fw"></i> LEGEND module </a></li>
+                      <li><a href="line.html"><i class="fa fa-dashboard fa-fw"></i> LINE module </a></li>
+                      <li><a href="link.html"><i class="fa fa-dashboard fa-fw"></i> LINK module </a></li>
+                      <li><a href="lollipop.html"><i class="fa fa-dashboard fa-fw"></i> LOLLIPOP module </a></li>
+                      <li><a href="redirect.html"><i class="fa fa-dashboard fa-fw"></i> REDIRECT module </a></li>
+                      <li><a href="scatter.html"><i class="fa fa-dashboard fa-fw"></i> SCATTER module </a></li>
+                      <li><a href="snp.html"><i class="fa fa-dashboard fa-fw"></i> SNP module </a></li>
+                      <li><a href="text.html"><i class="fa fa-dashboard fa-fw"></i> TEXT module </a></li>
+                      <li><a href="wig.html"><i class="fa fa-dashboard fa-fw"></i> WIG module </a></li>
+                      <li><a href="CbioPortal.html"><i class="fa fa-dashboard fa-fw"></i> CbioPortal demo </a></li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Display a HEATMAP module step by step </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>0. Download all files in this tutorial.</h3>
+                    <p>Download <a href="./download/HEATMAP.zip" style="font-size: 20px"> HEATMAP.zip</a> and click *.html file(in HEATMAP.zip) to open this demo in local browser!.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                   <h3>1. Input data.</h3>
+                   <p>
+<ul class="simple">
+<h4>Example file: <a href="data/HEATMAP01.txt">HEATMAP01.txt</a></h4>
+<div class="section">
+<h4>Data structure<a class="headerlink" title="Permalink to this headline"></a></h4>
+<p>Users should prepare the input data in the following format (separated by tabs).</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>#chr    start   end     name    value
+2L      1       1011544 test heatmap    0.8
+2L      1011548 2011544 test heatmap    0.3
+2L      2011548 3011544 test heatmap    0.1
+2L      2011545 2011546 test heatmap    0.01
+......
+X       18011548        19011544        test heatmap    0.83
+X       19011548        20011544        test heatmap    0.39
+X       20011548        21146708        test heatmap    0.49
+X       21011548        22422827        test heatmap    0.83
+</pre></div>
+</div>
+<p>Following fields are required:</p>
+<ul class="simple">
+<li><p>The 1 column(<code class="docutils literal notranslate"><span class="pre">chr</span></code>) is the name of the chromosome.</p></li>
+<li><p>The 2 column(<code class="docutils literal notranslate"><span class="pre">start</span></code>) is the start of the region.</p></li>
+<li><p>The 3 column(<code class="docutils literal notranslate"><span class="pre">end</span></code>) is the end of the region.</p></li>
+<li><p>The 4 column(<code class="docutils literal notranslate"><span class="pre">name</span></code>) is the name of the region.</p></li>
+<li><p>The 5 column(<code class="docutils literal notranslate"><span class="pre">value</span></code>) is the value of the region.</p></li>
+</ul>
+</div>
+</ul>
+
+<h3>2. Prepare module through python script.</h3>
+<ul class="simple">
+    <h4> Use:</h4>
+    <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python NGCircos_PrepareData.py HEATMAP HEATMAP01.txt &gt; HEATMAP01.js</pre></div>
+    <h4> Example file: <a href="data/HEATMAP01.txt">HEATMAP01.js</a></h4>
+    <h4> Details in js file:</h4>
+    <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>var HEATMAP01 = [ "HEATMAP01" , {
+  innerRadius: 125,
+  outerRadius: 165,
+  maxColor: "red",
+  minColor: "yellow"
+} , [
+  {chr: "2L", start: "1", end: "1011544", name: "test heatmap", value: "0.8"},
+  {chr: "2L", start: "1011548", end: "2011544", name: "test heatmap", value: "0.3"},
+  {chr: "2L", start: "2011548", end: "3011544", name: "test heatmap", value: "0.1"},
+  {chr: "2L", start: "2011545", end: "2011546", name: "test heatmap", value: "0.01"},
+......
+  {chr: "X", start: "18011548", end: "19011544", name: "test heatmap", value: "0.83"},
+  {chr: "X", start: "19011548", end: "20011544", name: "test heatmap", value: "0.39"},
+  {chr: "X", start: "20011548", end: "21146708", name: "test heatmap", value: "0.49"},
+  {chr: "X", start: "21011548", end: "22422827", name: "test heatmap", value: "0.83"},
+]];
+    </pre></div></div>
+    <h5> Note: explaination for each parameter is available in document</h5>
+</ul>
+
+<h3>3. Including HEATMAP data<a class="headerlink"></a></h3>
+<ul>
+    <h4>Use &lt;script&gt; tag to include HEATMAP01.js.</h4>
+    <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/HEATMAP01.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> </pre></div>
+    </div>
+</ul>
+
+<h3>4. Initialize NG-Circos with HEATMAP data<a class="headerlink"></a></h3>
+<ul>
+    <h4>Prepare a &lt;div&gt; tag with <strong>“example”</strong> id to set the picture position your will draw in html, e.g.:</h4>
+    <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">NGCircos01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NGCircos</span><span class="p">(</span><span class="nx">HEATMAP01</span><span class="p">,</span><span class="nx">NGCircosGenome</span><span class="p">,{</span> <span class="c1">// Initialize with &quot;HEATMAP01&quot; data tag</span></pre></div>
+    </div>
+</ul>
+
+<h3>5. Source code<a class="headerlink"></a></h3>
+<ul>
+    <h4> When step 1 to 4 are finished, the configuration for NGCircos: </h4>
+    <pre class="prettyprint"><xmp><button class="svg-action-btn download-img" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black">Download png ↓</button>
+<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './lib/svg-crowbar.js'); } else { e.setAttribute('src', './lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black" >Download svg ↓</a>
+<div id="NGCircos"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="NGCircos"></div>
+                </div>
+            </div>
+<!-- Data configuration -->
+<script src="./lib/jquery.js"></script>
+<script src="./lib/d3.js"></script>
+<script src="./lib/NGCircos.js"></script>
+<script src="js/HEATMAP01.js"></script>
+<!-- Genome configuration -->
+<script>
+var NGCircosGenome = [      // Configure your own genome here.
+    [
+     ["2L" , 23011544],
+     ["2R" , 21146708],
+     ["3L" , 24543557],
+     ["3R" , 27905053],
+     ["X" , 22422827],
+     ["4" , 1351857]
+    ]
+  ];
+  NGCircos01 = new NGCircos(HEATMAP01,NGCircosGenome,{       // Initialize NGCircos.js with "NGCircosGenome" and Main configuration
+     target : "NGCircos",
+     svgWidth : 900,
+     svgHeight : 600,
+     innerRadius: 246,
+     outerRadius: 250,
+     zoom : false,
+     genomeFillColor: ["#999999"],
+     ticks : {
+        display : true,
+        len : 5,
+        color : "#000",
+        textSize : 8,
+        textColor : "#000",
+        scale : 5000000
+     },
+     genomeLabel : {
+        display : true,
+        textSize : 16,
+        textColor : "#000",
+        dx : 3.14,
+        dy : "-0.95em"
+     },
+     HEATMAPMouseEvent: true,
+     HEATMAPMouseClickDisplay: true,
+     HEATMAPMouseClickColor: "green",
+     HEATMAPMouseClickOpacity: 1,
+     HEATMAPMouseClickStrokeColor: "#F26223",
+     HEATMAPMouseClickStrokeWidth: 0,
+     HEATMAPMouseOutDisplay: true,
+     HEATMAPMouseOutAnimationTime: 500,
+     HEATMAPMouseOutColor: "none",
+     HEATMAPMouseOutOpacity: 1,
+     HEATMAPMouseOutStrokeColor: "none",
+     HEATMAPMouseOutStrokeWidth: 0,
+     HEATMAPMouseOverDisplay: true,
+     HEATMAPMouseOverColor: "none",
+     HEATMAPMouseOverOpacity: 1,
+     HEATMAPMouseOverStrokeColor: "#F26223",
+     HEATMAPMouseOverStrokeWidth: 3,
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);  // NGCircos.js callback
+  NGCircos01.draw_genome(NGCircos01.genomeLength2); // NGCircos2.js callback second time
+</script>
+<script src="./lib/saveSvgAsPng.js"></script>
+<script>
+
+      (function(){
+        var downloadImg = getEle(".download-img"),
+          imgName = getEle("."+NGCircos01.svgClassName);
+
+        //          imgScale = getEle(".img-scale");
+
+        downloadImg.addEventListener("click",function(){
+          var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+//          saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+          saveSvgAsPng(mySvg, oImgName+".png");
+
+        })
+
+        function getEle(obj){
+          var d = document;
+          return d.querySelector(obj);
+        }
+      })()
+</script></xmp></pre>
+</ul>
+
+<h3>6. Visualization of HEATMAP data using NG-Circos<a class="headerlink"></a></h3>
+<button class="svg-action-btn download-img" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black">Download png ↓</button>
+<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './lib/svg-crowbar.js'); } else { e.setAttribute('src', './lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black" >Download svg ↓</a>
+<div id="NGCircos"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="NGCircos"></div>
+                </div>
+            </div>
+<!-- Data configuration -->
+<script src="./lib/jquery.js"></script>
+<script src="./lib/d3.js"></script>
+<script src="./lib/NGCircos.js"></script>
+<script src="js/HEATMAP01.js"></script>
+<!-- Genome configuration -->
+<script>
+var NGCircosGenome = [      // Configure your own genome here.
+    [
+     ["2L" , 23011544],
+     ["2R" , 21146708],
+     ["3L" , 24543557],
+     ["3R" , 27905053],
+     ["X" , 22422827],
+     ["4" , 1351857]
+    ]
+  ];
+  NGCircos01 = new NGCircos(HEATMAP01,NGCircosGenome,{       // Initialize NGCircos.js with "NGCircosGenome" and Main configuration
+     target : "NGCircos",
+     svgWidth : 900,
+     svgHeight : 600,
+     innerRadius: 246,
+     outerRadius: 250,
+     zoom : false,
+     genomeFillColor: ["#999999"],
+     ticks : {
+        display : true,
+        len : 5,
+        color : "#000",
+        textSize : 8,
+        textColor : "#000",
+        scale : 5000000
+     },
+     genomeLabel : {
+        display : true,
+        textSize : 16,
+        textColor : "#000",
+        dx : 3.14,
+        dy : "-0.95em"
+     },
+     HEATMAPMouseEvent: true,
+     HEATMAPMouseClickDisplay: true,
+     HEATMAPMouseClickColor: "green",
+     HEATMAPMouseClickOpacity: 1,
+     HEATMAPMouseClickStrokeColor: "#F26223",
+     HEATMAPMouseClickStrokeWidth: 0,
+     HEATMAPMouseOutDisplay: true,
+     HEATMAPMouseOutAnimationTime: 500,
+     HEATMAPMouseOutColor: "none",
+     HEATMAPMouseOutOpacity: 1,
+     HEATMAPMouseOutStrokeColor: "none",
+     HEATMAPMouseOutStrokeWidth: 0,
+     HEATMAPMouseOverDisplay: true,
+     HEATMAPMouseOverColor: "none",
+     HEATMAPMouseOverOpacity: 1,
+     HEATMAPMouseOverStrokeColor: "#F26223",
+     HEATMAPMouseOverStrokeWidth: 3,
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);  // NGCircos.js callback
+  NGCircos01.draw_genome(NGCircos01.genomeLength2); // NGCircos2.js callback second time
+</script>
+<script src="./lib/saveSvgAsPng.js"></script>
+<script>
+
+      (function(){
+        var downloadImg = getEle(".download-img"),
+          imgName = getEle("."+NGCircos01.svgClassName);
+
+        //          imgScale = getEle(".img-scale");
+
+        downloadImg.addEventListener("click",function(){
+          var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+//          saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+          saveSvgAsPng(mySvg, oImgName+".png");
+
+        })
+
+        function getEle(obj){
+          var d = document;
+          return d.querySelector(obj);
+        }
+      })()
+</script>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

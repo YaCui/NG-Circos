@@ -1,0 +1,21 @@
+var GENE01 = [ "GENE01" , {
+  outerRadius: 225,
+  innerRadius: 210,
+  arrowGap: 2,
+  arrowColor: "blue",
+  arrowSize: "12px",
+  cdsColor: "blue",
+  cdsStrokeColor: "blue",
+  cdsStrokeWidth: 1,
+  utrWidth: -5,
+  utrColor: "blue",
+  utrStrokeColor: "blue",
+  utrStrokeWidth: 1,
+} , [
+  {chr: "EGFR", strand: "+", start: "57", end: "965", type: "gene", name: "EGFR", link: "https://www.intogen.org/search?gene=EGFR"},
+  {chr: "EGFR", strand: "+", start: "57", end: "167", type: "cds", name: "EGFR", link: "https://www.intogen.org/search?gene=EGFR"},
+  {chr: "EGFR", strand: "+", start: "185", end: "338", type: "cds", name: "EGFR", link: "https://www.intogen.org/search?gene=EGFR"},
+  {chr: "EGFR", strand: "+", start: "361", end: "480", type: "cds", name: "EGFR", link: "https://www.intogen.org/search?gene=EGFR"},
+  {chr: "EGFR", strand: "+", start: "505", end: "636", type: "cds", name: "EGFR", link: "https://www.intogen.org/search?gene=EGFR"},
+  {chr: "EGFR", strand: "+", start: "713", end: "965", type: "cds", name: "EGFR", link: "https://www.intogen.org/search?gene=EGFR"},
+]];
