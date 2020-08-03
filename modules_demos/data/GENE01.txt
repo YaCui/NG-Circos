@@ -1,0 +1,6 @@
+EGFR	+	57	965	gene	EGFR	https://www.intogen.org/search?gene=EGFR
+EGFR	+	57	167	cds	EGFR	https://www.intogen.org/search?gene=EGFR
+EGFR	+	185	338	cds	EGFR	https://www.intogen.org/search?gene=EGFR
+EGFR	+	361	480	cds	EGFR	https://www.intogen.org/search?gene=EGFR
+EGFR	+	505	636	cds	EGFR	https://www.intogen.org/search?gene=EGFR
+EGFR	+	713	965	cds	EGFR	https://www.intogen.org/search?gene=EGFR

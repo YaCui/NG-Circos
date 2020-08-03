@@ -1,0 +1,5 @@
+#chr    start   end     name    des
+1	1102484	1102578	hsa-mir-200b	breast cancer
+11	122017230	122017301	hsa-let-7a-2	ovarian cancer
+22	46508629	46508702	hsa-let-7a-3	leukemia cancer
+14	101349316	101349412	hsa-mir-127	breast cancer
