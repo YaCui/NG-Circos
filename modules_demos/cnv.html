@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>NGCircos.js</title>
+    <link href="css/bootstrap.min.css " rel="stylesheet">
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+    <link href="css/timeline.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/morris.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/google-code-prettify.css" rel="stylesheet">
+    <script src="css/jquery.min.js"></script>
+    <script src="css/bootstrap.min.js"></script>
+    <script src="css/metisMenu.min.js"></script>
+    <script src="css/raphael-min.js"></script>
+    <script src="css/morris.min.js"></script>
+    <script src="css/sb-admin-2.js"></script>
+    <script src="css/google-code-prettify.js"></script>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body onload="prettyPrint()">
+    <div id="wrapper">
+
+
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="index.html"><i class="fa fa-dashboard fa-fw"></i>Tutorials - <text>Step-by-step Guide for 21 Modules in NG-Circos</text></a>
+          </div>
+          <div class="navbar-default sidebar" role="navigation">
+              <div class="sidebar-nav navbar-collapse">
+                  <ul class="nav" id="side-menu">
+                      <li><a href="https://wlcb.oit.uci.edu/NG-Circos"><i class="fa fa-dashboard fa-fw"></i> Home </a></li>
+                      <li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i> ARC module </a></li>
+                      <li><a href="auxiliaryline.html"><i class="fa fa-dashboard fa-fw"></i> AUXILIARYLINE module </a></li>
+                      <li><a href="background.html"><i class="fa fa-dashboard fa-fw"></i> BACKGROUND module </a></li>
+                      <li><a href="bubble.html"><i class="fa fa-dashboard fa-fw"></i> BUBBLE module </a></li>
+                      <li><a href="chord.html"><i class="fa fa-dashboard fa-fw"></i> CHORD module </a></li>
+                      <li><a href="cnv.html"><i class="fa fa-dashboard fa-fw"></i> CNV module </a></li>
+                      <li><a href="combination.html"><i class="fa fa-dashboard fa-fw"></i> COMBINATION module </a></li>
+                      <li><a href="compare.html"><i class="fa fa-dashboard fa-fw"></i> COMPARE module </a></li>
+                      <li><a href="download.html"><i class="fa fa-dashboard fa-fw"></i> DOWNLOAD module </a></li>
+                      <li><a href="gene.html"><i class="fa fa-dashboard fa-fw"></i> GENE module </a></li>
+                      <li><a href="heatmap.html"><i class="fa fa-dashboard fa-fw"></i> HEATMAP module </a></li>
+                      <li><a href="histogram.html"><i class="fa fa-dashboard fa-fw"></i> HISTOGRAM module </a></li>
+                      <li><a href="legend.html"><i class="fa fa-dashboard fa-fw"></i> LEGEND module </a></li>
+                      <li><a href="line.html"><i class="fa fa-dashboard fa-fw"></i> LINE module </a></li>
+                      <li><a href="link.html"><i class="fa fa-dashboard fa-fw"></i> LINK module </a></li>
+                      <li><a href="lollipop.html"><i class="fa fa-dashboard fa-fw"></i> LOLLIPOP module </a></li>
+                      <li><a href="redirect.html"><i class="fa fa-dashboard fa-fw"></i> REDIRECT module </a></li>
+                      <li><a href="scatter.html"><i class="fa fa-dashboard fa-fw"></i> SCATTER module </a></li>
+                      <li><a href="snp.html"><i class="fa fa-dashboard fa-fw"></i> SNP module </a></li>
+                      <li><a href="text.html"><i class="fa fa-dashboard fa-fw"></i> TEXT module </a></li>
+                      <li><a href="wig.html"><i class="fa fa-dashboard fa-fw"></i> WIG module </a></li>
+                      <li><a href="CbioPortal.html"><i class="fa fa-dashboard fa-fw"></i> CbioPortal demo </a></li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+
+
+
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Display a CNV module step by step  </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>0. Download all files in this tutorial.</h3>
+                    <p>Download <a href="./download/CNV.zip" style="font-size: 20px"> CNV.zip</a> and click *.html file(in CNV.zip) to open this demo in local browser!.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                   <h3>1. Input data.</h3>
+                   <p>
+<ul class="simple">
+<h4>Example file: <a href="data/CNV01.txt">CNV01.txt</a></h4>
+<div class="section">
+<h4>Data structure<a class="headerlink" title="Permalink to this headline"></a></h4>
+<p>Users should prepare the input data in the following format (separated by tabs).</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>#chr    start   end     value
+1       764788  87109267        2.5
+1       87109268        120217058       2
+1       144101324       222713034       4
+1       222713035       222867750       6
+......
+9       30330084        140139368       3.5
+X       105073  114046817       1
+X       114112404       114299959       2
+X       114376344       154884814       1
+</pre></div>
+</div>
+<p>Following fields are required:</p>
+<ul class="simple">
+<li><p>The 1 column(<code class="docutils literal notranslate"><span class="pre">chr</span></code>) is the name of the chromosome.</p></li>
+<li><p>The 2 column(<code class="docutils literal notranslate"><span class="pre">start</span></code>) is the start of the CNV region.</p></li>
+<li><p>The 3 column(<code class="docutils literal notranslate"><span class="pre">end</span></code>) is the end of the CNV region.</p></li>
+<li><p>The 4 column(<code class="docutils literal notranslate"><span class="pre">value</span></code>) is the copy number of CNV region.</p></li>
+</ul>
+</div>
+</ul>
+
+<h3>2. Prepare module through python script.</h3>
+<ul class="simple">
+    <h4> Use:</h4>
+    <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python NGCircos_PrepareData.py CNV CNV01.txt &gt; CNV01.js</pre></div>
+    <h4> Example file: <a href="data/CNV01.txt">CNV01.js</a></h4>
+    <h4> Details in js file:</h4>
+    <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>var CNV01 = [ "CNV01" , {
+  maxRadius: 175,
+  minRadius: 116,
+  CNVwidth: 2,
+  CNVColor: "#4876FF",
+} , [
+  {chr: "1", start: "764788", end: "87109267", value: "2.5"},
+  {chr: "1", start: "87109268", end: "120217058", value: "2"},
+  {chr: "1", start: "144101324", end: "222713034", value: "4"},
+  {chr: "1", start: "222713035", end: "222867750", value: "6"},
+  ......
+  {chr: "9", start: "30330084", end: "140139368", value: "3.5"},
+  {chr: "X", start: "105073", end: "114046817", value: "1"},
+  {chr: "X", start: "114112404", end: "114299959", value: "2"},
+  {chr: "X", start: "114376344", end: "154884814", value: "1"},
+]];
+    </pre></div></div>
+    <h5> Note: explaination for each parameter is available in document</h5>
+</ul>
+
+<h3>3. Including CNV data<a class="headerlink"></a></h3>
+<ul>
+    <h4>Use &lt;script&gt; tag to include CNV01.js.</h4>
+    <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/CNV01.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> </pre></div>
+    </div>
+</ul>
+
+<h3>4. Initialize NG-Circos with CNV data<a class="headerlink"></a></h3>
+<ul>
+    <h4>Prepare a &lt;div&gt; tag with <strong>“example”</strong> id to set the picture position your will draw in html, e.g.:</h4>
+    <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">NGCircos01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NGCircos</span><span class="p">(</span><span class="nx">CNV01</span><span class="p">,</span><span class="nx">NGCircosGenome</span><span class="p">,{</span> <span class="c1">// Initialize with &quot;CNV01&quot; data tag</span></pre></div>
+    </div>
+</ul>
+
+<h3>5. Source code<a class="headerlink"></a></h3>
+<ul>
+    <h4> When step 1 to 4 are finished, the configuration for NGCircos: </h4>
+    <pre class="prettyprint"><xmp><button class="svg-action-btn download-img" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black">Download png ↓</button>
+<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './lib/svg-crowbar.js'); } else { e.setAttribute('src', './lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black" >Download svg ↓</a>
+<div id="NGCircos"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="NGCircos"></div>
+                </div>
+            </div>
+<!-- Data configuration -->
+<script src="./lib/jquery.js"></script>
+<script src="./lib/d3.js"></script>
+<script src="./lib/NGCircos.js"></script>
+<script src="js/CNV01.js"></script>
+<!-- Genome configuration -->
+<script>
+  var NGCircosGenome = [      // Configure your own genome here.
+    [
+     ["1" , 249250621],
+     ["2" , 243199373],
+     ["3" , 198022430],
+     ["4" , 191154276],
+     ["5" , 180915260],
+     ["6" , 171115067],
+     ["7" , 159138663],
+     ["8" , 146364022],
+     ["9" , 141213431],
+     ["10" , 135534747],
+     ["11" , 135006516],
+     ["12" , 133851895],
+     ["13" , 115169878],
+     ["14" , 107349540],
+     ["15" , 102531392],
+     ["16" , 90354753],
+     ["17" , 81195210],
+     ["18" , 78077248],
+     ["19" , 59128983],
+     ["20" , 63025520],
+     ["21" , 48129895],
+     ["22" , 51304566],
+     ["X" , 155270560],
+     ["Y" , 59373566]
+    ]
+  ];
+  NGCircos01 = new NGCircos(BACKGROUND01,CNV01,NGCircosGenome,{       // Initialize NGCircos.js with "NGCircosGenome" and Main configuration
+     zoom : true,
+     target : "NGCircos",                              // Main configuration "target"
+     svgWidth : 900,                                  // Main configuration "svgWidth"
+     svgHeight : 600,                                 // Main configuration "svgHeight"
+     svgClassName: "NGCircos",                  // Main configuration "svgClassName"
+     CNVMouseEvent: true,
+     CNVMouseClickDisplay: true,
+     CNVMouseClickColor: "red",
+     CNVMouseClickArcOpacity: 1,
+     CNVMouseClickArcStrokeColor: "#F26223",
+     CNVMouseClickArcStrokeWidth: 0,
+     CNVMouseClickTextFromData: "fourth",
+     CNVMouseClickTextOpacity: 1,
+     CNVMouseClickTextColor: "red",
+     CNVMouseClickTextSize: 8,
+     CNVMouseClickTextPostionX: 0,
+     CNVMouseClickTextPostionY: 0,
+     CNVMouseClickTextDrag: true,
+     CNVMouseDownDisplay: true,
+     CNVMouseDownColor: "green",
+     CNVMouseDownArcOpacity: 1,
+     CNVMouseDownArcStrokeColor: "#F26223",
+     CNVMouseDownArcStrokeWidth: 0,
+     CNVMouseEnterDisplay: true,
+     CNVMouseEnterColor: "yellow",
+     CNVMouseEnterArcOpacity: 1,
+     CNVMouseEnterArcStrokeColor: "#F26223",
+     CNVMouseEnterArcStrokeWidth: 0,
+     CNVMouseLeaveDisplay: true,
+     CNVMouseLeaveColor: "pink",
+     CNVMouseLeaveArcOpacity: 1,
+     CNVMouseLeaveArcStrokeColor: "#F26223",
+     CNVMouseLeaveArcStrokeWidth: 0,
+     CNVMouseMoveDisplay: true,
+     CNVMouseMoveColor: "red",
+     CNVMouseMoveArcOpacity: 1,
+     CNVMouseMoveArcStrokeColor: "#F26223",
+     CNVMouseMoveArcStrokeWidth: 0,
+     CNVMouseOutDisplay: true,
+     CNVMouseOutAnimationTime: 500,
+     CNVMouseOutColor: "red",
+     CNVMouseOutArcOpacity: 1,
+     CNVMouseOutArcStrokeColor: "red",
+     CNVMouseOutArcStrokeWidth: 0,
+     CNVMouseUpDisplay: true,
+     CNVMouseUpColor: "grey",
+     CNVMouseUpArcOpacity: 1,
+     CNVMouseUpArcStrokeColor: "#F26223",
+     CNVMouseUpArcStrokeWidth: 0,
+     CNVMouseOverDisplay: true,
+     CNVMouseOverColor: "red",
+     CNVMouseOverArcOpacity: 1,
+     CNVMouseOverArcStrokeColor: "#F26223",
+     CNVMouseOverArcStrokeWidth: 3,
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);  // NGCircos.js callback
+  NGCircos01.draw_genome(NGCircos01.genomeLength2); // NGCircos2.js callback second time
+</script>
+<script src=./lib/saveSvgAsPng.js></script>
+<script>
+
+      (function(){
+        var downloadImg = getEle(".download-img"),
+          imgName = getEle("."+NGCircos01.svgClassName);
+
+        //          imgScale = getEle(".img-scale");
+
+        downloadImg.addEventListener("click",function(){
+          var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+//          saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+          saveSvgAsPng(mySvg, oImgName+".png");
+
+        })
+
+        function getEle(obj){
+          var d = document;
+          return d.querySelector(obj);
+        }
+      })()
+</script></xmp></pre>
+</ul>
+
+<h3>6. Visualization of CNV data using NG-Circos<a class="headerlink"></a></h3>
+<button class="svg-action-btn download-img" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black">Download png ↓</button>
+<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './lib/svg-crowbar.js'); } else { e.setAttribute('src', './lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black" >Download svg ↓</a>
+<div id="NGCircos"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="NGCircos"></div>
+                </div>
+            </div>
+<!-- Data configuration -->
+<script src="./lib/jquery.js"></script>
+<script src="./lib/d3.js"></script>
+<script src="./lib/NGCircos.js"></script>
+<script src="js/CNV01.js"></script>
+<!-- Genome configuration -->
+<script>
+  var NGCircosGenome = [      // Configure your own genome here.
+    [
+     ["1" , 249250621],
+     ["2" , 243199373],
+     ["3" , 198022430],
+     ["4" , 191154276],
+     ["5" , 180915260],
+     ["6" , 171115067],
+     ["7" , 159138663],
+     ["8" , 146364022],
+     ["9" , 141213431],
+     ["10" , 135534747],
+     ["11" , 135006516],
+     ["12" , 133851895],
+     ["13" , 115169878],
+     ["14" , 107349540],
+     ["15" , 102531392],
+     ["16" , 90354753],
+     ["17" , 81195210],
+     ["18" , 78077248],
+     ["19" , 59128983],
+     ["20" , 63025520],
+     ["21" , 48129895],
+     ["22" , 51304566],
+     ["X" , 155270560],
+     ["Y" , 59373566]
+    ]
+  ];
+  NGCircos01 = new NGCircos(BACKGROUND01,CNV01,NGCircosGenome,{       // Initialize NGCircos.js with "NGCircosGenome" and Main configuration
+     zoom : true,
+     target : "NGCircos",                              // Main configuration "target"
+     svgWidth : 900,                                  // Main configuration "svgWidth"
+     svgHeight : 600,                                 // Main configuration "svgHeight"
+     svgClassName: "NGCircos",                  // Main configuration "svgClassName"
+     CNVMouseEvent: true,
+     CNVMouseClickDisplay: true,
+     CNVMouseClickColor: "red",
+     CNVMouseClickArcOpacity: 1,
+     CNVMouseClickArcStrokeColor: "#F26223",
+     CNVMouseClickArcStrokeWidth: 0,
+     CNVMouseClickTextFromData: "fourth",
+     CNVMouseClickTextOpacity: 1,
+     CNVMouseClickTextColor: "red",
+     CNVMouseClickTextSize: 8,
+     CNVMouseClickTextPostionX: 0,
+     CNVMouseClickTextPostionY: 0,
+     CNVMouseClickTextDrag: true,
+     CNVMouseDownDisplay: true,
+     CNVMouseDownColor: "green",
+     CNVMouseDownArcOpacity: 1,
+     CNVMouseDownArcStrokeColor: "#F26223",
+     CNVMouseDownArcStrokeWidth: 0,
+     CNVMouseEnterDisplay: true,
+     CNVMouseEnterColor: "yellow",
+     CNVMouseEnterArcOpacity: 1,
+     CNVMouseEnterArcStrokeColor: "#F26223",
+     CNVMouseEnterArcStrokeWidth: 0,
+     CNVMouseLeaveDisplay: true,
+     CNVMouseLeaveColor: "pink",
+     CNVMouseLeaveArcOpacity: 1,
+     CNVMouseLeaveArcStrokeColor: "#F26223",
+     CNVMouseLeaveArcStrokeWidth: 0,
+     CNVMouseMoveDisplay: true,
+     CNVMouseMoveColor: "red",
+     CNVMouseMoveArcOpacity: 1,
+     CNVMouseMoveArcStrokeColor: "#F26223",
+     CNVMouseMoveArcStrokeWidth: 0,
+     CNVMouseOutDisplay: true,
+     CNVMouseOutAnimationTime: 500,
+     CNVMouseOutColor: "red",
+     CNVMouseOutArcOpacity: 1,
+     CNVMouseOutArcStrokeColor: "red",
+     CNVMouseOutArcStrokeWidth: 0,
+     CNVMouseUpDisplay: true,
+     CNVMouseUpColor: "grey",
+     CNVMouseUpArcOpacity: 1,
+     CNVMouseUpArcStrokeColor: "#F26223",
+     CNVMouseUpArcStrokeWidth: 0,
+     CNVMouseOverDisplay: true,
+     CNVMouseOverColor: "red",
+     CNVMouseOverArcOpacity: 1,
+     CNVMouseOverArcStrokeColor: "#F26223",
+     CNVMouseOverArcStrokeWidth: 3,
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);  // NGCircos.js callback
+  NGCircos01.draw_genome(NGCircos01.genomeLength2); // NGCircos2.js callback second time
+</script>
+<script src=./lib/saveSvgAsPng.js></script>
+<script>
+
+      (function(){
+        var downloadImg = getEle(".download-img"),
+          imgName = getEle("."+NGCircos01.svgClassName);
+
+        //          imgScale = getEle(".img-scale");
+
+        downloadImg.addEventListener("click",function(){
+          var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+//          saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+          saveSvgAsPng(mySvg, oImgName+".png");
+
+        })
+
+        function getEle(obj){
+          var d = document;
+          return d.querySelector(obj);
+        }
+      })()
+</script>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

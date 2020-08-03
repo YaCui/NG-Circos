@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>NGCircos.js</title>
+    <link href="css/bootstrap.min.css " rel="stylesheet">
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+    <link href="css/timeline.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/morris.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/google-code-prettify.css" rel="stylesheet">
+    <script src="css/jquery.min.js"></script>
+    <script src="css/bootstrap.min.js"></script>
+    <script src="css/metisMenu.min.js"></script>
+    <script src="css/raphael-min.js"></script>
+    <script src="css/morris.min.js"></script>
+    <script src="css/sb-admin-2.js"></script>
+    <script src="css/google-code-prettify.js"></script>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body onload="prettyPrint()">
+    <div id="wrapper">
+
+
+
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="index.html"><i class="fa fa-dashboard fa-fw"></i>Tutorials - <text>Step-by-step Guide for 21 Modules in NG-Circos</text></a>
+          </div>
+          <div class="navbar-default sidebar" role="navigation">
+              <div class="sidebar-nav navbar-collapse">
+                  <ul class="nav" id="side-menu">
+                      <li><a href="https://wlcb.oit.uci.edu/NG-Circos"><i class="fa fa-dashboard fa-fw"></i> Home </a></li>
+                      <li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i> ARC module </a></li>
+                      <li><a href="auxiliaryline.html"><i class="fa fa-dashboard fa-fw"></i> AUXILIARYLINE module </a></li>
+                      <li><a href="background.html"><i class="fa fa-dashboard fa-fw"></i> BACKGROUND module </a></li>
+                      <li><a href="bubble.html"><i class="fa fa-dashboard fa-fw"></i> BUBBLE module </a></li>
+                      <li><a href="chord.html"><i class="fa fa-dashboard fa-fw"></i> CHORD module </a></li>
+                      <li><a href="cnv.html"><i class="fa fa-dashboard fa-fw"></i> CNV module </a></li>
+                      <li><a href="combination.html"><i class="fa fa-dashboard fa-fw"></i> COMBINATION module </a></li>
+                      <li><a href="compare.html"><i class="fa fa-dashboard fa-fw"></i> COMPARE module </a></li>
+                      <li><a href="download.html"><i class="fa fa-dashboard fa-fw"></i> DOWNLOAD module </a></li>
+                      <li><a href="gene.html"><i class="fa fa-dashboard fa-fw"></i> GENE module </a></li>
+                      <li><a href="heatmap.html"><i class="fa fa-dashboard fa-fw"></i> HEATMAP module </a></li>
+                      <li><a href="histogram.html"><i class="fa fa-dashboard fa-fw"></i> HISTOGRAM module </a></li>
+                      <li><a href="legend.html"><i class="fa fa-dashboard fa-fw"></i> LEGEND module </a></li>
+                      <li><a href="line.html"><i class="fa fa-dashboard fa-fw"></i> LINE module </a></li>
+                      <li><a href="link.html"><i class="fa fa-dashboard fa-fw"></i> LINK module </a></li>
+                      <li><a href="lollipop.html"><i class="fa fa-dashboard fa-fw"></i> LOLLIPOP module </a></li>
+                      <li><a href="redirect.html"><i class="fa fa-dashboard fa-fw"></i> REDIRECT module </a></li>
+                      <li><a href="scatter.html"><i class="fa fa-dashboard fa-fw"></i> SCATTER module </a></li>
+                      <li><a href="snp.html"><i class="fa fa-dashboard fa-fw"></i> SNP module </a></li>
+                      <li><a href="text.html"><i class="fa fa-dashboard fa-fw"></i> TEXT module </a></li>
+                      <li><a href="wig.html"><i class="fa fa-dashboard fa-fw"></i> WIG module </a></li>
+                      <li><a href="CbioPortal.html"><i class="fa fa-dashboard fa-fw"></i> CbioPortal demo </a></li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+
+
+
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Display a CHORD module step by step</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>0. Download all files in this tutorial.</h3>
+                    <p>Download <a href="./download/CHORD.zip" style="font-size: 20px"> CHORD.zip</a> and click *.html file(in CHORD.zip) to open this demo in local browser!.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                   <h3>1. Input data.</h3>
+                   <p>
+<ul class="simple">
+<h4>Example file: <a href="data/CHORD01.txt">CHORD01.txt</a></h4>
+<div class="section">
+<h4>Data structure<a class="headerlink" title="Permalink to this headline"></a></h4>
+<p>Users should prepare the input data in the following format (separated by tabs).</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>#    Alphaproteobacteria     Betaproteobacteria      Gammaproteobacteria     Deltaproteobacteria     Acidobacteria   Actinobacteria  Bacteroidetes   Chloroflexi     Firmicutes      Gemmatimonadetes        Planctomycetes  Thaumarchaeota  Verrucomicrobia Ascomycota      Basidiomycota   Zygomycota
+C.CK 18.01   5.72    5.74    6.55    13.38   20.04   5.01    3.63    2.37    6.34    4.35    1.51    1.9     51.72   24.75   18.49
+C.NPK        16.12   5.75    5.85    5.67    16.88   15.95   5.24    3.74    2.34    6.97    6.15    1.21    2.37    40.28   24.18   29.3
+GC.CK        16.16   6.51    7.82    5.13    13.29   13.11   7.32    4.81    1.52    7.92    4.95    1.52    2.57    33.85   17.93   41.7
+GC.NPK       19.87   5.53    6.1     5.93    10.07   23.23   4.84    2.9     4.49    5.14    3.81    1.91    1.46    33.56   12.87   49.8
+</pre></div>
+</div>
+<p>Following fields are required:</p>
+<ul class="simple">
+<li><p>The 1 column is the name of each row.</p></li>
+<li><p>The 2 column is the name of each column.</p></li>
+</ul>
+</div>
+</ul>
+
+<h3>2. Prepare module through python script.</h3>
+<ul class="simple">
+    <h4> Use:</h4>
+    <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python NGCircos_PrepareData.py CHORD CHORD01.txt &gt; CHORD01.js</pre></div>
+    <h4> Example file: <a href="data/CHORD01.txt">CHORD01.js</a></h4>
+    <h4> Details in js file:</h4>
+    <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>var CHORD01 = [ "CHORD01" , {
+   CHORDinnerRadius: 237,
+   CHORDouterRadius: 238,
+   CHORDFillOpacity:0.67,
+   CHORDStrokeColor: "black",
+   CHORDStrokeWidth: 1,
+   CHORDPadding:0.06,
+   CHORDAutoFillColor: true,
+   CHORDouterARC:true,
+   CHORDouterARCAutoColor:true,
+   CHORDouterARCText:false,
+} , [
+['C.CK', 'C.NPK', 'GC.CK', 'GC.NPK', 'Alphaproteobacteria', 'Betaproteobacteria', 'Gammaproteobacteria', 'Deltaproteobacteria', 'Acidobacteria', 'Actinobacteria', 'Bacteroidetes', 'Chloroflexi', 'Firmicutes', 'Gemmatimonadetes', 'Planctomycetes', 'Thaumarchaeota', 'Verrucomicrobia', 'Ascomycota', 'Basidiomycota', 'Zygomycota']
+[[0, 0, 0, 0, 18.01, 5.72, 5.74, 6.55, 13.38, 20.04, 5.01, 3.63, 2.37, 6.34, 4.35, 1.51, 1.9, 51.72, 24.75, 18.49], [0, 0, 0, 0, 16.12, 5.75, 5.85, 5.67, 16.88, 15.95, 5.24, 3.74, 2.34, 6.97, 6.15, 1.21, 2.37, 40.28, 24.18, 29.3], [0, 0, 0, 0, 16.16, 6.51, 7.82, 5.13, 13.29, 13.11, 7.32, 4.81, 1.52, 7.92, 4.95, 1.52, 2.57, 33.85, 17.93, 41.7], [0, 0, 0, 0, 19.87, 5.53, 6.1, 5.93, 10.07, 23.23, 4.84, 2.9, 4.49, 5.14, 3.81, 1.91, 1.46, 33.56, 12.87, 49.8], [18.01, 16.12, 16.16, 19.87, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [5.72, 5.75, 6.51, 5.53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [5.74, 5.85, 7.82, 6.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [6.55, 5.67, 5.13, 5.93, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [13.38, 16.88, 13.29, 10.07, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [20.04, 15.95, 13.11, 23.23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [5.01, 5.24, 7.32, 4.84, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3.63, 3.74, 4.81, 2.9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2.37, 2.34, 1.52, 4.49, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [6.34, 6.97, 7.92, 5.14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [4.35, 6.15, 4.95, 3.81, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1.51, 1.21, 1.52, 1.91, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1.9, 2.37, 2.57, 1.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [51.72, 40.28, 33.85, 33.56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [24.75, 24.18, 17.93, 12.87, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [18.49, 29.3, 41.7, 49.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+]];
+    </pre></div></div>
+    <h5> Note: explaination for each parameter is available in document</h5>
+</ul>
+
+<h3>3. Including CHORD data<a class="headerlink"></a></h3>
+<ul>
+    <h4>Use &lt;script&gt; tag to include CHORD01.js.</h4>
+    <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/CHORD01.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> </pre></div>
+    </div>
+</ul>
+
+<h3>4. Initialize NG-Circos with CHORD data<a class="headerlink"></a></h3>
+<ul>
+    <h4>Prepare a &lt;div&gt; tag with <strong>“example”</strong> id to set the picture position your will draw in html, e.g.:</h4>
+    <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">NGCircos01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NGCircos</span><span class="p">(</span><span class="nx">CHORD01</span><span class="p">,</span><span class="nx">NGCircosGenome</span><span class="p">,{</span> <span class="c1">// Initialize with &quot;CHORD01&quot; data tag</span></pre></div>
+    </div>
+</ul>
+
+<h3>5. Source code<a class="headerlink"></a></h3>
+<ul>
+    <h4> When step 1 to 4 are finished, the configuration for NGCircos: </h4>
+    <pre class="prettyprint"><xmp><button class="svg-action-btn download-img" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black">Download png ↓</button>
+<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './lib/svg-crowbar.js'); } else { e.setAttribute('src', './lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black" >Download svg ↓</a>
+<div id="NGCircos"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="NGCircos"></div>
+                </div>
+            </div>
+<!-- Data configuration -->
+<script src="./lib/jquery.js"></script>
+<script src="./lib/d3.js"></script>
+<script src="./lib/NGCircos.js"></script>
+<script src="js/CHORD01.js"></script>
+<!-- Genome configuration -->
+<script>
+var NGCircosGenome = [[
+  ["C.CK",189.51],
+["C.NPK",188],
+["GC.CK",186.11],
+["GC.NPK",191.51],
+["Alphaproteobacteria",70.16],
+["Betaproteobacteria",23.51],
+["Gammaproteobacteria",25.51],
+["Deltaproteobacteria",23.28],
+["Acidobacteria",53.62],
+["Actinobacteria",72.33],
+["Bacteroidetes",22.41],
+["Chloroflexi",15.08],
+["Firmicutes",10.72],
+["Gemmatimonadetes",26.37],
+["Planctomycetes",19.26],
+["Thaumarchaeota",6.15],
+["Verrucomicrobia",8.3],
+["Ascomycota",159.41],
+["Basidiomycota",79.73],
+["Zygomycota",139.29],
+  ]];
+  NGCircos01 = new NGCircos(CHORD01, NGCircosGenome,{
+  target:"NGCircos",
+  svgWidth:900,
+  svgHeight:600,
+  svgClassName:"chord",
+  chrPad:0.04,
+  innerRadius:246,
+  outerRadius:250,
+  zoom:true,
+  genomeFillColor:["#999999"],
+  ticks:{
+  display:false,
+  len:5,
+  color:"#000",
+  textSize:10,
+  textColor:"#000",
+  scale:30000000,
+  realLength:false,
+  },
+  genomeLabel:{
+  display:false,
+  textSize:15,
+  textColor:"#000",
+  dx:0.028,
+  dy:"-0.55em",
+  },
+  genomeBorder:{
+  display:true,
+  borderColor:"#000",
+  borderSize:0.5,
+  },
+  CHORDMouseEvent : true,
+   CHORDMouseFillColorExcluded:"white",
+   CHORDMouseClickDisplay : false,
+   CHORDMouseClickOpacity : 1.0,
+   CHORDMouseClickStrokeColor : "green",
+   CHORDMouseClickStrokeWidth : 4,
+   CHORDMouseDownDisplay : false,
+   CHORDMouseDownOpacity : 1.0,
+   CHORDMouseDownStrokeColor : "#F26223",
+   CHORDMouseDownStrokeWidth : 4,
+   CHORDMouseEnterDisplay : false,
+   CHORDMouseEnterOpacity : 1.0,
+   CHORDMouseEnterStrokeColor : "#F26223",
+   CHORDMouseEnterStrokeWidth : 4,
+   CHORDMouseLeaveDisplay : false,
+   CHORDMouseLeaveOpacity : 1.0,
+   CHORDMouseLeaveStrokeColor : "#F26223",
+   CHORDMouseLeaveStrokeWidth : 4,
+   CHORDMouseMoveDisplay : false,
+   CHORDMouseMoveOpacity : 1.0,
+   CHORDMouseMoveStrokeColor : "#F26223",
+   CHORDMouseMoveStrokeWidth : 4,
+   CHORDMouseOutDisplay : true,
+   CHORDMouseOutAnimationTime : 500,
+   CHORDMouseOutOpacity : 0.67,
+   CHORDMouseOutStrokeColor : "none",
+   CHORDMouseOutStrokeWidth : 0,
+   CHORDMouseUpDisplay : false,
+   CHORDMouseUpOpacity : 1.0,
+   CHORDMouseUpStrokeColor : "#F26223",
+   CHORDMouseUpStrokeWidth : 4,
+   CHORDMouseOverDisplay : true,
+   CHORDMouseOverOpacity : 0.8,
+   CHORDMouseOverStrokeColor : "#F26223",
+   CHORDMouseOverStrokeWidth : 3,
+   CHORDMouseOverTooltipsHtml01 : "CHORD : ",
+   CHORDMouseOverTooltipsHtml02 : "",
+   CHORDMouseOverTooltipsPosition : "absolute",
+   CHORDMouseOverTooltipsBackgroundColor : "white",
+   CHORDMouseOverTooltipsBorderStyle : "solid",
+   CHORDMouseOverTooltipsBorderWidth : 0,
+   CHORDMouseOverTooltipsPadding : "3px",
+   CHORDMouseOverTooltipsBorderRadius : "3px",
+   CHORDMouseOverTooltipsOpacity : 0.8,
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);
+  NGCircos01.draw_genome(NGCircos01.genomeLength2);
+</script>
+<script src="./lib/saveSvgAsPng.js"></script>
+<script>
+
+      (function(){
+        var downloadImg = getEle(".download-img"),
+          imgName = getEle("."+NGCircos01.svgClassName);
+
+        //          imgScale = getEle(".img-scale");
+
+        downloadImg.addEventListener("click",function(){
+          var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+//          saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+          saveSvgAsPng(mySvg, oImgName+".png");
+
+        })
+
+        function getEle(obj){
+          var d = document;
+          return d.querySelector(obj);
+        }
+      })()
+</script></xmp></pre>
+</ul>
+
+<h3>6. Visualization of CHORD data using NG-Circos<a class="headerlink"></a></h3>
+<button class="svg-action-btn download-img" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black">Download png ↓</button>
+<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './lib/svg-crowbar.js'); } else { e.setAttribute('src', './lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black" >Download svg ↓</a>
+<div id="NGCircos"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="NGCircos"></div>
+                </div>
+            </div>
+<!-- Data configuration -->
+<script src="./lib/jquery.js"></script>
+<script src="./lib/d3.js"></script>
+<script src="./lib/NGCircos.js"></script>
+<script src="js/CHORD01.js"></script>
+<!-- Genome configuration -->
+<script>
+var NGCircosGenome = [[
+  ["C.CK",189.51],
+["C.NPK",188],
+["GC.CK",186.11],
+["GC.NPK",191.51],
+["Alphaproteobacteria",70.16],
+["Betaproteobacteria",23.51],
+["Gammaproteobacteria",25.51],
+["Deltaproteobacteria",23.28],
+["Acidobacteria",53.62],
+["Actinobacteria",72.33],
+["Bacteroidetes",22.41],
+["Chloroflexi",15.08],
+["Firmicutes",10.72],
+["Gemmatimonadetes",26.37],
+["Planctomycetes",19.26],
+["Thaumarchaeota",6.15],
+["Verrucomicrobia",8.3],
+["Ascomycota",159.41],
+["Basidiomycota",79.73],
+["Zygomycota",139.29],
+  ]];
+  NGCircos01 = new NGCircos(CHORD01, NGCircosGenome,{
+  target:"NGCircos",
+  svgWidth:900,
+  svgHeight:600,
+  svgClassName:"chord",
+  chrPad:0.04,
+  innerRadius:246,
+  outerRadius:250,
+  zoom:true,
+  genomeFillColor:["#999999"],
+  ticks:{
+  display:false,
+  len:5,
+  color:"#000",
+  textSize:10,
+  textColor:"#000",
+  scale:30000000,
+  realLength:false,
+  },
+  genomeLabel:{
+  display:false,
+  textSize:15,
+  textColor:"#000",
+  dx:0.028,
+  dy:"-0.55em",
+  },
+  genomeBorder:{
+  display:true,
+  borderColor:"#000",
+  borderSize:0.5,
+  },
+  CHORDMouseEvent : true,
+   CHORDMouseFillColorExcluded:"white",
+   CHORDMouseClickDisplay : false,
+   CHORDMouseClickOpacity : 1.0,
+   CHORDMouseClickStrokeColor : "green",
+   CHORDMouseClickStrokeWidth : 4,
+   CHORDMouseDownDisplay : false,
+   CHORDMouseDownOpacity : 1.0,
+   CHORDMouseDownStrokeColor : "#F26223",
+   CHORDMouseDownStrokeWidth : 4,
+   CHORDMouseEnterDisplay : false,
+   CHORDMouseEnterOpacity : 1.0,
+   CHORDMouseEnterStrokeColor : "#F26223",
+   CHORDMouseEnterStrokeWidth : 4,
+   CHORDMouseLeaveDisplay : false,
+   CHORDMouseLeaveOpacity : 1.0,
+   CHORDMouseLeaveStrokeColor : "#F26223",
+   CHORDMouseLeaveStrokeWidth : 4,
+   CHORDMouseMoveDisplay : false,
+   CHORDMouseMoveOpacity : 1.0,
+   CHORDMouseMoveStrokeColor : "#F26223",
+   CHORDMouseMoveStrokeWidth : 4,
+   CHORDMouseOutDisplay : true,
+   CHORDMouseOutAnimationTime : 500,
+   CHORDMouseOutOpacity : 0.67,
+   CHORDMouseOutStrokeColor : "none",
+   CHORDMouseOutStrokeWidth : 0,
+   CHORDMouseUpDisplay : false,
+   CHORDMouseUpOpacity : 1.0,
+   CHORDMouseUpStrokeColor : "#F26223",
+   CHORDMouseUpStrokeWidth : 4,
+   CHORDMouseOverDisplay : true,
+   CHORDMouseOverOpacity : 0.8,
+   CHORDMouseOverStrokeColor : "#F26223",
+   CHORDMouseOverStrokeWidth : 3,
+   CHORDMouseOverTooltipsHtml01 : "CHORD : ",
+   CHORDMouseOverTooltipsHtml02 : "",
+   CHORDMouseOverTooltipsPosition : "absolute",
+   CHORDMouseOverTooltipsBackgroundColor : "white",
+   CHORDMouseOverTooltipsBorderStyle : "solid",
+   CHORDMouseOverTooltipsBorderWidth : 0,
+   CHORDMouseOverTooltipsPadding : "3px",
+   CHORDMouseOverTooltipsBorderRadius : "3px",
+   CHORDMouseOverTooltipsOpacity : 0.8,
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength);
+  NGCircos01.draw_genome(NGCircos01.genomeLength2);
+</script>
+<script src="./lib/saveSvgAsPng.js"></script>
+<script>
+
+      (function(){
+        var downloadImg = getEle(".download-img"),
+          imgName = getEle("."+NGCircos01.svgClassName);
+
+        //          imgScale = getEle(".img-scale");
+
+        downloadImg.addEventListener("click",function(){
+          var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+//          saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+          saveSvgAsPng(mySvg, oImgName+".png");
+
+        })
+
+        function getEle(obj){
+          var d = document;
+          return d.querySelector(obj);
+        }
+      })()
+</script>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

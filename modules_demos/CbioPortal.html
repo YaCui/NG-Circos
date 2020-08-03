@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>NG-Circos.js</title>
+    <link href="css/bootstrap.min.css " rel="stylesheet">
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+    <link href="css/timeline.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/morris.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/google-code-prettify.css" rel="stylesheet">
+    <script src="css/jquery.min.js"></script>
+    <script src="css/bootstrap.min.js"></script>
+    <script src="css/metisMenu.min.js"></script>
+    <script src="css/raphael-min.js"></script>
+    <script src="css/morris.min.js"></script>
+    <script src="css/sb-admin-2.js"></script>
+    <script src="css/google-code-prettify.js"></script>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body onload="prettyPrint()">
+    <div id="wrapper">
+
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="index.html"><i class="fa fa-dashboard fa-fw"></i>Tutorials - <text>Step-by-step Guide for 21 Modules in NG-Circos</text></a>
+          </div>
+          <div class="navbar-default sidebar" role="navigation">
+              <div class="sidebar-nav navbar-collapse">
+                  <ul class="nav" id="side-menu">
+                      <li><a href="https://wlcb.oit.uci.edu/NG-Circos"><i class="fa fa-dashboard fa-fw"></i> Home </a></li>
+                      <li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i> ARC module </a></li>
+                      <li><a href="auxiliaryline.html"><i class="fa fa-dashboard fa-fw"></i> AUXILIARYLINE module </a></li>
+                      <li><a href="background.html"><i class="fa fa-dashboard fa-fw"></i> BACKGROUND module </a></li>
+                      <li><a href="bubble.html"><i class="fa fa-dashboard fa-fw"></i> BUBBLE module </a></li>
+                      <li><a href="chord.html"><i class="fa fa-dashboard fa-fw"></i> CHORD module </a></li>
+                      <li><a href="cnv.html"><i class="fa fa-dashboard fa-fw"></i> CNV module </a></li>
+                      <li><a href="combination.html"><i class="fa fa-dashboard fa-fw"></i> COMBINATION module </a></li>
+                      <li><a href="compare.html"><i class="fa fa-dashboard fa-fw"></i> COMPARE module </a></li>
+                      <li><a href="download.html"><i class="fa fa-dashboard fa-fw"></i> DOWNLOAD module </a></li>
+                      <li><a href="gene.html"><i class="fa fa-dashboard fa-fw"></i> GENE module </a></li>
+                      <li><a href="heatmap.html"><i class="fa fa-dashboard fa-fw"></i> HEATMAP module </a></li>
+                      <li><a href="histogram.html"><i class="fa fa-dashboard fa-fw"></i> HISTOGRAM module </a></li>
+                      <li><a href="legend.html"><i class="fa fa-dashboard fa-fw"></i> LEGEND module </a></li>
+                      <li><a href="line.html"><i class="fa fa-dashboard fa-fw"></i> LINE module </a></li>
+                      <li><a href="link.html"><i class="fa fa-dashboard fa-fw"></i> LINK module </a></li>
+                      <li><a href="lollipop.html"><i class="fa fa-dashboard fa-fw"></i> LOLLIPOP module </a></li>
+                      <li><a href="redirect.html"><i class="fa fa-dashboard fa-fw"></i> REDIRECT module </a></li>
+                      <li><a href="scatter.html"><i class="fa fa-dashboard fa-fw"></i> SCATTER module </a></li>
+                      <li><a href="snp.html"><i class="fa fa-dashboard fa-fw"></i> SNP module </a></li>
+                      <li><a href="text.html"><i class="fa fa-dashboard fa-fw"></i> TEXT module </a></li>
+                      <li><a href="wig.html"><i class="fa fa-dashboard fa-fw"></i> WIG module </a></li>
+                      <li><a href="CbioPortal.html"><i class="fa fa-dashboard fa-fw"></i> CbioPortal demo </a></li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Step by step visualize CbioPortal data using NG-Circos  </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>0. Download all files in this tutorial.</h3>
+                    <p>Download <a href="./download/CbioPortal.zip" style="font-size: 20px"> CbioPortal.zip</a> and click *.html file(in CbioPortal.zip) to open this demo in local browser!.</p>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                   <h3>1. Download data from <a href="https://github.com/cBioPortal/datahub">CbioPortal datahub</a> in Github.</h3>
+                   <p></p>
+<ul class="simple">
+<h4>Example file: <a href="CbioPortal/SNP01.txt">SNP01.txt</a>&nbsp;&nbsp;<a href="CbioPortal/CNV01.txt">CNV01.txt</a>&nbsp;&nbsp;<a href="CbioPortal/LINK01.txt">LINK01.txt</a>&nbsp;&nbsp;<a href="CbioPortal/data_mutations_extended.txt.txt">data_mutations_extended.txt</a>&nbsp;&nbsp;<a href="CbioPortal/data_cna_hg19.seg">data_cna_hg19.seg</a>&nbsp;&nbsp;<a href="CbioPortal/data_fusions.txt">data_fusions.txt</a></h4>
+<div class="section">
+<h4>(1)Download data from CbioPortal<a class="headerlink" title="Permalink to this headline"></a></h4>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>(a) Clone cBioPortal datahub
+git clone https://github.com/cBioPortal/datahub.git
+cd datahub
+git lfs install --local --skip-smudge
+
+(b) Download data using cBioPortal data ID
+git lfs pull -I public/nsclc_pd1_msk_2018
+cd public/nsclc_pd1_msk_2018/
+
+(c) Files in public/nsclc_pd1_msk_2018/
+data_mutations_extended.txt
+data_cna_hg19.seg
+data_fusions.txt
+</pre></div>
+</div>
+
+<h4>(2)Process CbioPortal data <a class="headerlink" title="Permalink to this headline"></a></h4>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>(a)Process SNP module data
+awk -F "\t" '{print $5"\t"$6"\t"$7"\t"$1"\t"$38}' ./CbioPortal/nsclc_pd1_msk_2018/data_mutations_extended.txt | sed '1d' | sort | uniq -c | sort | sed 's/^ *//' | awk -F " " '$1>0{print $2"\t"$3"\t"$1"\t"$5"|"$6}' > ./CbioPortal/SNP01.txt
+python3 NGCircos_PrepareData.py SNP ./CbioPortal/SNP01.txt > ./CbioPortal/SNP01.js         #prepare SNP js file
+
+(b)Process CNV module data
+awk -F "\t" '(2^$6*2)>3{print $2"\t"$3"\t"$4"\t"(2^$6*2)}' ./CbioPortal/nsclc_pd1_msk_2018/data_cna_hg19.seg | sort -k1,1 -k2,2n > ./CbioPortal/CNV.txt
+bedtools merge -i cnv.txt -c 4 -o count > ./CbioPortal/CNV01.txt
+python3 NGCircos_PrepareData.py CNV ./CbioPortal/CNV01.txt > ./CbioPortal/CNV01.js        #prepare CNV js file
+
+(c)Process LINK module data
+grep "::" ./CbioPortal/nsclc_pd1_msk_2018/data_fusions.txt | awk -F "\t" '{print $10}' | awk -F ":" '{print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6}' | awk -F "\)" '{print $1"\t"$2"\t"$5"\t"$6}' | sed 's/Note//g'| sed 's/(NM_002944//g'| sed 's/(NM_001025159//g'| sed 's/(NM_013956//g' | sed 's/(NM_000321//g' | sed 's/(NM_006424//g' | sed 's/(//g' | grep -v "rearrangement" | uniq | sed 's/g\.//g' | sed 's/chr//g' | sed 's/ //g' | sed 's/-//g' | sed 's/ROS1$//g' | sed 's/5q32;6q22.1//g' | gsed 's/\t/@/g' | sed 's/@@/@/g' | sed 's/@$//' | awk -F "@" '{print $1"--"$2"\t"$3"\t"$4"\t"$4"\t"$1"\t"$5"\t"$6"\t"$6"\t"$2}' > ./CbioPortal/LINK01.txt
+python3 NGCircos_PrepareData.py LINK ./CbioPortal/LINK01.txt > ./CbioPortal/LINK01.js            #prepare LINK js file
+
+</pre></div>
+</div>
+
+</div>
+</div>
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                   <h3>2. Input data.</h3>
+                   <p>
+
+<ul class="simple">
+<h4>The input data of NG-Circos can be either generated by the supporting python scripts, or directly through the well documented JSON data formats.</h4>
+<h4>Example file: <a href="./CbioPortal/SNP01.txt">SNP01.txt</a></h4>
+<div class="section">
+<h4>Data structure<a class="headerlink" title="Permalink to this headline"></a></h4>
+<p>Users should prepare the input data in the following format (separated by tabs).</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>#chr    pos     value   des
+1	11181344	10	MTOR|ENST00000361445.4:c.6892G>C
+1	11184573	3	MTOR|ENST00000361445.4:c.6644C>T
+1	11188582	25	MTOR|ENST00000361445.4:c.5839G>C
+ ......
+15	99442709	1	IGF1R|ENST00000268035.6:c.1106A>G
+15	99442834	2	IGF1R|ENST00000268035.6:c.1231G>T
+15	99451967	18	IGF1R|ENST00000268035.6:c.1301G>C
+</pre></div>
+</div>
+<p>Following fields are required:</p>
+<ul class="simple">
+<li><p>The 1 column(<code class="docutils literal notranslate"><span class="pre">chr</span></code>) is the name of the chromosome.</p></li>
+<li><p>The 2 column(<code class="docutils literal notranslate"><span class="pre">pos</span></code>) is the position of the SNP.</p></li>
+<li><p>The 3 column(<code class="docutils literal notranslate"><span class="pre">value</span></code>) is the value(density, P-value, etc.) of the SNP.</p></li>
+<li><p>The 4 column(<code class="docutils literal notranslate"><span class="pre">des</span></code>) is the description of the SNP.</p></li>
+</ul>
+</div>
+</ul>
+
+<ul class="simple">
+<h4>Example file: <a href="./CbioPortal/CNV01.txt">CNV01.txt</a></h4>
+<div class="section">
+<h4>Data structure<a class="headerlink" title="Permalink to this headline"></a></h4>
+<p>Users should prepare the input data in the following format (separated by tabs).</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>#chr    start   end     value
+1	2488138	2494650	1
+1	11307736	11319386	1
+1	40361361	40367520	4
+......
+12	46123666	49449083	3
+12	56474126	57864972	4
+12	58142354	69233342	17
+</pre></div>
+</div>
+<p>Following fields are required:</p>
+<ul class="simple">
+  <li><p>The 1 column(<code class="docutils literal notranslate"><span class="pre">chr</span></code>) is the name of the chromosome.</p></li>
+  <li><p>The 2 column(<code class="docutils literal notranslate"><span class="pre">start</span></code>) is the start of the CNV region.</p></li>
+  <li><p>The 3 column(<code class="docutils literal notranslate"><span class="pre">end</span></code>) is the end of the CNV region.</p></li>
+  <li><p>The 4 column(<code class="docutils literal notranslate"><span class="pre">value</span></code>) is the copy number of CNV region.</p></li>
+</ul>
+</div>
+</ul>
+
+<ul class="simple">
+<h4>Example file: <a href="./CbioPortal/LINK01.txt">LINK01.txt</a></h4>
+<div class="section">
+<h4>Data structure<a class="headerlink" title="Permalink to this headline"></a></h4>
+<p>Users should prepare the input data in the following format (separated by tabs).</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>#name   g1chr   g1start g1end   g1name  g2chr   g2start g2end   g2name
+CD74--NRG1	5	149782758	149782758	CD74	8	32513214	32513214	NRG1
+CD74--ROS1	5	149783763	149783763	CD74	6	117647234	117647234	ROS1
+CD74--NRG1	8	32549502	32549502	CD74	5	149782966	149782966	NRG1
+ROS1--SLC34A2	4	25667671	25667671	ROS1	6	117662059	117662059	SLC34A2
+</pre></div>
+</div>
+<p>Following fields are required:</p>
+<ul class="simple">
+  <li><p>The 1 column(<code class="docutils literal notranslate"><span class="pre">name</span></code>) is the name of the link.</p></li>
+  <li><p>The 2 column(<code class="docutils literal notranslate"><span class="pre">g1chr</span></code>) is the chromosome of gene 1.</p></li>
+  <li><p>The 3 column(<code class="docutils literal notranslate"><span class="pre">g1start</span></code>) is the start of gene 1.</p></li>
+  <li><p>The 4 column(<code class="docutils literal notranslate"><span class="pre">g1end</span></code>) is the end of gene 1.</p></li>
+  <li><p>The 5 column(<code class="docutils literal notranslate"><span class="pre">g1name</span></code>) is the name of gene 1.</p></li>
+  <li><p>The 6 column(<code class="docutils literal notranslate"><span class="pre">g2chr</span></code>) is the chromosome of gene 2.</p></li>
+  <li><p>The 7 column(<code class="docutils literal notranslate"><span class="pre">g2start</span></code>) is the start of gene 2.</p></li>
+  <li><p>The 8 column(<code class="docutils literal notranslate"><span class="pre">g2end</span></code>) is the end of gene 2.</p></li>
+  <li><p>The 9 column(<code class="docutils literal notranslate"><span class="pre">g2name</span></code>) is the name of gene 2.</p></li>
+</ul>
+</div>
+</ul>
+
+</div>
+</div>
+
+
+<h3>3. Prepare module through python script.</h3>
+<ul class="simple">
+    <h4> Use:</h4>
+    <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python NGCircos_PrepareData.py SNP SNP01.txt &gt; SNP01.js
+python NGCircos_PrepareData.py CNV CNV01.txt &gt; CNV01.js
+python NGCircos_PrepareData.py LINK LINK01.txt &gt; LINK01.js</pre></div>
+    <h4> Example file:
+      <a href="./CbioPortal/SNP01.js">SNP01.js</a>&nbsp;&nbsp;
+      <a href="./CbioPortal/CNV01.js">CNV01.js</a>&nbsp;&nbsp;
+      <a href="./CbioPortal/LINK01.js">LINK01.js</a>&nbsp;&nbsp;
+      <a href="./CbioPortal/BACKGROUND01.js">BACKGROUND01.js</a>&nbsp;&nbsp;
+      <a href="./CbioPortal/BACKGROUND02.js">BACKGROUND02.js</a>&nbsp;&nbsp;
+    </h4>
+    <h4> Details in <a href="./CbioPortal/SNP01.js">SNP01.js</a> file:</h4>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>var SNP01 = [ "SNP01" , {
+  maxRadius: 205,
+  minRadius: 173,
+  SNPFillColor: "#9400D3",
+  PointType: "circle",
+  circleSize: 2,
+  rectWidth: 2,
+  rectHeight: 2,
+  displaySNPAxis: false,
+  SNPAxisColor: "#B8B8B8",
+  SNPAxisWidth: 0.5
+} , [
+  {chr: "1", pos: "11181344", value: "1", des: "MTOR|ENST00000361445.4:c.6892G>C", color: "rgb(153,102,0)"},
+  {chr: "1", pos: "11184573", value: "1", des: "MTOR|ENST00000361445.4:c.6644C>T", color: "rgb(153,102,0)"},
+  {chr: "1", pos: "11188582", value: "1", des: "MTOR|ENST00000361445.4:c.5839G>C", color: "rgb(153,102,0)"},
+   ......
+  {chr: "12", pos: "25398284", value: "11", des: "KRAS|ENST00000256078.4:c.35G>A", color: "rgb(204,0,0)"},
+  {chr: "12", pos: "25398284", value: "14", des: "KRAS|ENST00000256078.4:c.35G>T", color: "rgb(204,0,0)"},
+  {chr: "12", pos: "25398285", value: "36", des: "KRAS|ENST00000256078.4:c.34G>T", color: "rgb(204,0,0)"},
+]];
+    </pre></div></div>
+    <h5> Note: explaination for each parameter is available in document</h5>
+
+
+
+    <h4> Details in <a href="./CbioPortal/CNV01.js">CNV01.js</a> file:</h4>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>var CNV01 = [ "CNV01" , {
+  maxRadius: 155,
+  minRadius: 116,
+  CNVwidth: 2,
+  CNVColor: "#4876FF",
+} , [
+  {chr: "1", start: "2488138", end: "2494650", value: "1"},
+  {chr: "1", start: "11307736", end: "11319386", value: "1"},
+  {chr: "1", start: "40361361", end: "40367520", value: "4"},
+   ......
+  {chr: "X", start: "451142", end: "53253997", value: "16"},
+  {chr: "X", start: "66765797", end: "76763968", value: "2"},
+  {chr: "X", start: "100604909", end: "149924738", value: "4"},
+ ]];
+    </pre></div></div>
+    <h5> Note: explaination for each parameter is available in document</h5>
+
+
+    <h4> Details in <a href="./CbioPortal/LINK01.js">LINK01.js</a> file:</h4>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>var LINK01 = [ "LINK01" , {
+  LinkRadius: 100,
+  LinkFillColor: "#F26223",
+  LinkWidth: 3,
+  LinkType:"Q",
+  displayLinkAxis: true,
+  LinkAxisColor: "#B8B8B8",
+  LinkAxisWidth: 0.5,
+  LinkAxisPad: 3,
+  displayLinkLabel: false,
+  LinkLabelColor: "red",
+  LinkLabelSize: 13,
+  LinkLabelPad: 8,
+} , [
+  {fusion: "CD74--NRG1", g1chr: "5", g1start: "149782758", g1end: "149782758", g1name: "CD74", g2chr: "8", g2start: "32513214", g2end: "32513214", g2name: "NRG1"},
+  {fusion: "CD74--ROS1", g1chr: "5", g1start: "149783763", g1end: "149783763", g1name: "CD74", g2chr: "6", g2start: "117647234", g2end: "117647234", g2name: "ROS1"},
+  {fusion: "CD74--NRG1", g1chr: "8", g1start: "32549502", g1end: "32549502", g1name: "CD74", g2chr: "5", g2start: "149782966", g2end: "149782966", g2name: "NRG1"},
+  {fusion: "ROS1--SLC34A2", g1chr: "4", g1start: "25667671", g1end: "25667671", g1name: "ROS1", g2chr: "6", g2start: "117662059", g2end: "117662059", g2name: "SLC34A2"},
+]];
+    </pre></div></div>
+    <h5> Note: explaination for each parameter is available in document</h5>
+
+
+
+</ul>
+
+<h3>4. Including SNP/CNV/LINK data<a class="headerlink"></a></h3>
+<ul>
+    <h4>Use &lt;script&gt; tag to include SNP01.js/CNV01.js/LINK01.js and BACKGROUND01.js/BACKGROUND02.js.</h4>
+    <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/SNP01.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> </pre></div>
+    <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/CNV01.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> </pre></div>
+    <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/LINK01.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> </pre></div>
+    <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/BACKGROUND01.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> </pre></div>
+    <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/BACKGROUND02.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> </pre></div>
+    </div>
+</ul>
+
+<h3>5. Initialize NG-Circos<a class="headerlink"></a></h3>
+<ul>
+    <h4>Prepare a &lt;div&gt; tag with <strong>“example”</strong> id to set the picture position your will draw in html, e.g.:</h4>
+    <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">NGCircos01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NGCircos</span><span class="p">(</span><span class="nx">SNP01</span><span class="p">,</span><span class="nx">CNV01</span><span class="p">,</span><span class="nx">LINK01</span><span class="p">,</span><span class="nx">BACKGROUND01</span><span class="p">,</span><span class="nx">BACKGROUND02</span><span class="p">,</span><span class="nx">NGCircosGenome</span><span class="p">,{</span> <span class="c1">// Initialize with &quot;SNP01&quot;&quot;CNV01&quot;&quot;LINK01&quot; data tag</span></pre></div>
+    </div>
+</ul>
+
+<h3>6. Source code<a class="headerlink"></a></h3>
+<ul>
+    <h4> When step 1 to 5 are finished, the configuration for NGCircos: </h4>
+    <pre class="prettyprint"><xmp>
+      <button class="svg-action-btn download-img" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black">Download png</button>
+      <a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './lib/svg-crowbar.js'); } else { e.setAttribute('src', './lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black" >Download svg </a>
+      <div id="NGCircos"></div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <div id="NGCircos"></div>
+                      </div>
+                  </div>
+      <!-- Data configuration -->
+      <script src="./lib/jquery.js"></script>
+      <script src="./lib/d3.js"></script>
+      <script src="./lib/NGCircos.js"></script>
+      <script src="./CbioPortal/SNP01.js"></script>
+      <script src="./CbioPortal/BACKGROUND01.js"></script>
+      <script src="./CbioPortal/CNV01.js"></script>
+      <script src="./CbioPortal/BACKGROUND02.js"></script>
+      <script src="./CbioPortal/LINK01.js"></script>
+      <!-- Genome configuration -->
+      <script>
+        var NGCircosGenome = [
+          [
+           ["1" , 249250621],
+           ["2" , 243199373],
+           ["3" , 198022430],
+           ["4" , 191154276],
+           ["5" , 180915260],
+           ["6" , 171115067],
+           ["7" , 159138663],
+           ["8" , 146364022],
+           ["9" , 141213431],
+           ["10" , 135534747],
+           ["11" , 135006516],
+           ["12" , 133851895],
+           ["13" , 115169878],
+           ["14" , 107349540],
+           ["15" , 102531392],
+           ["16" , 90354753],
+           ["17" , 81195210],
+           ["18" , 78077248],
+           ["19" , 59128983],
+           ["20" , 63025520],
+           ["21" , 48129895],
+           ["22" , 51304566],
+           ["X" , 155270560],
+           ["Y" , 59373566]
+          ]
+        ];
+        NGCircos01 = new NGCircos(SNP01,BACKGROUND01,CNV01,BACKGROUND02,LINK01,NGCircosGenome,{  // Initialize with "SNP01" data tag
+        //Main configuration
+           target : "NGCircos",                       // Main configuration "target"
+           svgWidth : 900,                             // Main configuration "svgWidth"
+           svgHeight : 600,                            // Main configuration "svgHeight"
+           svgClassName: "NGCircos",                  // Main configuration "svgClassName"
+           chrPad : 0.04,                              // Main configuration "chrPad"
+           innerRadius: 246,                           // Main configuration "innerRadius"
+           outerRadius: 270,                           // Main configuration "outerRadius"
+      LINKMouseEvent: true,
+      LINKMouseOutDisplay: true,
+      LINKMouseOutAnimationTime: 500,
+      LINKMouseOutOpacity: 1,
+      LINKMouseOutStrokeColor: "green",
+      LINKMouseOutStrokeWidth: 4,
+      LINKMouseOverDisplay: true,
+      LINKMouseOverStrokeColor: "green",
+      LINKMouseOverOpacity: 1,
+      LINKMouseOverStrokeWidth: 3,
+      LINKLabelDragEvent: false,
+      CNVMouseOutDisplay: true,
+      CNVMouseOutAnimationTime: 500,
+      CNVMouseOverDisplay : true,
+      CNVMouseOverColor : "red",
+      CNVMouseOverArcOpacity : 1.0,
+      CNVMouseOverArcStrokeColor : "#F26223",
+      CNVMouseOverArcStrokeWidth : 3,
+      CNVMouseOverTooltipsSetting :"style1",
+        });
+        NGCircos01.draw_genome(NGCircos01.genomeLength); // NGCircos2.js callback
+        NGCircos01.draw_genome(NGCircos01.genomeLength2); // NGCircos2.js callback
+      </script>
+      <script src="./lib/saveSvgAsPng.js"></script>
+      <script>
+
+            (function(){
+              var downloadImg = getEle(".download-img"),
+                imgName = getEle("."+NGCircos01.svgClassName);
+
+              //          imgScale = getEle(".img-scale");
+
+              downloadImg.addEventListener("click",function(){
+                var mySvg = getEle("."+NGCircos01.svgClassName),
+                  //iImgScale = parseInt(imgScale.value) || 1,
+                  oImgName = imgName.value || NGCircos01.svgClassName;
+
+      //          saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+                saveSvgAsPng(mySvg, oImgName+".png");
+
+              })
+
+              function getEle(obj){
+                var d = document;
+                return d.querySelector(obj);
+              }
+            })()
+      </script></xmp></pre>
+</ul>
+
+<h3>6. Visualization of SNP data using NG-Circos<a class="headerlink"></a></h3>
+<button class="svg-action-btn download-img" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black">Download png</button>
+<a href="javascript:(function () { var e = document.createElement('script');if (window.location.protocol === 'https:') { e.setAttribute('src', './lib/svg-crowbar.js'); } else { e.setAttribute('src', './lib/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();" style="height: 18px;line-height: 18px;padding: 0 11px;background: #FFFFFF;border: 1px #D9D9D9 solid;border-radius: 3px;display: inline-block;font-size: 12px;outline: none;color: black" >Download svg </a>
+<div id="NGCircos"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="NGCircos"></div>
+                </div>
+            </div>
+<!-- Data configuration -->
+<script src="./lib/jquery.js"></script>
+<script src="./lib/d3.js"></script>
+<script src="./lib/NGCircos.js"></script>
+<script src="./CbioPortal/SNP01.js"></script>
+<script src="./CbioPortal/BACKGROUND01.js"></script>
+<script src="./CbioPortal/CNV01.js"></script>
+<script src="./CbioPortal/BACKGROUND02.js"></script>
+<script src="./CbioPortal/LINK01.js"></script>
+<!-- Genome configuration -->
+<script>
+  var NGCircosGenome = [
+    [
+     ["1" , 249250621],
+     ["2" , 243199373],
+     ["3" , 198022430],
+     ["4" , 191154276],
+     ["5" , 180915260],
+     ["6" , 171115067],
+     ["7" , 159138663],
+     ["8" , 146364022],
+     ["9" , 141213431],
+     ["10" , 135534747],
+     ["11" , 135006516],
+     ["12" , 133851895],
+     ["13" , 115169878],
+     ["14" , 107349540],
+     ["15" , 102531392],
+     ["16" , 90354753],
+     ["17" , 81195210],
+     ["18" , 78077248],
+     ["19" , 59128983],
+     ["20" , 63025520],
+     ["21" , 48129895],
+     ["22" , 51304566],
+     ["X" , 155270560],
+     ["Y" , 59373566]
+    ]
+  ];
+  NGCircos01 = new NGCircos(SNP01,BACKGROUND01,CNV01,BACKGROUND02,LINK01,NGCircosGenome,{  // Initialize with "SNP01" data tag
+  //Main configuration
+     target : "NGCircos",                       // Main configuration "target"
+     svgWidth : 900,                             // Main configuration "svgWidth"
+     svgHeight : 600,                            // Main configuration "svgHeight"
+     svgClassName: "NGCircos",                  // Main configuration "svgClassName"
+     chrPad : 0.04,                              // Main configuration "chrPad"
+     innerRadius: 246,                           // Main configuration "innerRadius"
+     outerRadius: 270,                           // Main configuration "outerRadius"
+LINKMouseEvent: true,
+LINKMouseOutDisplay: true,
+LINKMouseOutAnimationTime: 500,
+LINKMouseOutOpacity: 1,
+LINKMouseOutStrokeColor: "green",
+LINKMouseOutStrokeWidth: 4,
+LINKMouseOverDisplay: true,
+LINKMouseOverStrokeColor: "green",
+LINKMouseOverOpacity: 1,
+LINKMouseOverStrokeWidth: 3,
+LINKLabelDragEvent: false,
+CNVMouseOutDisplay: true,
+CNVMouseOutAnimationTime: 500,
+CNVMouseOverDisplay : true,
+CNVMouseOverColor : "red",
+CNVMouseOverArcOpacity : 1.0,
+CNVMouseOverArcStrokeColor : "#F26223",
+CNVMouseOverArcStrokeWidth : 3,
+CNVMouseOverTooltipsSetting :"style1",
+  });
+  NGCircos01.draw_genome(NGCircos01.genomeLength); // NGCircos2.js callback
+  NGCircos01.draw_genome(NGCircos01.genomeLength2); // NGCircos2.js callback
+</script>
+<script src="./lib/saveSvgAsPng.js"></script>
+<script>
+
+      (function(){
+        var downloadImg = getEle(".download-img"),
+          imgName = getEle("."+NGCircos01.svgClassName);
+
+        //          imgScale = getEle(".img-scale");
+
+        downloadImg.addEventListener("click",function(){
+          var mySvg = getEle("."+NGCircos01.svgClassName),
+            //iImgScale = parseInt(imgScale.value) || 1,
+            oImgName = imgName.value || NGCircos01.svgClassName;
+
+//          saveSvgAsPng(mySvg, oImgName+".png", iImgScale);
+          saveSvgAsPng(mySvg, oImgName+".png");
+
+        })
+
+        function getEle(obj){
+          var d = document;
+          return d.querySelector(obj);
+        }
+      })()
+</script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
