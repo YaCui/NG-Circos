@@ -18,6 +18,7 @@ https://wlcb.oit.uci.edu/NG-Circos
 
 ## Contact
 Ya Cui (yac7@uci.edu)
+Wei Li (wei.li@uci.edu)
 
 ## REFERENCES
 Ya Cui, Zhe Cui, ..., Wei Li. NG-Circos: Next-generation Circos for data visualization and interpretation. (2020)
