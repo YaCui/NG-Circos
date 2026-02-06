@@ -19,10 +19,11 @@ https://wlcb.oit.uci.edu/NG-Circos
 ## Contact
 Ya (Allen) Cui, Ph.D. <br>
 Assistant Professor<br>
+School of Medicine<br>
+University of California, Irvine<br>
 Email: yac7@uci.edu<br>
 Website: https://wlcb.oit.uci.edu/allen <br>
 Website: https://medschool.uci.edu/about/faculty/yac7 <br>
-![UCI_Facuty_page_YaCui](https://github.com/user-attachments/assets/78aab33f-585d-458a-94c6-bd97489fc930)
 
 ## REFERENCES
 Cui Y^, Cui Z, Xu J, Hao D, Shi J, Wang D, Xiao H, Duan X, Chen R, and Li W*: NG-Circos: next-generation Circos for data visualization and interpretation. NAR Genomics and Bioinformatics 2, lqaa069 (2020).
