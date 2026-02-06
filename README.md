@@ -17,11 +17,11 @@ https://wlcb.oit.uci.edu/NG-Circos/static/doc.html
 https://wlcb.oit.uci.edu/NG-Circos
 
 ## Contact
-Ya (Allen) Cui, Ph.D.
-Assistant Professor
-Email: yac7@uci.edu
-Website: https://wlcb.oit.uci.edu/allen
-Website: https://medschool.uci.edu/about/faculty/yac7
+Ya (Allen) Cui, Ph.D. <br>
+Assistant Professor<br>
+Email: yac7@uci.edu<br>
+Website: https://wlcb.oit.uci.edu/allen <br>
+Website: https://medschool.uci.edu/about/faculty/yac7 <br>
 ![UCI_Facuty_page_YaCui](https://github.com/user-attachments/assets/78aab33f-585d-458a-94c6-bd97489fc930)
 
 ## REFERENCES
